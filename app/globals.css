@@ -150,3 +150,22 @@ figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
 @media (max-width: 640px) { .timeline li { grid-template-columns: 1fr; gap: 2px; } }
 
 @media (prefers-reduced-motion: reduce) { .card { transition: none; } }
+
+/* Options table + prompt iterations */
+.options { width: 100%; border-collapse: collapse; font-size: 15px; margin-top: 8px; }
+.options th, .options td { text-align: left; vertical-align: top; padding: 12px 12px 12px 0; border-top: 1px solid var(--line); }
+.options thead th { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 500; border-top: 0; }
+.options tbody th { font-weight: 600; width: 30%; }
+.options td:nth-child(2) { white-space: nowrap; color: var(--muted); }
+.options tr.chosen th, .options tr.chosen td { color: var(--accent); }
+@media (max-width: 640px) {
+  .options thead { display: none; }
+  .options tr { display: block; border-top: 1px solid var(--line); padding: 10px 0; }
+  .options th, .options td { display: block; border: 0; padding: 2px 0; width: auto; }
+}
+.iterations { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+.iterations li { border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+.iterations li:last-child { border-color: var(--accent); }
+.iterations h3 { margin: 0 0 10px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); }
+.iterations pre { margin: 0 0 10px; white-space: pre-wrap; background: var(--surface); padding: 12px 14px; border-radius: 8px; font-size: 13px; line-height: 1.55; }
+.iterations p { margin: 0; font-size: 15px; }

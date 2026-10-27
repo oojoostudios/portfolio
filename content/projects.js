@@ -17,7 +17,7 @@ export const projects = [
       ['Domain', 'Consumer fintech'],
       ['Timeline', '12 weeks design · live since Sep 2026'],
     ],
-    links: [{ label: 'Try it live', href: '#', todo: 'FXpress live URL' }],
+    links: [{ label: 'Try it live', href: 'https://fxpress.netlify.app' }],
     tldr: {
       problem:
         'Remittance apps show today’s rate but never whether it’s a good one. USD/KRW moved an average of 3.7% within each month over the past year — about $74 on a $2,000 transfer.',
@@ -26,9 +26,10 @@ export const projects = [
       rejected:
         'Recommending when or where to send, and showing estimated fees. Both are promises the product can’t keep.',
       result: [
-        'Live across 18 currency pairs',
+        'Live across 18 currency pairs on reference-rate data',
         '5 of 5 testers completed the send flow',
-        { todo: 'Umami: visitors / target rates saved / provider hand-offs since launch' },
+        '0 errors across 33 AI calls in its first 30 days',
+        { todo: 'Current Umami numbers (Sep notes: 35 sessions, mostly my own testing)' },
       ],
     },
     sections: [
@@ -49,6 +50,7 @@ export const projects = [
         body: [
           'I interviewed four people who send money abroad. Two things stood out: choosing a day felt like guessing, and what they cared about most was how much the recipient would get.',
         ],
+        todo: 'Confirm count: case study says 4 senders interviewed, Sep prep doc says 5.',
         quote: {
           text: 'I usually end up Googling the exchange rate and trying to catch it on a ‘good day,’ which is kind of ridiculous. It feels like I’m managing trades for personal transfers.',
           who: 'Monthly international sender, research participant',
@@ -62,6 +64,18 @@ export const projects = [
           ['No forecasting', 'It shows where today’s rate sits compared with recent history. It never predicts.'],
           ['No financial advice', 'The AI explains the rate. The decision stays with the sender.'],
           ['No invented pricing', 'If it can’t see a provider’s fee or markup, it doesn’t guess.'],
+        ],
+      },
+      {
+        kind: 'options',
+        eyebrow: 'Exploring',
+        heading: 'Five product shapes, three cut on principle',
+        items: [
+          ['Forecast dashboard', 'Cut', 'It requires predicting the rate, and nobody can do that honestly.'],
+          ['Auto-router that sends for you', 'Cut', 'Moving money means becoming a licensed money transmitter, with custody and exposure to the sender’s bank.'],
+          ['Chat assistant', 'Cut', 'Wrong interaction for a 30-second monthly task — typing questions makes it slower.'],
+          ['Threshold alerts', 'Kept, reduced', 'Became “Save Target Rate” with a calendar reminder, not an automatic send.'],
+          ['Co-pilot widget', 'Chosen', 'Places today’s rate in its recent range, then hands off to the provider the sender already uses.'],
         ],
       },
       {
@@ -92,17 +106,39 @@ export const projects = [
         ],
       },
       {
+        kind: 'iterations',
+        eyebrow: 'The AI layer',
+        heading: 'My first prompt handed the AI the decision without my noticing',
+        items: [
+          {
+            label: 'Before',
+            text: 'You are Fexi, a friendly FX assistant. The user is sending USD to {country} ({code}). {situation}. Write ONE short, warm sentence telling them whether now is a good moment to send and why, based ONLY on the situation above. Do NOT predict the future. Do NOT invent numbers beyond what is stated.',
+            outcome: '“Telling them whether now is a good moment to send” asks for advice. The “do not predict” line couldn’t undo the framing.',
+          },
+          {
+            label: 'Shipped',
+            text: 'You are Fexi, the co-pilot inside FXpress. You narrate. You never decide. Every number in your reply must appear verbatim in the FACTS block — never compute, re-round, or invent a figure. Never forecast: do not say a rate will rise, fall, recover, revert, or hold. Never tell the user whether to send. Range position is a fact about the past 30 days and implies nothing about tomorrow. Never mention fees. One or two sentences, warm and plain.',
+            outcome: 'Forbids three behaviors: computing, forecasting, and saying whether to send. The judgment itself moved into JavaScript, so the model receives a finished conclusion.',
+          },
+        ],
+        after: [
+          'When there are fewer than 10 days of history, the server answers without calling the model at all — there’s nothing for it to embellish.',
+          'I removed a thumbs-up pose from Fexi’s avatar. The words avoided advice, but the gesture endorsed the rate anyway.',
+        ],
+      },
+      {
         kind: 'testing',
         eyebrow: 'Usability testing',
-        heading: 'Five people, from first-time senders to frequent ones',
-        intro: 'With a group this small I report counts, not percentages.',
+        heading: 'Five people, from cautious first-time senders to power users',
+        intro: 'Seven tasks across sending money, setting a target rate, and confirming. I tested the high-fidelity Figma prototype — an earlier version that still moved money itself. With a group this small I report counts, not percentages.',
         worked: [
           '5 of 5 completed the send flow.',
           'All five looked at the recipient-side amount before anything else on the screen.',
+          '“I actually feel like I understand what this does before I’ve used it.” — cautious sender',
         ],
         broke: [
-          '4 of 5 completed the target-rate flow. One tapped Send Now by mistake — both buttons had equal visual weight.',
-          'One stopped at the threshold field because “1,380” had no currency attached.',
+          '4 of 5 completed the target-rate flow. One gave up at the threshold field because “1,380” had no currency; another hesitated there.',
+          'One tapped Send Now by mistake — both buttons had equal visual weight.',
         ],
         quote: {
           text: 'I don’t know what 1,380 means. Is that dollars, won, or shillings?',
@@ -113,6 +149,7 @@ export const projects = [
           'The threshold input now names the currency, with helper text explaining the value.',
           'Renamed “Set Trigger for Best Rate” to “Save Target Rate” — the product can’t promise the best rate.',
         ],
+        todo: 'Notes disagree on Send Now mis-taps (1 vs 2) — confirm from recordings. Also: changes not yet re-tested on the live widget; say so here once confirmed.',
       },
       {
         kind: 'text',
@@ -120,8 +157,10 @@ export const projects = [
         heading: 'What’s live',
         body: [
           'FXpress runs on real reference-rate data across 18 currency pairs, lets users save a target rate and create a calendar reminder, and hands the transfer off to providers such as Wise, Remitly, Xoom, Chase, or the user’s bank.',
+          'In its first 30 days: 33 of 33 AI calls returned cleanly with zero server errors. The offline fallback is designed and tested but has never fired in production, so it’s unproven.',
+          'I chose cookie-free analytics so I couldn’t track anyone. The tradeoff: it can’t cleanly separate strangers from my own testing.',
         ],
-        todo: 'Add 2–3 Umami numbers here (visitors, saved target rates, provider hand-off clicks). Small honest numbers beat none.',
+        todo: 'Add current Umami session count with that caveat. Small honest numbers beat none.',
       },
       {
         kind: 'text',
@@ -161,9 +200,8 @@ export const projects = [
       rejected:
         'A standalone product (adoption friction), LLM-based classification, a large template library, and a single variance-ranked list.',
       result: [
-        'Tested with 5 financial analysts',
-        'Trust question moved from “is the AI right?” to “is the rules engine right?”',
-        { todo: 'Task results as counts, e.g. “X of 5 resolved all breaks unaided”' },
+        '5 middle-office operators ran the real add-on; 4 completed reconcile → draft',
+        'The AI boundary held: every tester’s trust blocker was the rules engine, not the AI',
       ],
     },
     sections: [
@@ -186,13 +224,13 @@ export const projects = [
             title: 'Layer on top. Don’t rip and replace.',
             considered: 'A standalone reconciliation product.',
             chose: 'An add-on that runs inside the spreadsheet the analyst already uses.',
-            why: 'Enterprise vendors already cover the core reconciliation capabilities. For a lean team, a new product adds exactly what they don’t need: another system, login, and workflow to maintain. Adoption friction was bigger than the opportunity.',
+            why: 'I started out intending to build a sellable product. Market research ended that: small desks often outsource this work, a free tool reads as a diligence risk, and incumbents already own every core capability. For a lean team, a new product adds what they don’t need — another system, login, and workflow.',
           },
           {
             title: 'Rules find the break. AI explains it.',
-            considered: 'LLM-based break classification.',
+            considered: 'LLM-based classification, and a middle path where the AI makes the easy calls and flags the hard ones.',
             chose: 'Deterministic rules classify every break first. Generation only starts after that, and never changes a classification.',
-            why: 'Financial truth has to be reproducible and auditable. The AI can help write the message; it doesn’t decide what the numbers mean.',
+            why: 'On a desk, someone’s name is on every decision. An analyst can defend a rule; they can’t defend a hunch. The AI can help write the message — it doesn’t decide what the numbers mean.',
             highlight: true,
             figure: { caption: 'System boundary: the model never decides whether a break exists' },
           },
@@ -216,19 +254,50 @@ export const projects = [
         heading: 'From two files to a worklist',
         body: [
           'ReconLayer compares the internal and broker books, filters out differences below tolerance, and splits the remaining exceptions into value breaks and population breaks — pinned and ordered around the analyst’s next decision.',
+          'On the test dataset: a $50,000 tolerance, 4 value breaks and 2 population breaks, and a net dispute of +$327,500.',
         ],
         figure: { caption: 'Classified breaks pinned in the sidebar' },
       },
       {
+        kind: 'iterations',
+        eyebrow: 'The AI layer',
+        heading: 'Three prompt iterations to keep the AI out of judgment',
+        items: [
+          {
+            label: '1 · Plain language',
+            text: 'Draft a dispute email for trade [ID] with [counterparty] that has a $[X] break.',
+            outcome: 'Failed. Conversational filler (“I hope this email finds you well”), inconsistent currency formatting, wrong field names. A margin desk ignores long, chatty emails.',
+          },
+          {
+            label: '2 · Data in a template',
+            text: 'Clean JSON variables injected into a standard prompt.',
+            outcome: 'Accurate figures — but the model added speculation about why each break happened. In a compliance context, an AI guessing at cause is a real risk. Accurate and still wrong.',
+          },
+          {
+            label: '3 · Structural constraints',
+            text: 'Do NOT calculate, alter, or infer any figures — use ONLY the JSON payload. Direct, telegraphic tone; no conversational openings. Fixed format: subject line, discrepancy, internal-vs-broker breakdown, call to action. Max 80 words.',
+            outcome: 'Shipped. The fix wasn’t a better model; it was a tighter boundary — the same call as the architecture.',
+          },
+        ],
+      },
+      {
+        kind: 'principles',
+        eyebrow: 'Tradeoffs I accepted',
+        heading: 'A prototype that proves the pattern, honest about what it isn’t',
+        items: [
+          ['Google Sheets before Excel', 'Excel is where this work really happens. Sheets was the fastest surface to prove the pattern.'],
+          ['Not production-grade on data', 'It runs server-side on a personal Google account with the consumer Gemini API, on synthetic data only. A production version would match locally and send only minimal break summaries to a zero-retention endpoint — not built.'],
+        ],
+      },
+      {
         kind: 'testing',
         eyebrow: 'Usability testing',
-        heading: 'I looked for the moment testers stopped trusting it',
-        intro: 'Five financial analysts.',
-        introTodo: 'Who they were and how you recruited them (e.g. “3 ops analysts, 2 fund accountants, via former colleagues”).',
+        heading: 'I tested for trust and comprehension, not clicks',
+        intro: 'Unmoderated, on the real add-on, with the same synthetic dataset for everyone so results were comparable. Five operators in middle-office roles across several buy-side firms ran it; four completed reconcile → draft; four answered a six-question survey. I left out a shortened SUS — a two-question version isn’t one. Directional, not statistical.',
         broke: [
-          'Terminology: “value break” and “population break” are standard middle-office terms, but not everyone read them correctly the first time.',
-          'Trust: even testers comfortable with the AI draft said they’d still check the figures or broker format first.',
-          'Rule logic: once testers understood the AI wasn’t classifying, the next question was “how do I know the reconciliation logic is right?”',
+          'Terminology: “value break” and “population break” are standard middle-office terms, but half the surveyed testers misread them on first read.',
+          'Trust in the tool isn’t trust in the send: one tester rated confidence 5 of 5 and still wouldn’t send the AI draft.',
+          'Rule logic: every tester named a blocker on the rules engine itself — a false positive, a missed break, a number they couldn’t verify.',
         ],
         quote: {
           text: 'I’d at least still double-check the figures and breaks make sense.',

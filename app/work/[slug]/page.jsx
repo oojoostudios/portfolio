@@ -34,6 +34,34 @@ function Section({ s }) {
         </ol>
       )}
 
+      {s.kind === 'options' && (
+        <table className="options">
+          <thead><tr><th scope="col">Option</th><th scope="col">Verdict</th><th scope="col">Why</th></tr></thead>
+          <tbody>
+            {s.items.map(([opt, verdict, why]) => (
+              <tr key={opt} className={verdict === 'Chosen' ? 'chosen' : undefined}>
+                <th scope="row">{opt}</th><td>{verdict}</td><td>{why}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+
+      {s.kind === 'iterations' && (
+        <>
+          <ol className="iterations">
+            {s.items.map((it) => (
+              <li key={it.label}>
+                <h3>{it.label}</h3>
+                <pre><code>{it.text}</code></pre>
+                <p>{it.outcome}</p>
+              </li>
+            ))}
+          </ol>
+          {s.after && <ul>{s.after.map((a) => <li key={a}>{a}</li>)}</ul>}
+        </>
+      )}
+
       {s.kind === 'decisions' && (
         <ol className="decisions">
           {s.items.map((d, i) => (
