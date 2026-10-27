@@ -37,7 +37,7 @@ export const projects = [
         eyebrow: 'The problem',
         heading: 'Today’s rate doesn’t tell you if it’s a good one',
         body: [
-          'I’ve sent money from the US to Korea for years. Every app shows today’s rate, but none tell you whether it’s good. You’d have to compare it with the last few weeks, and most people don’t have time.',
+          'I’ve sent money from the US to Korea for years. Every app shows today’s rate, but none tell you whether it’s good. You’d have to compare it with the last few weeks, and I rarely had time.',
           'It matters more than it seems. Over the past year, USD/KRW moved an average of 3.7% within each month — about $74 on a $2,000 transfer.',
         ],
         figure: { caption: 'Monthly high–low for USD/KRW, Sep 2025 – Sep 2026' },
