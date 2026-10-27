@@ -1,5 +1,6 @@
 import './globals.css';
 import Sidebar from '@/components/Sidebar';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata = {
   title: 'Lorraine Kim — Product Designer',
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
           <Sidebar />
           <main id="main">{children}</main>
         </div>
+        <SpeedInsights />
       </body>
     </html>
   );
