@@ -132,6 +132,7 @@ export default async function CaseStudy({ params }) {
 
       <Figure {...p.hero} />
 
+      {tldr && (
       <section className="tldr" aria-label="Summary">
         <div><h2>Problem</h2><p>{tldr.problem}</p></div>
         <div><h2>Decision</h2><p>{tldr.decision}</p></div>
@@ -141,6 +142,7 @@ export default async function CaseStudy({ params }) {
           <ul>{tldr.result.map((r, i) => <li key={i}>{typeof r === 'string' ? r : <Todo inline>{r.todo}</Todo>}</li>)}</ul>
         </div>
       </section>
+      )}
 
       {p.context && <p className="context">{p.context}</p>}
 

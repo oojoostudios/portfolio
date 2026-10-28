@@ -347,7 +347,7 @@ export const projects = [
     group: 'studio',
     status: 'Live',
     cardSummary:
-      'Client work for an artist’s estate. One site with two ways in: a guided path for newcomers and an archive for researchers.',
+      'Helps first-time visitors and scholars explore a Korean modernist painter’s work in one place.',
     meta: [
       ['Role', 'Solo product designer, paid commission from the artist’s estate'],
       ['Scope', 'Strategy, research, IA, visual design, curatorial writing, Framer build'],
@@ -355,15 +355,6 @@ export const projects = [
       ['Timeline', '9 weeks'],
     ],
     links: [{ label: 'Visit the archive', href: 'https://hwangyooyup.framer.website' }],
-    tldr: {
-      problem:
-        'Hwang Yoo-Yup (1916–2010) was a Korean modernist painter whose work was spread across catalogs, institutions and family archives. First-time visitors need background; scholars need records.',
-      decision:
-        'One site with two paths: a guided Discovery path by default, and an Archive Mode for researchers, switchable from any page.',
-      rejected:
-        'Two separate sites, and a date-ordered layout that suits historians but not newcomers.',
-      result: ['Live, with the catalogue in progress', 'The estate said the site honors their father’s legacy and his work'],
-    },
     sections: [
       {
         kind: 'text',
@@ -382,7 +373,6 @@ export const projects = [
         body: [
           'I went through the estate’s exhibition catalogs, academic texts, institutional records and biographical documents. I looked at how other artist archives handle mixed audiences, and interviewed four people in the art world: an art advisor, a gallery dealer, a museum director and a practicing artist.',
           'Two findings shaped the structure. Newcomers need context first, and that same context slows researchers down.',
-          'I haven’t tested the site with real visitors yet. I walked through both paths myself as each type of visitor, which is a design check rather than validation.',
         ],
       },
       {
