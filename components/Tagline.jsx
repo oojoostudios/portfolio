@@ -32,7 +32,22 @@ export default function Tagline() {
       onMouseLeave={() => setPaused(false)}
       aria-label="Show another fact about Lorraine"
     >
-      <span key={i} className="tagline-line">{lines[i]}</span>
+      <span key={i} className="tagline-line" aria-hidden="true">
+        {(() => {
+          let n = 0;
+          return lines[i].split(' ').map((word, w) => (
+            <span key={w}>
+              {w > 0 && ' '}
+              <span className="tagline-word">
+                {[...word].map((ch) => (
+                  <span key={n} className="tagline-char" style={{ animationDelay: `${n++ * 18}ms` }}>{ch}</span>
+                ))}
+              </span>
+            </span>
+          ));
+        })()}
+      </span>
+      <span className="sr-only">{lines[i]}</span>
     </button>
   );
 }

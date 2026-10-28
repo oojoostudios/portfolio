@@ -177,12 +177,16 @@ figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
 .brand a { font-weight: 600; text-decoration: none; }
 .tagline { all: unset; cursor: pointer; color: var(--muted); }
 .tagline:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.tagline-line { display: inline; animation: tagline-in .5s ease both; }
-@keyframes tagline-in { from { opacity: 0; filter: blur(3px); } to { opacity: 1; filter: none; } }
-@media (prefers-reduced-motion: reduce) { .tagline-line { animation: none; } }
+.tagline-line { display: inline; }
+/* Letter-by-letter reveal, after chriswelch.co: each character rises 6px out of a 4px blur. */
+.tagline-char { display: inline-block; opacity: 0; animation: tagline-char .45s cubic-bezier(.2,.7,.2,1) forwards; will-change: transform, opacity, filter; }
+@keyframes tagline-char { from { opacity: 0; transform: translateY(6px); filter: blur(4px); } to { opacity: 1; transform: none; filter: blur(0); } }
+@media (prefers-reduced-motion: reduce) { .tagline-char { animation: none; opacity: 1; } }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 @media (max-width: 860px) { .brand { min-height: 0; } }
 .figure-ph { padding: 24px; text-align: center; gap: 8px; align-content: center; }
 .figure-ph-label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--todo-text); }
 .figure-ph-brief { max-width: 34em; font-size: 14px; line-height: 1.5; color: var(--muted); }
 .link-note { font-size: 13px; color: var(--muted); margin-right: 16px; }
 .figure-ph-file { font-size: 12px; color: var(--muted); opacity: .8; }
+.tagline-word { display: inline-block; white-space: nowrap; }
