@@ -188,7 +188,7 @@ export const projects = [
     group: 'work',
     status: 'Working prototype',
     cardSummary:
-      'A spreadsheet add-on. Rules classify the breaks, and AI drafts the email to the counterparty for the analyst to review.',
+      'Helps small middle-office teams find and resolve trade breaks inside the spreadsheet they already use.',
     meta: [
       ['Role', 'Solo product designer (design and build)'],
       ['Scope', 'Strategy, research, product design, build, testing'],
@@ -199,7 +199,7 @@ export const projects = [
       { label: 'Watch it run', href: 'https://www.loom.com/share/f51e32b7800442b48ddb008a916215c6' },
     ],
     context:
-      'I worked in buy-side trading operations for eleven years and did this kind of reconciliation myself. That told me where to start. Testing with analysts told me what to change.',
+      'I worked in buy-side trading operations for eleven years and did this kind of reconciliation myself.',
     tldr: {
       problem:
         'Small desks still reconcile their positions against broker files by hand before settlement and margin cutoffs. A missed or misclassified break can affect a margin call or NAV, and the analyst is responsible for it.',
@@ -291,8 +291,8 @@ export const projects = [
             outcome: 'The figures were right, but the model added guesses about why each break happened. A counterparty email shouldn’t speculate about causes.',
           },
           {
-            label: '3. Fixed format and limits',
-            text: 'Do NOT calculate, alter, or infer any figures — use ONLY the JSON payload. Direct, telegraphic tone; no conversational openings. Fixed format: subject line, discrepancy, internal-vs-broker breakdown, call to action. Max 80 words.',
+            label: '3. Fixed format and limits (excerpt)',
+            text: 'Do NOT calculate, alter, or infer any figures … Fixed format: subject line, discrepancy, internal-vs-broker breakdown, call to action. Max 80 words.',
             outcome: 'This is the version in the add-on. Short, consistent, and limited to the data it’s given.',
           },
         ],
@@ -313,10 +313,8 @@ export const projects = [
         heading: 'Testing understanding and trust',
         intro: 'Five analysts and operators from the institutional buy-side ran the real add-on, unmoderated, on the same synthetic data. Four finished reconciling, drafting and the survey; one stopped after reconciling. Unmoderated testing reached more people but told me less about why. The results are directional.',
         worked: [
-          'Median time to reconcile was about 4 seconds.',
           'Average ease rating was 4.75 out of 5 across the four who finished.',
           'On the AI draft: 2 would send it as is, 1 would edit it first, and 1 wouldn’t trust it.',
-          'One tester changed a value to test the logic, and their confidence went from 3 to 5.',
         ],
         broke: [
           'One of four misread “value break” and “population break,” and another was unsure of them. The labels need short explanations.',
