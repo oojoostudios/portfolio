@@ -40,8 +40,6 @@ img { max-width: 100%; display: block; }
 .shell { display: grid; grid-template-columns: 240px minmax(0, 1fr); max-width: 1240px; margin: 0 auto; }
 main { padding: 64px 48px 120px; min-width: 0; }
 .sidebar { position: sticky; top: 0; height: 100vh; padding: 40px 24px 40px 32px; display: flex; flex-direction: column; gap: 32px; font-size: 15px; }
-.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 600; }
-.mark { color: var(--accent); }
 .sidebar ul { list-style: none; margin: 0 0 20px; padding: 0; }
 .sidebar li a { display: block; padding: 3px 0; text-decoration: none; color: var(--muted); }
 .sidebar li a:hover { color: var(--text); }
@@ -169,3 +167,17 @@ figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
 .iterations h3 { margin: 0 0 10px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); }
 .iterations pre { margin: 0 0 10px; white-space: pre-wrap; background: var(--surface); padding: 12px 14px; border-radius: 8px; font-size: 13px; line-height: 1.55; }
 .iterations p { margin: 0; font-size: 15px; }
+
+/* Rotating tagline */
+.brand { display: block; font-weight: 400; line-height: 1.4; min-height: 4.2em; }
+.brand a { font-weight: 600; text-decoration: none; }
+.tagline { all: unset; cursor: pointer; color: var(--muted); }
+.tagline:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.tagline-line { display: inline; animation: tagline-in .5s ease both; }
+@keyframes tagline-in { from { opacity: 0; filter: blur(3px); } to { opacity: 1; filter: none; } }
+@media (prefers-reduced-motion: reduce) { .tagline-line { animation: none; } }
+@media (max-width: 860px) { .brand { min-height: 0; } }
+.figure-ph { padding: 24px; text-align: center; gap: 8px; align-content: center; }
+.figure-ph-label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--todo-text); }
+.figure-ph-brief { max-width: 34em; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.link-note { font-size: 13px; color: var(--muted); margin-right: 16px; }

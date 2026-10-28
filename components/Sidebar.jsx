@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Mark from './Mark';
+import Tagline from './Tagline';
 import { projects } from '@/content/projects';
 
 export default function Sidebar() {
@@ -7,10 +7,9 @@ export default function Sidebar() {
   const studio = projects.filter((p) => p.group === 'studio');
   return (
     <header className="sidebar">
-      <Link href="/" className="brand">
-        <Mark />
-        <span>Lorraine Kim</span>
-      </Link>
+      <div className="brand">
+        <Link href="/">Lorraine Kim</Link> <Tagline />
+      </div>
       <nav aria-label="Primary">
         <p className="nav-label">Work</p>
         <ul>

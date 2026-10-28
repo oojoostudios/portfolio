@@ -121,13 +121,14 @@ export default async function CaseStudy({ params }) {
           {p.links.map((l) => (
             <span key={l.label}>
               <a className="btn" href={l.href}>{l.label} ↗</a>
+              {l.note && <span className="link-note">{l.note}</span>}
               {l.todo && <Todo inline>{l.todo}</Todo>}
             </span>
           ))}
         </div>
       </header>
 
-      <Figure caption={null} />
+      <Figure {...p.hero} />
 
       <section className="tldr" aria-label="Summary">
         <div><h2>Problem</h2><p>{tldr.problem}</p></div>

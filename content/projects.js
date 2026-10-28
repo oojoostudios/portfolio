@@ -7,6 +7,7 @@ export const projects = [
     slug: 'fxpress',
     title: 'FXpress',
     tagline: 'A live exchange-rate co-pilot for people who send money abroad',
+    hero: { brief: 'Live widget screenshot (fxpress.netlify.app): corridor picker, today’s rate placed in its 30-day band, recipient amount, and Fexi’s one-line explanation. Phone frame on a plain background.' },
     group: 'work',
     status: 'Live',
     cardSummary:
@@ -28,8 +29,7 @@ export const projects = [
       result: [
         'Live across 18 currency pairs on reference-rate data',
         '5 of 5 testers completed the send flow',
-        '0 errors across 33 AI calls in its first 30 days',
-        { todo: 'Current Umami numbers (Sep notes: 35 sessions, mostly my own testing)' },
+        '83 visitors and 109 visits, Jul–Oct 2026, 22% bounce rate',
       ],
     },
     sections: [
@@ -41,7 +41,7 @@ export const projects = [
           'I’ve sent money from the US to Korea for years. Every app shows today’s rate, but none tell you whether it’s good. You’d have to compare it with the last few weeks, and I rarely had time.',
           'It matters more than it seems. Over the past year, USD/KRW moved an average of 3.7% within each month — about $74 on a $2,000 transfer.',
         ],
-        figure: { caption: 'Monthly high–low for USD/KRW, Sep 2025 – Sep 2026' },
+        figure: { caption: 'Monthly high–low for USD/KRW, Sep 2025 – Sep 2026', brief: 'Bar chart from your case study PDF: one bar per month showing the USD/KRW high–low range.' },
       },
       {
         kind: 'text',
@@ -88,7 +88,7 @@ export const projects = [
             considered: 'An assistant that recommended a provider and a time to send.',
             chose: 'A one-sentence description of where today’s rate sits, then a hand-off to the provider the sender already uses.',
             why: 'A recommendation is a promise the product can’t keep. Moving money would also have required a money-transmitter license, and a monthly transfer takes ~30 seconds — typing questions to a chatbot would make it slower.',
-            figure: { caption: 'Before → after: “advises to send” became a description' },
+            figure: { caption: 'Before → after: “advises to send” became a description', brief: 'Two frames side by side: the early hi-fi where the assistant recommends a send time, and the live widget’s neutral one-sentence description.' },
           },
           {
             title: 'Remove the fee line.',
@@ -140,6 +140,7 @@ export const projects = [
           '4 of 5 completed the target-rate flow. One gave up at the threshold field because “1,380” had no currency; another hesitated there.',
           'One tapped Send Now by mistake — both buttons had equal visual weight.',
         ],
+        figure: { caption: 'Button hierarchy and threshold field, before and after testing', brief: 'Before: Send Now and the target-rate button with equal weight; threshold field showing a bare “1,380”. After: filled Send Now, outlined Save Target Rate, threshold labelled with its currency and helper text.' },
         quote: {
           text: 'I don’t know what 1,380 means. Is that dollars, won, or shillings?',
           who: 'Sends money to Kenya, test participant #2',
@@ -158,9 +159,10 @@ export const projects = [
         body: [
           'FXpress runs on real reference-rate data across 18 currency pairs, lets users save a target rate and create a calendar reminder, and hands the transfer off to providers such as Wise, Remitly, Xoom, Chase, or the user’s bank.',
           'In its first 30 days: 33 of 33 AI calls returned cleanly with zero server errors. The offline fallback is designed and tested but has never fired in production, so it’s unproven.',
-          'I chose cookie-free analytics so I couldn’t track anyone. The tradeoff: it can’t cleanly separate strangers from my own testing.',
+          'Usage so far is small and honest: 83 visitors and 109 visits from July to October 2026, with a 22% bounce rate. Visitors reach every step of the flow — viewing the rate band, switching corridors, saving a target rate, downloading a reminder, and opening a provider.',
+          'I chose cookie-free analytics so I couldn’t track anyone. The tradeoff: it can’t cleanly separate strangers from my own testing, so treat these as an upper bound on outside use.',
         ],
-        todo: 'Add current Umami session count with that caveat. Small honest numbers beat none.',
+        figure: { caption: 'Two reflection charts', brief: 'From your Drive deep-dive prep: USD/KRW falling Jul–Sep 2026, and the range position pinned to “low” over the same period.' },
       },
       {
         kind: 'text',
@@ -179,6 +181,7 @@ export const projects = [
     slug: 'reconlayer',
     title: 'ReconLayer',
     tagline: 'Reconciliation and exception triage for lean middle-office teams',
+    hero: { brief: 'ReconLayer sidebar open inside Google Sheets: net dispute +$327,500, 4 value breaks and 2 population breaks pinned, Draft email button visible.' },
     group: 'work',
     status: 'Working prototype',
     cardSummary:
@@ -189,7 +192,10 @@ export const projects = [
       ['Domain', 'B2B fintech · middle office'],
       ['Timeline', '12 weeks · Google Sheets add-on'],
     ],
-    links: [{ label: 'Watch it run', href: '#', todo: 'ReconLayer demo video URL' }],
+    links: [
+      { label: 'Run it yourself', href: 'https://docs.google.com/spreadsheets/d/1S768YMxsITSpNE1bfjtJZS712crl365dC9mf_BUhYKE/copy', note: 'Makes a copy in your Google account' },
+      { label: 'Watch it run', href: '#', todo: 'Demo video URL (the email-draft video)' },
+    ],
     context:
       'Before design, I spent eleven years in buy-side trading operations doing this reconciliation myself. That told me where to look; testing with analysts told me what to change.',
     tldr: {
@@ -213,7 +219,7 @@ export const projects = [
           'On a lean finance-operations desk, reconciliation often still starts with two files and a spreadsheet. The analyst compares the firm’s internal book against a broker file, investigates anything that doesn’t match, and resolves the exceptions before a settlement or margin cutoff.',
           'The problem isn’t only time. A missed trade or misclassified break can affect a margin call or NAV, and the analyst is accountable for the decision. Then they write the same counterparty emails by hand.',
         ],
-        figure: { caption: 'Manual reconciliation workbook — before ReconLayer' },
+        figure: { caption: 'Manual reconciliation workbook — before ReconLayer', brief: 'The “before” spreadsheet: VLOOKUPs, #N/A cells and hand-typed DISPUTE flags.' },
       },
       {
         kind: 'decisions',
@@ -232,7 +238,7 @@ export const projects = [
             chose: 'Deterministic rules classify every break first. Generation only starts after that, and never changes a classification.',
             why: 'On a desk, someone’s name is on every decision. An analyst can defend a rule; they can’t defend a hunch. The AI can help write the message — it doesn’t decide what the numbers mean.',
             highlight: true,
-            figure: { caption: 'System boundary: the model never decides whether a break exists' },
+            figure: { caption: 'System boundary: the model never decides whether a break exists', brief: 'Diagram: Two files → Rules engine → Classified breaks → AI draft → Human, with a dashed AI BOUNDARY box around the drafting step only.' },
           },
           {
             title: 'Constrained drafting over templates.',
@@ -256,12 +262,13 @@ export const projects = [
           'ReconLayer compares the internal and broker books, filters out differences below tolerance, and splits the remaining exceptions into value breaks and population breaks — pinned and ordered around the analyst’s next decision.',
           'On the test dataset: a $50,000 tolerance, 4 value breaks and 2 population breaks, and a net dispute of +$327,500.',
         ],
-        figure: { caption: 'Classified breaks pinned in the sidebar' },
+        figure: { caption: 'Classified breaks pinned in the sidebar', brief: 'Close-up of the sidebar worklist: value breaks and population breaks in separate groups, each with trade ID and variance.' },
       },
       {
         kind: 'iterations',
         eyebrow: 'The AI layer',
         heading: 'Three prompt iterations to keep the AI out of judgment',
+        figure: { caption: 'The shipped draft', brief: 'One generated dispute email from iteration 3: subject line, discrepancy, internal-vs-broker breakdown, call to action, under 80 words.' },
         items: [
           {
             label: '1 · Plain language',
@@ -321,6 +328,7 @@ export const projects = [
     slug: 'hwang-yoo-yup',
     title: 'Hwang Yoo-Yup Archive',
     tagline: 'One archive for two audiences: first-time visitors and scholars',
+    hero: { brief: 'Archive home page: dark burgundy ground, a full-bleed painting, and the Discovery / Archive Mode toggle visible in the nav.' },
     group: 'studio',
     status: 'Live',
     cardSummary:
@@ -350,7 +358,7 @@ export const projects = [
           'A first-time visitor usually knows little about Korean history. Hwang returned to the same subjects for six decades, and without context that repetition reads as a limit.',
           'A scholar or curator arrives with a specific question and needs dates, exhibition history, and a searchable record. An interpretive layer slows them down.',
         ],
-        figure: { caption: 'Home Return Way, 1979 (private collection)' },
+        figure: { caption: 'Home Return Way, 1979 (private collection)', brief: 'The painting itself, full width — it sets the tone before any UI appears.' },
       },
       {
         kind: 'text',
@@ -372,7 +380,7 @@ export const projects = [
             chose: 'One structure. Discovery (Overview, Journey, Motifs, Exhibition Plan) is the default; Archive Mode (Biography, Works, Bibliography, Exhibitions, Timeline) is one toggle away on every page.',
             why: 'Two sites would split maintenance and send scholars hunting. A toggle lets each audience start in the right place.',
             highlight: true,
-            figure: { caption: 'Dual navigation and the path into Archive Mode' },
+            figure: { caption: 'Dual navigation and the path into Archive Mode', brief: 'Two states of the same page: Discovery nav (Overview, Journey, Motifs, Exhibition Plan) and Archive Mode nav (Biography, Works, Bibliography, Exhibitions, Timeline).' },
           },
           {
             title: 'Themes first, dates in the archive.',
@@ -389,7 +397,7 @@ export const projects = [
             title: 'A quiet frame so the paintings lead.',
             chose: 'Dark burgundy ground, warm off-white text, earth-tone accents from Hwang’s surfaces; Korean and English at equal weight.',
             why: 'Every visual choice was tested against one question: does it pull attention toward the paintings or away from them?',
-            figure: { caption: 'Palette and type board' },
+            figure: { caption: 'Palette and type board', brief: 'Burgundy ground, off-white text and earth-tone swatches, with Korean and English type specimens at equal weight.' },
           },
         ],
       },

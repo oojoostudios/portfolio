@@ -5,7 +5,7 @@ import Figure from '@/components/Figure';
 function Card({ p }) {
   return (
     <Link href={`/work/${p.slug}/`} className="card">
-      <Figure caption={null} />
+      <Figure {...p.hero} caption={null} />
       <div className="card-body">
         <div className="card-top">
           <h3>{p.title}</h3>
