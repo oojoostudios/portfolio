@@ -10,7 +10,7 @@ export const projects = [
     slug: 'fxpress',
     title: 'FXpress',
     tagline: 'An exchange-rate widget for people who send money abroad',
-    hero: { brief: 'Live widget screenshot (fxpress.netlify.app): corridor picker, today’s rate placed in its 30-day band, recipient amount, and Fexi’s one-line explanation. Phone frame on a plain background.' },
+    hero: { file: 'fxpress/hero', brief: 'Live widget screenshot (fxpress.netlify.app): corridor picker, today’s rate placed in its 30-day band, recipient amount, and Fexi’s one-line explanation. Phone frame on a plain background.' },
     group: 'work',
     status: 'Live',
     cardSummary:
@@ -44,7 +44,7 @@ export const projects = [
           'My parents have sent money from the US to Korea for decades. Every app they use shows today’s rate, but none says whether it’s a good one. To know that, you’d have to compare it with the last few weeks yourself.',
           'Over the past year, USD/KRW moved an average of 3.7% within each month. On a $2,000 transfer, that’s about $74.',
         ],
-        figure: { caption: 'Monthly high and low for USD/KRW, Sep 2025 to Sep 2026', brief: 'Bar chart from your case study PDF: one bar per month showing the USD/KRW high–low range.' },
+        figure: { file: 'fxpress/01-rate-range-chart', caption: 'Monthly high and low for USD/KRW, Sep 2025 to Sep 2026', brief: 'Bar chart from your case study PDF: one bar per month showing the USD/KRW high–low range.' },
       },
       {
         kind: 'text',
@@ -91,7 +91,7 @@ export const projects = [
             considered: 'An assistant that recommended a provider and a time to send.',
             chose: 'One sentence describing where today’s rate sits, then a link to the sender’s own provider.',
             why: 'A recommendation implies the product knows what the rate will do next, and it doesn’t.',
-            figure: { caption: 'Early design that advised, and the live description', brief: 'Two frames side by side: the early hi-fi where the assistant recommends a send time, and the live widget’s neutral one-sentence description.' },
+            figure: { file: 'fxpress/02-advice-before-after', caption: 'Early design that advised, and the live description', brief: 'Two frames side by side: the early hi-fi where the assistant recommends a send time, and the live widget’s neutral one-sentence description.' },
           },
           {
             title: 'Comparing against 30 days of history',
@@ -111,7 +111,7 @@ export const projects = [
             chose: 'The code works out where the rate sits and writes the sentence. Fexi, the assistant, rewords it, and a check rejects any reply that changes the meaning, adds a number, or reads as advice.',
             why: 'In October 2026 Fexi told a sender that a rate at the low end of the month meant they were getting the most won for their dollar. It meant the opposite. The sentence sounded fine, so a user wouldn’t have noticed.',
             highlight: true,
-            figure: { caption: 'Fexi’s states', brief: 'Execution exhibit: the Fexi state sheet from Figma (FexiCard set, node 5628:12733), all four states side by side, annotated with what triggers each and what Fexi is allowed to say.' },
+            figure: { file: 'fxpress/03-fexi-states', caption: 'Fexi’s states', brief: 'Execution exhibit: the Fexi state sheet from Figma (FexiCard set, node 5628:12733), all four states side by side, annotated with what triggers each and what Fexi is allowed to say.' },
           },
         ],
       },
@@ -150,7 +150,7 @@ export const projects = [
           '4 of 5 completed the target-rate flow. One stopped at the threshold field because “1,380” had no currency, and another hesitated there.',
           'One tapped Send Now by mistake. Both buttons had the same visual weight.',
         ],
-        figure: { caption: 'Button hierarchy and threshold field, before and after testing', brief: 'Before: Send Now and the target-rate button with equal weight; threshold field showing a bare “1,380”. After: filled Send Now, outlined Save Target Rate, threshold labelled with its currency and helper text.' },
+        figure: { file: 'fxpress/04-buttons-before-after', caption: 'Button hierarchy and threshold field, before and after testing', brief: 'Before: Send Now and the target-rate button with equal weight; threshold field showing a bare “1,380”. After: filled Send Now, outlined Save Target Rate, threshold labelled with its currency and helper text.' },
         quote: {
           text: 'I don’t know what 1,380 means. Is that dollars, won, or shillings?',
           who: 'Sends money to Kenya, test participant #2',
@@ -171,7 +171,7 @@ export const projects = [
           'In the first 30 days, all 33 AI calls succeeded and the server logged no errors. There’s an offline fallback, but I didn’t add tracking to it, so I can’t say whether it has been used.',
           'Usage is small: 83 visitors from July to October 2026. In the July to September export, about half of the 43 sessions were mine. I use cookie-free analytics, which means I can’t fully separate my visits from other people’s.',
         ],
-        figure: { caption: 'USD/KRW and the range reading, Jul to Sep 2026', brief: 'From your Drive deep-dive prep: USD/KRW falling Jul–Sep 2026, and the range position pinned to “low” over the same period.' },
+        figure: { file: 'fxpress/05-range-reading-charts', caption: 'USD/KRW and the range reading, Jul to Sep 2026', brief: 'From your Drive deep-dive prep: USD/KRW falling Jul–Sep 2026, and the range position pinned to “low” over the same period.' },
       },
       {
         kind: 'text',
@@ -189,7 +189,7 @@ export const projects = [
     slug: 'reconlayer',
     title: 'ReconLayer',
     tagline: 'Reconciliation and break triage for small middle-office teams',
-    hero: { brief: 'ReconLayer sidebar open inside Google Sheets: net dispute +$327,500, 4 value breaks and 2 population breaks pinned, Draft email button visible.' },
+    hero: { file: 'reconlayer/hero', brief: 'ReconLayer sidebar open inside Google Sheets: net dispute +$327,500, 4 value breaks and 2 population breaks pinned, Draft email button visible.' },
     group: 'work',
     status: 'Working prototype',
     cardSummary:
@@ -227,7 +227,7 @@ export const projects = [
           'It takes time, and mistakes matter. A missed trade or misclassified break can affect a margin call or NAV. After that, the analyst writes similar emails to each counterparty by hand.',
           'I interviewed five people across four buy-side firms: a COO, an operations team lead, two analysts, and an external operational due-diligence consultant.',
         ],
-        figure: { caption: 'Manual reconciliation workbook before ReconLayer', brief: 'The “before” spreadsheet: VLOOKUPs, #N/A cells and hand-typed DISPUTE flags.' },
+        figure: { file: 'reconlayer/01-manual-workbook', caption: 'Manual reconciliation workbook before ReconLayer', brief: 'The “before” spreadsheet: VLOOKUPs, #N/A cells and hand-typed DISPUTE flags.' },
       },
       {
         kind: 'decisions',
@@ -246,7 +246,7 @@ export const projects = [
             chose: 'Fixed rules classify every break first. The AI starts after that and can’t change a classification.',
             why: 'Analysts have to be able to explain each decision. In my words from the project: “An analyst can defend a rule. They can’t defend a hunch.”',
             highlight: true,
-            figure: { caption: 'Where the AI sits in the flow', brief: 'Diagram: Two files → Rules engine → Classified breaks → AI draft → Human, with a dashed AI BOUNDARY box around the drafting step only.' },
+            figure: { file: 'reconlayer/02-ai-boundary-diagram', caption: 'Where the AI sits in the flow', brief: 'Diagram: Two files → Rules engine → Classified breaks → AI draft → Human, with a dashed AI BOUNDARY box around the drafting step only.' },
           },
           {
             title: 'AI drafts instead of templates',
@@ -265,7 +265,7 @@ export const projects = [
             considered: 'One list ranked by the size of the difference.',
             chose: 'Two groups: value breaks, where both sides have a number that differs, and population breaks, where one side is missing.',
             why: 'A trade missing from one file has no difference to rank, so it would end up at the bottom of a ranked list. It’s often the most important item.',
-            figure: { caption: 'A population break and a value break', brief: 'Execution exhibit: two annotated sidebar rows: a population break showing the missing side explicitly (e.g. “not in broker file”), pinned above a value break showing both values and the variance.' },
+            figure: { file: 'reconlayer/03-break-rows', caption: 'A population break and a value break', brief: 'Execution exhibit: two annotated sidebar rows: a population break showing the missing side explicitly (e.g. “not in broker file”), pinned above a value break showing both values and the variance.' },
           },
         ],
       },
@@ -277,13 +277,13 @@ export const projects = [
           'ReconLayer compares the two files, ignores differences below the tolerance, and sorts what’s left into value breaks and population breaks.',
           'On the test data: a $50,000 tolerance, 4 value breaks, 2 population breaks, and a net dispute of $327,500.',
         ],
-        figure: { caption: 'Classified breaks in the sidebar', brief: 'Close-up of the sidebar worklist: value breaks and population breaks in separate groups, each with trade ID and variance.' },
+        figure: { file: 'reconlayer/04-sidebar-worklist', caption: 'Classified breaks in the sidebar', brief: 'Close-up of the sidebar worklist: value breaks and population breaks in separate groups, each with trade ID and variance.' },
       },
       {
         kind: 'iterations',
         eyebrow: 'The AI layer',
         heading: 'Three versions of the email prompt',
-        figure: { caption: 'An email from the final prompt', brief: 'One generated dispute email from iteration 3: subject line, discrepancy, internal-vs-broker breakdown, call to action, under 80 words.' },
+        figure: { file: 'reconlayer/05-email-draft', caption: 'An email from the final prompt', brief: 'One generated dispute email from iteration 3: subject line, discrepancy, internal-vs-broker breakdown, call to action, under 80 words.' },
         items: [
           {
             label: '1. Plain request',
@@ -350,7 +350,7 @@ export const projects = [
     slug: 'hwang-yoo-yup',
     title: 'Hwang Yoo-Yup Archive',
     tagline: 'An online archive for first-time visitors and scholars',
-    hero: { brief: 'Archive home page: dark burgundy ground, a full-bleed painting, and the Discovery / Archive Mode toggle visible in the nav.' },
+    hero: { file: 'hwang-yoo-yup/hero', brief: 'Archive home page: dark burgundy ground, a full-bleed painting, and the Discovery / Archive Mode toggle visible in the nav.' },
     group: 'studio',
     status: 'Live',
     cardSummary:
@@ -380,7 +380,7 @@ export const projects = [
           'First-time visitors often know little about Korean history. Hwang painted the same subjects for six decades, and without background that can look repetitive.',
           'Scholars and curators come with specific questions. They need dates, exhibition history and a searchable record, and long interpretive text gets in their way.',
         ],
-        figure: { caption: 'Home Return Way, 1979 (private collection)', brief: 'The painting itself, full width, before any UI appears.' },
+        figure: { file: 'hwang-yoo-yup/01-painting', caption: 'Home Return Way, 1979 (private collection)', brief: 'The painting itself, full width, before any UI appears.' },
       },
       {
         kind: 'text',
@@ -403,7 +403,7 @@ export const projects = [
             chose: 'One site. Discovery (Overview, Journey, Motifs, Exhibition Plan) is the default, and Archive Mode (Biography, Works, Bibliography, Exhibitions, Timeline) is one toggle away on every page.',
             why: 'Two sites would have been too much for the estate to maintain. With one site, each audience starts where it makes sense for them and can switch at any point.',
             highlight: true,
-            figure: { caption: 'Discovery and Archive Mode navigation', brief: 'Two states of the same page: Discovery nav (Overview, Journey, Motifs, Exhibition Plan) and Archive Mode nav (Biography, Works, Bibliography, Exhibitions, Timeline).' },
+            figure: { file: 'hwang-yoo-yup/02-navigation', caption: 'Discovery and Archive Mode navigation', brief: 'Two states of the same page: Discovery nav (Overview, Journey, Motifs, Exhibition Plan) and Archive Mode nav (Biography, Works, Bibliography, Exhibitions, Timeline).' },
           },
           {
             title: 'Themes first, dates in the archive',
@@ -415,13 +415,13 @@ export const projects = [
             title: 'Everything about a work on one page',
             chose: 'The full-size image, curatorial text, themes, details and related works, with historical context in an expandable section.',
             why: 'Scholars can skip the context and newcomers can open it.',
-            figure: { caption: 'Artwork page, annotated', brief: 'Execution exhibit: one artwork page with callouts on the image, curatorial text, theme links, metadata block, related works, and the collapsed historical-context section.' },
+            figure: { file: 'hwang-yoo-yup/03-artwork-page', caption: 'Artwork page, annotated', brief: 'Execution exhibit: one artwork page with callouts on the image, curatorial text, theme links, metadata block, related works, and the collapsed historical-context section.' },
           },
           {
             title: 'A quiet visual system',
             chose: 'A dark burgundy background, warm off-white text and earth tones taken from Hwang’s paintings, with Korean and English at equal size.',
             why: 'I wanted the paintings to carry the color, and I checked each visual choice against whether it drew attention to them.',
-            figure: { caption: 'Palette and type', brief: 'Burgundy ground, off-white text and earth-tone swatches, with Korean and English type specimens at equal weight.' },
+            figure: { file: 'hwang-yoo-yup/04-palette-type', caption: 'Palette and type', brief: 'Burgundy ground, off-white text and earth-tone swatches, with Korean and English type specimens at equal weight.' },
           },
         ],
       },
