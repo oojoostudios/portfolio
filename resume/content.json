@@ -18,7 +18,7 @@
         "Designed and built a widget that shows where today’s rate sits in its 30-day range across 18 currency pairs, then links to the sender’s own provider.",
         "Interviewed 4 senders and tested with 5. All 5 completed the send flow; I fixed the button hierarchy and the threshold field where testers got stuck.",
         "Kept every calculation in code and limited the AI assistant to rewording a sentence the code had written, with a check that rejects advice or a changed meaning.",
-        "Used live logs to find that the 30-day comparison read “low” in 68 of 75 readings during a steady trend, and changed the copy."
+        "Found in live logs that the 30-day comparison read “low” 68 of 75 times during a steady trend, and revised the copy."
       ]
     },
     {
@@ -27,7 +27,7 @@
       "meta": "Working prototype · 12 weeks",
       "bullets": [
         "Designed and built a Google Sheets add-on that compares internal and broker files, classifies breaks with fixed rules, and drafts counterparty emails for the analyst to review.",
-        "Interviewed 5 practitioners across 4 buy-side firms and tested with 5 operators. 4 finished, with an average ease rating of 4.75 out of 5.",
+        "Interviewed 5 practitioners at 4 buy-side firms and tested with 5 operators: 4 finished, rating ease 4.75 of 5.",
         "Showed missing trades separately from value differences so they don’t sink to the bottom of a ranked list.",
         "Revised the email prompt three times to stop the model guessing at the cause of each break."
       ]
@@ -100,7 +100,12 @@
   "education": [
     [
       "DesignLab",
-      "UX Academy, 2023 – 2024 · University of California, Berkeley, B.A. Legal Studies",
+      "UX Academy",
+      "2023 – 2024"
+    ],
+    [
+      "University of California, Berkeley",
+      "B.A. Legal Studies",
       ""
     ]
   ]
