@@ -4,7 +4,7 @@ export const metadata = { title: 'About — Lorraine Kim' };
 
 const timeline = [
   ['Design', [
-    ['2024 – now', 'Product Designer, OOJOO Studios', '0→1 financial tools and client websites — research, design, and build in code.'],
+    ['2024 – now', 'Product Designer, OOJOO Studios', 'Financial tools and client websites, from research through design and build.'],
     ['2023 – 2024', 'UX Academy, DesignLab', 'Design foundations.'],
   ]],
   ['Institutional finance (non-design roles)', [
@@ -21,17 +21,17 @@ export default function About() {
     <article className="about">
       <h1>About</h1>
       <p className="lede">
-        I spent fifteen years in institutional finance — buy-side trading operations, risk, and supporting asset managers on
-        Bloomberg’s order management system. I saw where financial software worked, and where critical processes still fell
-        back to spreadsheets, email, and manual checks.
+        I spent fifteen years in institutional finance: buy-side trading operations, risk, and supporting asset managers on
+        Bloomberg’s order management system. I saw where financial software worked well and where important processes
+        still ran on spreadsheets, email and manual checks.
       </p>
       <p>
-        Now I design and build products for those environments: fintech, AI-assisted workflows, and tools where clarity and
-        human judgment matter. I prototype in code so I can test ideas against real data.
+        Now I design and build products for that kind of work, including fintech and AI-assisted tools. I prototype in code
+        so I can test ideas with real data.
       </p>
       <p>
-        I know what the other side of a product team looks like. At Bloomberg I was the person filing the ticket — so I care
-        about specs, edge cases, and handoffs that engineers don’t have to guess at.
+        At Bloomberg I worked between clients and the product and engineering teams, logging issues and following them
+        through to a fix. It showed me how much a clear spec or bug report helps the people building the fix.
       </p>
 
       {timeline.map(([group, rows]) => (
@@ -44,7 +44,7 @@ export default function About() {
           </ol>
         </section>
       ))}
-      <Todo>Confirm OOJOO start year — resume says 2024, old About page said 2023.</Todo>
+      <Todo>Confirm OOJOO start year: resume says 2024, old About page said 2023.</Todo>
 
       <section>
         <h2 className="section-label">Tools</h2>
@@ -54,10 +54,10 @@ export default function About() {
       <section>
         <h2 className="section-label">Elsewhere</h2>
         <p>
-          I’m also an artist, working across mediums on family, culture, and history. OOJOO Studios is my independent studio —
-          product design, archival and advocacy work, and work with artists from the Korean diaspora. Outside work: learning my
-          mum’s Korean dishes, gallery hopping, Where’s Waldo with my niece, and hosting GoStop Club, a Korean card-game night
-          in the Bay Area.
+          I’m also an artist, working across mediums on family, culture and history. OOJOO Studios is my independent studio for
+          product design, archival work, and projects with artists from the Korean diaspora. Outside work I’m learning my
+          mum’s Korean dishes, visiting galleries, doing Where’s Waldo with my niece, and hosting GoStop Club, a Korean
+          card-game night in the Bay Area.
         </p>
       </section>
     </article>

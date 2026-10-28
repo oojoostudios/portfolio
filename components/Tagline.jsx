@@ -4,13 +4,12 @@ import { useEffect, useState } from 'react';
 // Rotating line after the name, in the spirit of chriswelch.co. Advances on a
 // timer or on click; holds still for people who prefer reduced motion.
 const lines = [
-  'designs financial tools people can stand behind',
-  'spent 15 years in buy-side trading operations',
-  'prototypes in code and tests against real data',
-  'keeps the AI out of the math',
-  'built an archive for a Korean modernist painter',
-  'is learning her mum’s Korean dishes',
-  'hosts a Korean card-game night in the Bay Area',
+  'is a product designer in the Bay Area',
+  'worked in institutional finance for 15 years',
+  'prototypes in code to test with real data',
+  'designed an archive for a Korean modernist painter',
+  'is learning to cook Korean dishes from family recipes',
+  'hosts a Korean card-game night with friends',
 ];
 
 export default function Tagline() {

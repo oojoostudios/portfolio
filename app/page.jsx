@@ -23,11 +23,11 @@ export default function Home() {
   return (
     <>
       <section className="hero">
-        <h1>I design the financial tools I spent fifteen years working around.</h1>
+        <h1>Product designer for complex financial workflows.</h1>
         <p className="lede">
-          Product designer for complex financial workflows and AI-assisted tools. Before design, I worked in buy-side trading
-          operations and supported asset managers on Bloomberg’s order management system. Now I research, design, and build
-          products in code — and test them against real data.
+          I spent fifteen years in institutional finance, in buy-side trading operations and supporting asset managers on
+          Bloomberg’s order management system. Now I research, design and build tools for that kind of work, and I prototype
+          in code so I can test with real data.
         </p>
       </section>
       <section aria-labelledby="work-h">
