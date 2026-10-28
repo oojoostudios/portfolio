@@ -12,7 +12,6 @@ const timeline = [
   ]],
 ];
 
-const tools = ['Figma', 'FigJam', 'Framer', 'Maze', 'Optimal Workshop', 'Cursor', 'Claude Code', 'GitHub', 'Vercel', 'Netlify', 'Umami', 'Notion', 'Jira', 'Linear', 'Lottie'];
 
 export default function About() {
   return (
@@ -27,10 +26,6 @@ export default function About() {
         Now I design and build products for that kind of work, including fintech and AI-assisted tools. I prototype in code
         so I can test ideas with real data.
       </p>
-      <p>
-        At Bloomberg I worked between clients and the product and engineering teams, logging issues and following them
-        through to a fix. It showed me how much a clear spec or bug report helps the people building the fix.
-      </p>
 
       {timeline.map(([group, rows]) => (
         <section key={group}>
@@ -43,20 +38,7 @@ export default function About() {
         </section>
       ))}
 
-      <section>
-        <h2 className="section-label">Tools</h2>
-        <p className="tools">{tools.join(' · ')}</p>
-      </section>
 
-      <section>
-        <h2 className="section-label">Elsewhere</h2>
-        <p>
-          I’m also an artist, working across mediums on family, culture and history. OOJOO Studios is my independent studio for
-          product design, archival work, and projects with artists from the Korean diaspora. Outside work I’m learning my
-          mum’s Korean dishes, visiting galleries, doing Where’s Waldo with my niece, and hosting GoStop Club, a Korean
-          card-game night in the Bay Area.
-        </p>
-      </section>
     </article>
   );
 }
