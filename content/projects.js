@@ -201,7 +201,7 @@ export const projects = [
       ['Timeline', '12 weeks, Google Sheets add-on'],
     ],
     links: [
-      { label: 'Watch it run', href: '#', todo: 'Demo video URL (the MP4 on the Framer page: upload to Loom/YouTube or send me the file)' },
+      { label: 'Watch it run', href: 'https://www.loom.com/share/f51e32b7800442b48ddb008a916215c6' },
     ],
     context:
       'I worked in buy-side trading operations for eleven years and did this kind of reconciliation myself. That told me where to start. Testing with analysts told me what to change.',
@@ -369,7 +369,7 @@ export const projects = [
         'One site with two paths: a guided Discovery path by default, and an Archive Mode for researchers, switchable from any page.',
       rejected:
         'Two separate sites, and a date-ordered layout that suits historians but not newcomers.',
-      result: ['Live, with the catalogue in progress', { todo: 'Client feedback or one usage signal' }],
+      result: ['Live, with the catalogue in progress', 'The estate said the site honors their father’s legacy and his work'],
     },
     sections: [
       {
@@ -401,8 +401,7 @@ export const projects = [
             title: 'One site with two paths',
             considered: 'Two sites: a public exhibition site and a scholarly archive.',
             chose: 'One site. Discovery (Overview, Journey, Motifs, Exhibition Plan) is the default, and Archive Mode (Biography, Works, Bibliography, Exhibitions, Timeline) is one toggle away on every page.',
-            why: 'Each audience can start where it makes sense for them and switch at any point.',
-            todo: 'Confirm your reason for rejecting two sites (draft: two content sets to maintain; visitors would have to switch sites).',
+            why: 'Two sites would have been too much for the estate to maintain. With one site, each audience starts where it makes sense for them and can switch at any point.',
             highlight: true,
             figure: { caption: 'Discovery and Archive Mode navigation', brief: 'Two states of the same page: Discovery nav (Overview, Journey, Motifs, Exhibition Plan) and Archive Mode nav (Biography, Works, Bibliography, Exhibitions, Timeline).' },
           },
@@ -432,8 +431,8 @@ export const projects = [
         heading: 'Live, with the catalogue in progress',
         body: [
           'I also wrote an exhibition plan for a retrospective in four sections: Formation, Displacement, Labor & Land, and Ritual.',
+          'The estate told me they appreciated the care that went into the site, and that it stands as a testament to their father’s work and honors his legacy.',
         ],
-        todo: 'Add one moment where the estate pushed back and what you changed. It’s your best evidence of working with a client.',
       },
     ],
   },

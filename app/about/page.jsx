@@ -1,5 +1,3 @@
-import Todo from '@/components/Todo';
-
 export const metadata = { title: 'About — Lorraine Kim' };
 
 const timeline = [
@@ -44,7 +42,6 @@ export default function About() {
           </ol>
         </section>
       ))}
-      <Todo>Confirm OOJOO start year: resume says 2024, old About page said 2023.</Todo>
 
       <section>
         <h2 className="section-label">Tools</h2>
