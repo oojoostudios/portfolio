@@ -14,7 +14,7 @@ export const projects = [
     group: 'work',
     status: 'Live',
     cardSummary:
-      'Shows where today’s rate sits compared with the last 30 days. The code does the math and an AI assistant explains the result in one sentence.',
+      'Helps people sending money abroad see whether today’s rate is a good one.',
     meta: [
       ['Role', 'Solo product designer (design and build)'],
       ['Scope', 'Research, product design, AI, build, testing'],
@@ -33,6 +33,7 @@ export const projects = [
         'Live across 18 currency pairs',
         '5 of 5 testers completed the send flow',
         'Logging showed where the range reading breaks down, and I changed the copy',
+        '83 visitors since July 2026',
       ],
     },
     sections: [
@@ -51,7 +52,7 @@ export const projects = [
         eyebrow: 'Research',
         heading: 'Interviews with four senders',
         body: [
-          'In November 2025 I interviewed four people who send money abroad: a marketing coordinator sending to Manila, a software engineer sending to Korea, a warehouse supervisor sending to El Salvador, and a freelance designer paying people in Latin America and Africa.',
+          'In November 2025 I interviewed four people who send money abroad.',
           'Two things came up most. Picking a day to send felt like guessing, and what they cared about was how much the recipient would get. Two of the four asked for a forecast.',
         ],
         quote: {
@@ -72,12 +73,10 @@ export const projects = [
       {
         kind: 'options',
         eyebrow: 'Exploring',
-        heading: 'Five directions I considered',
+        heading: 'Three directions I considered',
         items: [
-          ['Forecast dashboard', 'Cut', 'Two interviewees asked for one, but exchange rates can’t be forecast reliably and a wrong forecast costs the sender money.'],
           ['Auto-router that sends for you', 'Cut', 'Moving money would require a money transmitter license.'],
           ['Chat assistant', 'Cut', 'A monthly transfer takes about 30 seconds. Typing questions would slow it down.'],
-          ['Threshold alerts', 'Kept, smaller', 'Became “Save Target Rate” with a calendar reminder.'],
           ['Widget with a short explanation', 'Chosen', 'Shows where today’s rate sits in its recent range, then links to the provider the sender already uses.'],
         ],
       },
@@ -121,13 +120,13 @@ export const projects = [
         heading: 'How the assistant’s instructions changed',
         items: [
           {
-            label: 'First version',
-            text: 'You are Fexi, a friendly FX assistant. The user is sending USD to {country} ({code}). {situation}. Write ONE short, warm sentence telling them whether now is a good moment to send and why, based ONLY on the situation above. Do NOT predict the future. Do NOT invent numbers beyond what is stated.',
+            label: 'First version (excerpt)',
+            text: '…Write ONE short, warm sentence telling them whether now is a good moment to send and why… Do NOT predict the future.',
             outcome: 'Asking it to say “whether now is a good moment to send” is asking for advice, even with the line about not predicting.',
           },
           {
-            label: 'Shipped version',
-            text: 'You are Fexi, the co-pilot inside FXpress. You narrate. You never decide. Every number in your reply must appear verbatim in the FACTS block — never compute, re-round, or invent a figure. Never forecast: do not say a rate will rise, fall, recover, revert, or hold. Never tell the user whether to send. Range position is a fact about the past 30 days and implies nothing about tomorrow. Never mention fees. One or two sentences, warm and plain.',
+            label: 'Shipped version (excerpt)',
+            text: 'You narrate. You never decide. … Never forecast … Never tell the user whether to send. … Never mention fees.',
             outcome: 'It rules out calculating, forecasting and advising. The assessment itself now happens in JavaScript before the model sees anything.',
           },
         ],
@@ -160,7 +159,6 @@ export const projects = [
           'Added the currency to the threshold field, with a line of help text.',
           'Renamed “Set Trigger for Best Rate” to “Save Target Rate,” since the product can’t promise the best rate.',
         ],
-        after: 'I haven’t re-tested these changes on the live widget yet.',
       },
       {
         kind: 'text',
@@ -169,18 +167,15 @@ export const projects = [
         body: [
           'FXpress uses reference-rate data for 18 currency pairs. People can save a target rate, add a calendar reminder, and go to a provider such as Wise, Remitly, Xoom, Chase or their own bank.',
           'In the first 30 days, all 33 AI calls succeeded and the server logged no errors. There’s an offline fallback, but I didn’t add tracking to it, so I can’t say whether it has been used.',
-          'Usage is small: 83 visitors from July to October 2026. In the July to September export, about half of the 43 sessions were mine. I use cookie-free analytics, which means I can’t fully separate my visits from other people’s.',
         ],
         figure: { file: 'fxpress/05-range-reading-charts', caption: 'USD/KRW and the range reading, Jul to Sep 2026', brief: 'From your Drive deep-dive prep: USD/KRW falling Jul–Sep 2026, and the range position pinned to “low” over the same period.' },
       },
       {
         kind: 'text',
         eyebrow: 'Reflection',
-        heading: 'What I learned and what’s next',
+        heading: 'What the live data showed',
         body: [
           'The 30-day comparison is useful when the rate moves up and down within a range. It’s less useful when the rate moves steadily in one direction. From July to September the won kept strengthening, and 68 of 75 readings said “low.” Next I’d show which way the rate has been moving, as well as where it sits.',
-          'A UX hiring manager who reviewed FXpress said it made the rate quicker to read but didn’t address a deeper need. I looked into large payments with a deadline, but Wise and currency brokers already cover most of that. I’d want to interview people making those payments before building anything.',
-          'Because the assessment lives in code, I could count how often it said “low” and see the problem. I’d design the next version the same way.',
         ],
       },
     ],
