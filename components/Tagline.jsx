@@ -5,11 +5,11 @@ import { useEffect, useState } from 'react';
 // timer or on click; holds still for people who prefer reduced motion.
 const lines = [
   'is a product designer in the Bay Area',
-  'worked in institutional finance for 15 years',
-  'prototypes in code to test with real data',
-  'designed an archive for a Korean modernist painter',
-  'is learning to cook Korean dishes from family recipes',
-  'hosts a Korean card-game night with friends',
+  'spent eleven years in hedge fund trading operations',
+  'hosts GoStop Club, a Korean card-game night',
+  'makes art about family, culture and history',
+  'spends weekends gallery hopping',
+  'is very good at Where’s Waldo',
 ];
 
 export default function Tagline() {

@@ -31,7 +31,6 @@ export default function Sidebar() {
           <li><a href="https://www.linkedin.com/in/lorrkim" rel="noopener">LinkedIn</a></li>
         </ul>
       </nav>
-      <p className="availability"><span className="dot" aria-hidden="true" />Open to full-time &amp; contract · Bay Area / NYC</p>
     </header>
   );
 }

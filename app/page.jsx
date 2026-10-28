@@ -25,9 +25,8 @@ export default function Home() {
       <section className="hero">
         <h1>Product designer for complex financial workflows.</h1>
         <p className="lede">
-          I spent fifteen years in institutional finance, in buy-side trading operations and supporting asset managers on
-          Bloomberg’s order management system. Now I research, design and build tools for that kind of work, and I prototype
-          in code so I can test with real data.
+          Fifteen years in institutional finance, now designing and building tools for that work. I prototype in code to test
+          with real data.
         </p>
       </section>
       <section aria-labelledby="work-h">
