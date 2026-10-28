@@ -73,6 +73,7 @@ function Section({ s }) {
                 <dt>Why</dt><dd>{d.why}</dd>
               </dl>
               {d.figure && <Figure {...d.figure} />}
+              {d.todo && <Todo>{d.todo}</Todo>}
             </li>
           ))}
         </ol>
@@ -92,6 +93,7 @@ function Section({ s }) {
           {s.changes && (
             <><h3>What I changed before launch</h3><ul>{s.changes.map((c) => <li key={c}>{c}</li>)}</ul></>
           )}
+          {typeof s.after === 'string' && <p>{s.after}</p>}
         </>
       )}
 

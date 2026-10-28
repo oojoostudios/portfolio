@@ -16,7 +16,7 @@ export const projects = [
       ['Role', 'Solo product designer (design + build)'],
       ['Scope', 'Research · Product design · AI · Build · Testing'],
       ['Domain', 'Consumer fintech'],
-      ['Timeline', '12 weeks design · live since Sep 2026'],
+      ['Timeline', 'Nov 2025 – Oct 2026 · live'],
     ],
     links: [{ label: 'Try it live', href: 'https://fxpress.netlify.app' }],
     tldr: {
@@ -29,7 +29,7 @@ export const projects = [
       result: [
         'Live across 18 currency pairs on reference-rate data',
         '5 of 5 testers completed the send flow',
-        '83 visitors and 109 visits, Jul–Oct 2026, 22% bounce rate',
+        'My own logs caught a flaw in my design — and I fixed what I could',
       ],
     },
     sections: [
@@ -41,6 +41,7 @@ export const projects = [
           'I’ve sent money from the US to Korea for years. Every app shows today’s rate, but none tell you whether it’s good. You’d have to compare it with the last few weeks, and I rarely had time.',
           'It matters more than it seems. Over the past year, USD/KRW moved an average of 3.7% within each month — about $74 on a $2,000 transfer.',
         ],
+        todo: 'Opening line: confirm you personally send money abroad. If not, use your July observer version (your parents have sent money for decades).',
         figure: { caption: 'Monthly high–low for USD/KRW, Sep 2025 – Sep 2026', brief: 'Bar chart from your case study PDF: one bar per month showing the USD/KRW high–low range.' },
       },
       {
@@ -48,9 +49,9 @@ export const projects = [
         eyebrow: 'Research',
         heading: 'What four senders told me',
         body: [
-          'I interviewed four people who send money abroad. Two things stood out: choosing a day felt like guessing, and what they cared about most was how much the recipient would get.',
+          'In November 2025 I interviewed four people who send money abroad: a marketing coordinator sending to Manila, a software engineer sending to Korea, a warehouse supervisor sending to El Salvador, and a freelance designer paying people in Latin America and Africa.',
+          'Two things stood out: choosing a day felt like guessing, and what they cared about most was how much the recipient would get. Two of the four asked for a forecast — which I decided not to build.',
         ],
-        todo: 'Confirm count: case study says 4 senders interviewed, Sep prep doc says 5.',
         quote: {
           text: 'I usually end up Googling the exchange rate and trying to catch it on a ‘good day,’ which is kind of ridiculous. It feels like I’m managing trades for personal transfers.',
           who: 'Monthly international sender, research participant',
@@ -69,9 +70,9 @@ export const projects = [
       {
         kind: 'options',
         eyebrow: 'Exploring',
-        heading: 'Five product shapes, three cut on principle',
+        heading: 'Five product shapes I weighed',
         items: [
-          ['Forecast dashboard', 'Cut', 'It requires predicting the rate, and nobody can do that honestly.'],
+          ['Forecast dashboard', 'Cut', 'Two of four interviewees asked for one. But no one forecasts rates reliably, and a wrong forecast costs the sender money.'],
           ['Auto-router that sends for you', 'Cut', 'Moving money means becoming a licensed money transmitter, with custody and exposure to the sender’s bank.'],
           ['Chat assistant', 'Cut', 'Wrong interaction for a 30-second monthly task — typing questions makes it slower.'],
           ['Threshold alerts', 'Kept, reduced', 'Became “Save Target Rate” with a calendar reminder, not an automatic send.'],
@@ -91,6 +92,12 @@ export const projects = [
             figure: { caption: 'Before → after: “advises to send” became a description', brief: 'Two frames side by side: the early hi-fi where the assistant recommends a send time, and the live widget’s neutral one-sentence description.' },
           },
           {
+            title: 'Compare against 30 days, not this session.',
+            considered: 'Comparing today’s rate with rates seen during the visitor’s session.',
+            chose: 'A 30-day range from central-bank reference rates, split into low / mid / high — and no claim at all with fewer than 10 days of history.',
+            why: 'My first build called a rate “the best rate you’ve seen this session” on a first visit, with nothing to compare it to.',
+          },
+          {
             title: 'Remove the fee line.',
             considered: 'Showing an estimated fee next to the recipient amount.',
             chose: 'Show the amount at today’s rate, with a note that fees and markup vary by provider.',
@@ -102,6 +109,7 @@ export const projects = [
             chose: 'Code computes where the rate sits and writes the correct sentence. Fexi, the assistant, only rewords it — and a check blocks any reply that changes the meaning, adds a number, or sounds like advice.',
             why: 'In October 2026 Fexi told a sender that a rate at the low end of the month meant they were getting the most won for their dollar. It’s the opposite. The error was fluent and confident — exactly the kind a user won’t catch.',
             highlight: true,
+            figure: { caption: 'Fexi’s states', brief: 'Execution exhibit: the Fexi state sheet from Figma (FexiCard set, node 5628:12733) — all four states side by side, annotated with what triggers each and what Fexi is allowed to say.' },
           },
         ],
       },
@@ -130,7 +138,7 @@ export const projects = [
         kind: 'testing',
         eyebrow: 'Usability testing',
         heading: 'Five people, from cautious first-time senders to power users',
-        intro: 'Seven tasks across sending money, setting a target rate, and confirming. I tested the high-fidelity Figma prototype — an earlier version that still moved money itself. With a group this small I report counts, not percentages.',
+        intro: 'Unmoderated in Maze, seven tasks across sending money, setting a target rate, and confirming. I tested the high-fidelity Figma prototype — an earlier version that still moved money itself, not the live widget. With a group this small I report counts, not percentages.',
         worked: [
           '5 of 5 completed the send flow.',
           'All five looked at the recipient-side amount before anything else on the screen.',
@@ -150,7 +158,8 @@ export const projects = [
           'The threshold input now names the currency, with helper text explaining the value.',
           'Renamed “Set Trigger for Best Rate” to “Save Target Rate” — the product can’t promise the best rate.',
         ],
-        todo: 'Notes disagree on Send Now mis-taps (1 vs 2) — confirm from recordings. Also: changes not yet re-tested on the live widget; say so here once confirmed.',
+        after: 'I haven’t re-tested these changes on the live widget yet.',
+        todo: 'Target-rate flow: 4 of 5 here, an older debrief says 3 of 5. Confirm from the Maze report.',
       },
       {
         kind: 'text',
@@ -158,9 +167,9 @@ export const projects = [
         heading: 'What’s live',
         body: [
           'FXpress runs on real reference-rate data across 18 currency pairs, lets users save a target rate and create a calendar reminder, and hands the transfer off to providers such as Wise, Remitly, Xoom, Chase, or the user’s bank.',
-          'In its first 30 days: 33 of 33 AI calls returned cleanly with zero server errors. The offline fallback is designed and tested but has never fired in production, so it’s unproven.',
-          'Usage so far is small and honest: 83 visitors and 109 visits from July to October 2026, with a 22% bounce rate. Visitors reach every step of the flow — viewing the rate band, switching corridors, saving a target rate, downloading a reminder, and opening a provider.',
-          'I chose cookie-free analytics so I couldn’t track anyone. The tradeoff: it can’t cleanly separate strangers from my own testing, so treat these as an upper bound on outside use.',
+          'In its first 30 days: 33 of 33 AI calls returned cleanly with zero server errors. The offline fallback was designed and tested, but I never instrumented it, so I can’t show whether it has fired.',
+          'Usage is small: 83 visitors from July to October 2026. In the July–September export, about half of the 43 sessions were mine.',
+          'I chose cookie-free analytics so I couldn’t track anyone. The tradeoff: it can’t cleanly separate strangers from my own testing.',
         ],
         figure: { caption: 'Two reflection charts', brief: 'From your Drive deep-dive prep: USD/KRW falling Jul–Sep 2026, and the range position pinned to “low” over the same period.' },
       },
@@ -170,10 +179,9 @@ export const projects = [
         heading: 'What the live data showed — and what I’d do next',
         body: [
           'The 30-day comparison works when the rate moves within a range, but not when it trends. From July to September the won kept strengthening, so 68 of 75 readings said “low.” The next version should show which way the rate is moving, not just where it sits.',
-          'A design review said FXpress made the rate quicker to read but didn’t meet a deeper need. I explored large, deadline-bound payments, but Wise and currency brokers already cover most of it, and without a forecast the product can’t improve the outcome. I’d interview people paying those bills before building anything.',
+          'A UX hiring manager who reviewed it said FXpress made the rate quicker to read but didn’t meet a deeper need. I explored large, deadline-bound payments, but Wise and currency brokers already cover most of it, and without a forecast the product can’t improve the outcome. I’d interview people paying those bills before building anything.',
           'The lesson I’m keeping: put the judgment in code, where I can see when it fails.',
         ],
-        todo: 'Name who gave the design review (role is enough, e.g. “a senior product designer at a fintech”).',
       },
     ],
   },
@@ -193,8 +201,7 @@ export const projects = [
       ['Timeline', '12 weeks · Google Sheets add-on'],
     ],
     links: [
-      { label: 'Run it yourself', href: 'https://docs.google.com/spreadsheets/d/1S768YMxsITSpNE1bfjtJZS712crl365dC9mf_BUhYKE/copy', note: 'Makes a copy in your Google account' },
-      { label: 'Watch it run', href: '#', todo: 'Demo video URL (the email-draft video)' },
+      { label: 'Watch it run', href: '#', todo: 'Demo video URL (the MP4 on the Framer page — upload to Loom/YouTube or send me the file)' },
     ],
     context:
       'Before design, I spent eleven years in buy-side trading operations doing this reconciliation myself. That told me where to look; testing with analysts told me what to change.',
@@ -206,8 +213,8 @@ export const projects = [
       rejected:
         'A standalone product (adoption friction), LLM-based classification, a large template library, and a single variance-ranked list.',
       result: [
-        '5 middle-office operators ran the real add-on; 4 completed reconcile → draft',
-        'The AI boundary held: every tester’s trust blocker was the rules engine, not the AI',
+        '5 operators ran the real add-on; 4 finished, rating ease 4.75 of 5',
+        '4 of 4 said they’d check something before sending — testers doubted the rules, not the AI',
       ],
     },
     sections: [
@@ -218,6 +225,7 @@ export const projects = [
         body: [
           'On a lean finance-operations desk, reconciliation often still starts with two files and a spreadsheet. The analyst compares the firm’s internal book against a broker file, investigates anything that doesn’t match, and resolves the exceptions before a settlement or margin cutoff.',
           'The problem isn’t only time. A missed trade or misclassified break can affect a margin call or NAV, and the analyst is accountable for the decision. Then they write the same counterparty emails by hand.',
+          'I interviewed five practitioners across four buy-side firms — a COO, an operations team lead, two analysts, and an external operational due-diligence consultant.',
         ],
         figure: { caption: 'Manual reconciliation workbook — before ReconLayer', brief: 'The “before” spreadsheet: VLOOKUPs, #N/A cells and hand-typed DISPUTE flags.' },
       },
@@ -244,13 +252,20 @@ export const projects = [
             title: 'Constrained drafting over templates.',
             considered: 'A large library of email templates.',
             chose: 'A constrained AI draft built from the already-classified break.',
-            why: 'Templates broke down as the mix of disputes changed. Drafting was the one step where generation reduced work without giving the model decision authority.',
+            why: 'Every morning’s break mix is different, so templates would need a branch for every combination. Drafting was the one step where generation reduced work without giving the model decision authority.',
+          },
+          {
+            title: 'A review gate, not a Send button.',
+            considered: 'Sending the drafted email automatically.',
+            chose: 'The draft lands for review. There is no Send button in ReconLayer.',
+            why: 'The analyst’s name is on every dispute. The tool can prepare the work; it can’t take the accountability.',
           },
           {
             title: 'A missing value isn’t a zero.',
             considered: 'A single list ranked by variance.',
             chose: 'Separate value breaks (both sides present, numbers differ) from population breaks (one side missing).',
             why: 'The most important exception was the easiest to hide: with no value on one side there’s no variance to rank, so it would sink to the bottom. The missing side is itself the signal.',
+            figure: { caption: 'A population break vs a value break', brief: 'Execution exhibit: two annotated sidebar rows — a population break showing the missing side explicitly (e.g. “not in broker file”), pinned above a value break showing both values and the variance.' },
           },
         ],
       },
@@ -292,7 +307,8 @@ export const projects = [
         eyebrow: 'Tradeoffs I accepted',
         heading: 'A prototype that proves the pattern, honest about what it isn’t',
         items: [
-          ['Google Sheets before Excel', 'Excel is where this work really happens. Sheets was the fastest surface to prove the pattern.'],
+          ['Google Sheets, not Excel', 'A constraint, not a choice: Excel is where this work happens, but I didn’t have Excel to build or test in.'],
+          ['Two break types first', 'Value and population breaks only. The other causes are specified and deferred, to prove the core loop first.'],
           ['Not production-grade on data', 'It runs server-side on a personal Google account with the consumer Gemini API, on synthetic data only. A production version would match locally and send only minimal break summaries to a zero-retention endpoint — not built.'],
         ],
       },
@@ -300,11 +316,17 @@ export const projects = [
         kind: 'testing',
         eyebrow: 'Usability testing',
         heading: 'I tested for trust and comprehension, not clicks',
-        intro: 'Unmoderated, on the real add-on, with the same synthetic dataset for everyone so results were comparable. Five operators in middle-office roles across several buy-side firms ran it; four completed reconcile → draft; four answered a six-question survey. I left out a shortened SUS — a two-question version isn’t one. Directional, not statistical.',
+        intro: 'Unmoderated, on the real add-on, with the same synthetic dataset for everyone so results were comparable. Five analysts and operators from the institutional buy-side ran it; four finished reconcile, draft and survey; one stopped at reconcile. Unmoderated gave me reach and real behavior, at the cost of hearing why. Directional, not statistical.',
+        worked: [
+          'Median time to reconcile: about 4 seconds.',
+          'Ease: 4.75 out of 5 across the four who finished.',
+          'On the AI draft: 2 would send as-is, 1 would edit first, 1 wouldn’t trust it.',
+          'One tester changed a value to test the logic, and their confidence went from 3 to 5.',
+        ],
         broke: [
-          'Terminology: “value break” and “population break” are standard middle-office terms, but half the surveyed testers misread them on first read.',
-          'Trust in the tool isn’t trust in the send: one tester rated confidence 5 of 5 and still wouldn’t send the AI draft.',
-          'Rule logic: every tester named a blocker on the rules engine itself — a false positive, a missed break, a number they couldn’t verify.',
+          'Terminology: one of four clearly misread “value break” vs “population break”; a second read them imprecisely. Standard terms still need inline explanation.',
+          'Trust: all four named a check they’d do before sending — including both who’d send as-is.',
+          'Rule logic: their “Monday morning” blockers were false positives and missed breaks, not the AI.',
         ],
         quote: {
           text: 'I’d at least still double-check the figures and breaks make sense.',
@@ -334,12 +356,12 @@ export const projects = [
     cardSummary:
       'Client work for an artist’s estate: one structure with two paths, so newcomers and scholars never walk through each other’s route.',
     meta: [
-      ['Role', 'Solo product designer · client: the artist’s estate'],
+      ['Role', 'Solo product designer · paid commission from the artist’s estate'],
       ['Scope', 'Strategy · Research · IA · Visual design · Curatorial writing · Framer build'],
       ['Domain', 'Cultural archive website'],
-      ['Timeline', '9 weeks'],
+      ['Timeline', 'Dec 2025 – present'],
     ],
-    links: [{ label: 'Visit the archive', href: '#', todo: 'Archive URL' }],
+    links: [{ label: 'Visit the archive', href: 'https://hwangyooyup.framer.website' }],
     tldr: {
       problem:
         'Hwang Yoo-Yup (1916–2010), a Korean modernist painter, had work spread across catalogs, institutions, and family archives. Newcomers need context first; scholars need direct access. Each slows the other down.',
@@ -358,6 +380,7 @@ export const projects = [
           'A first-time visitor usually knows little about Korean history. Hwang returned to the same subjects for six decades, and without context that repetition reads as a limit.',
           'A scholar or curator arrives with a specific question and needs dates, exhibition history, and a searchable record. An interpretive layer slows them down.',
         ],
+        todo: 'Timeline: the old page said “9 weeks”, your Oct blueprint says Dec 2025 – present. Confirm which.',
         figure: { caption: 'Home Return Way, 1979 (private collection)', brief: 'The painting itself, full width — it sets the tone before any UI appears.' },
       },
       {
@@ -367,6 +390,7 @@ export const projects = [
         body: [
           'I reviewed the estate’s exhibition catalogs, academic texts, institutional records, and biographical documents; compared how peer artist archives serve mixed audiences; and interviewed four art-industry peers — an art advisor, a gallery dealer, a museum director, and a practicing artist.',
           'Two findings shaped the structure: newcomers need context first, and the context that helps a newcomer gets in a researcher’s way.',
+          'I haven’t tested with real visitors yet. I walked both paths myself against the two visitor types — that’s a design check, not validation.',
         ],
       },
       {
@@ -378,7 +402,8 @@ export const projects = [
             title: 'One site, two paths.',
             considered: 'Two sites: a public exhibition site and a scholarly archive.',
             chose: 'One structure. Discovery (Overview, Journey, Motifs, Exhibition Plan) is the default; Archive Mode (Biography, Works, Bibliography, Exhibitions, Timeline) is one toggle away on every page.',
-            why: 'Two sites would split maintenance and send scholars hunting. A toggle lets each audience start in the right place.',
+            why: 'A toggle lets each audience start in the right place without walking through the other’s path.',
+            todo: 'Confirm your reason for rejecting two sites (draft: two content sets to maintain; visitors would have to switch sites).',
             highlight: true,
             figure: { caption: 'Dual navigation and the path into Archive Mode', brief: 'Two states of the same page: Discovery nav (Overview, Journey, Motifs, Exhibition Plan) and Archive Mode nav (Biography, Works, Bibliography, Exhibitions, Timeline).' },
           },
@@ -392,6 +417,7 @@ export const projects = [
             title: 'Everything about a work on one page.',
             chose: 'Full-size image, curatorial text, themes, structured metadata, related works — with historical context in an expandable section.',
             why: 'A scholar can skip the context; a newcomer can open it.',
+            figure: { caption: 'Artwork page, annotated', brief: 'Execution exhibit: one artwork page with callouts on the image, curatorial text, theme links, metadata block, related works, and the collapsed historical-context section.' },
           },
           {
             title: 'A quiet frame so the paintings lead.',
