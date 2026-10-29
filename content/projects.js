@@ -8,6 +8,9 @@
 export const projects = [
   {
     slug: 'fxpress',
+    tags: ['Consumer fintech', 'AI'],
+    year: '2025–26',
+    proof: 'Live · 18 currency pairs · 5 of 5 completed the send flow',
     title: 'FXpress',
     tagline: 'An exchange-rate widget for people who send money abroad',
     hero: { file: 'fxpress/hero', brief: 'Live widget screenshot (fxpress.netlify.app): corridor picker, today’s rate placed in its 30-day band, recipient amount, and Fexi’s one-line explanation. Phone frame on a plain background.' },
@@ -182,6 +185,9 @@ export const projects = [
   },
   {
     slug: 'reconlayer',
+    tags: ['B2B fintech', 'AI'],
+    year: '2026',
+    proof: '5 operators tested · ease 4.75 / 5',
     title: 'ReconLayer',
     tagline: 'Reconciliation and break triage for small middle-office teams',
     hero: { file: 'reconlayer/hero', brief: 'ReconLayer sidebar open inside Google Sheets: net dispute +$327,500, 4 value breaks and 2 population breaks pinned, Draft email button visible.' },
@@ -341,6 +347,9 @@ export const projects = [
   },
   {
     slug: 'hwang-yoo-yup',
+    tags: ['Client work', 'Archive'],
+    year: '2026',
+    proof: 'Paid client · live archive',
     title: 'Hwang Yoo-Yup Archive',
     tagline: 'An online archive for first-time visitors and scholars',
     hero: { file: 'hwang-yoo-yup/hero', brief: 'Archive home page: dark burgundy ground, a full-bleed painting, and the Discovery / Archive Mode toggle visible in the nav.' },

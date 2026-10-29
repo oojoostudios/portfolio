@@ -189,3 +189,12 @@ figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
 .about-links { display: flex; gap: 20px; }
 .about-links a { color: var(--accent); }
 @media (max-width: 640px) { .about-intro { grid-template-columns: 1fr; } .headshot { width: 160px; order: -1; } }
+
+/* Project index card, after ricetseng.com: number, tags and year, summary, one-line result */
+.card-kicker { display: flex; gap: 10px; white-space: nowrap; align-items: baseline; font-size: 12px !important; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px !important; }
+.card-num { color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+.card-year { margin-left: auto; font-variant-numeric: tabular-nums; }
+.card-body h3 { font-size: 22px; margin-bottom: 2px; }
+.card-proof { font-size: 12px !important; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-top: 14px !important; padding-top: 12px; border-top: 1px solid var(--line); }
+.card-cta { font-size: 14px !important; color: var(--text); margin-top: 10px !important; }
+.card:hover .card-cta { color: var(--accent); }
