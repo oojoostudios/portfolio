@@ -164,9 +164,13 @@ figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
 .iterations p { margin: 0; font-size: 15px; }
 
 /* Rotating tagline */
-.brand { display: flex; align-items: center; flex-wrap: wrap; column-gap: 8px; min-width: 0; line-height: 1.4; }
-.brand-home { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; text-decoration: none; }
-.logo { width: 32px; height: 32px; object-fit: contain; }
+/* Stacked brand: 60px mark spanning two lines, name above the rotating line. */
+.brand { display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 16px; align-items: center; min-width: 0; line-height: 1.35; }
+.brand-home { display: contents; text-decoration: none; }
+.logo { grid-row: 1 / 3; width: 60px; height: 60px; object-fit: contain; }
+.brand-home span { font-size: 18px; font-weight: 500; align-self: end; }
+.tagline { font-size: 16px; align-self: start; }
+@media (max-width: 760px) { .logo { width: 48px; height: 48px; } .brand { column-gap: 12px; } .brand-home span { font-size: 17px; } .tagline { font-size: 15px; } }
 @media (prefers-color-scheme: dark) { .logo { filter: invert(1); } }
 .tagline { all: unset; cursor: pointer; color: var(--muted); }
 .tagline:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
