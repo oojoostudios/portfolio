@@ -22,7 +22,8 @@ const Quote = ({ q }) => (
 function Section({ s }) {
   return (
     <section className="cs-section">
-      <p className="eyebrow">{s.eyebrow}</p>
+      <p className="cs-label">{s.eyebrow}</p>
+      <div className="cs-body">
       <h2>{s.heading}</h2>
 
       {s.kind === 'text' && s.body.map((b, i) => <p key={i}>{b}</p>)}
@@ -66,12 +67,13 @@ function Section({ s }) {
         <ol className="decisions">
           {s.items.map((d, i) => (
             <li key={d.title} className={d.highlight ? 'decision hl' : 'decision'}>
-              <h3><span className="num">{String(i + 1).padStart(2, '0')}</span>{d.title}</h3>
-              <dl>
-                {d.considered && <><dt>Considered</dt><dd>{d.considered}</dd></>}
-                <dt>Chose</dt><dd>{d.chose}</dd>
-                <dt>Why</dt><dd>{d.why}</dd>
-              </dl>
+              <span className="num">{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{d.title}</h3>
+                {d.considered && <p className="instead"><span>Instead of</span> {d.considered}</p>}
+                <p className="chose">{d.chose}</p>
+                <p className="why">{d.why}</p>
+              </div>
               {d.figure && <Figure {...d.figure} />}
               {d.todo && <Todo>{d.todo}</Todo>}
             </li>
@@ -97,8 +99,9 @@ function Section({ s }) {
         </>
       )}
 
-      {s.figure && <Figure {...s.figure} />}
       {s.todo && <Todo>{s.todo}</Todo>}
+      </div>
+      {s.figure && <div className="cs-wide"><Figure {...s.figure} /></div>}
     </section>
   );
 }
@@ -113,7 +116,7 @@ export default async function CaseStudy({ params }) {
   return (
     <article className="cs">
       <header className="cs-head">
-        <p className="eyebrow">{p.status}</p>
+        <p className="cs-kicker">{p.tags ? p.tags.join(' · ') : p.status} · {p.year}</p>
         <h1>{p.title}</h1>
         <p className="lede">{p.tagline}</p>
         <dl className="meta">
@@ -130,17 +133,19 @@ export default async function CaseStudy({ params }) {
         </div>
       </header>
 
-      <Figure {...p.hero} />
+      <div className="cs-hero"><Figure {...p.hero} /></div>
+
+      {p.stats && (
+        <dl className="stats" aria-label="Results">
+          {p.stats.map(([n, label]) => <div key={label}><dt>{label}</dt><dd>{n}</dd></div>)}
+        </dl>
+      )}
 
       {tldr && (
       <section className="tldr" aria-label="Summary">
         <div><h2>Problem</h2><p>{tldr.problem}</p></div>
         <div><h2>Decision</h2><p>{tldr.decision}</p></div>
         <div><h2>Rejected</h2><p>{tldr.rejected}</p></div>
-        <div>
-          <h2>Result</h2>
-          <ul>{tldr.result.map((r, i) => <li key={i}>{typeof r === 'string' ? r : <Todo inline>{r.todo}</Todo>}</li>)}</ul>
-        </div>
       </section>
       )}
 
