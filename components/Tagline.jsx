@@ -32,7 +32,7 @@ export default function Tagline() {
       onMouseLeave={() => setPaused(false)}
       aria-label="Show another fact about Lorraine"
     >
-      <span key={i} className="tagline-line" aria-hidden="true">
+      <span key={i} className={`tagline-line tagline-c${i % 6}`} aria-hidden="true">
         {(() => {
           let n = 0;
           return lines[i].split(' ').map((word, w) => (

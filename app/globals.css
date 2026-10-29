@@ -201,3 +201,11 @@ figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
 .card-proof { font-size: 12px !important; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-top: 14px !important; padding-top: 12px; border-top: 1px solid var(--line); }
 .card-cta { font-size: 14px !important; color: var(--text); margin-top: 10px !important; }
 .card:hover .card-cta { color: var(--accent); }
+
+/* Each rotating line gets its own color; all pass 4.5:1 on both backgrounds. */
+.tagline-c0 { color: #2952cc; } .tagline-c1 { color: #c2412d; } .tagline-c2 { color: #2e7d4f; }
+.tagline-c3 { color: #7a3ec8; } .tagline-c4 { color: #a0620a; } .tagline-c5 { color: #0e7490; }
+@media (prefers-color-scheme: dark) {
+  .tagline-c0 { color: #8aa8ff; } .tagline-c1 { color: #ff8a73; } .tagline-c2 { color: #6fd39a; }
+  .tagline-c3 { color: #c4a1ff; } .tagline-c4 { color: #f0b45a; } .tagline-c5 { color: #5fd0ea; }
+}
