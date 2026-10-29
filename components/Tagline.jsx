@@ -3,16 +3,7 @@ import { useEffect, useState } from 'react';
 
 // Rotating line after the name, in the spirit of chriswelch.co. Advances on a
 // timer or on click; holds still for people who prefer reduced motion.
-const lines = [
-  'is a product designer in the Bay Area',
-  'spent eleven years in hedge fund trading operations',
-  'hosts GoStop Club, a Korean card-game night',
-  'makes art about family, culture and history',
-  'spends weekends gallery hopping',
-  'is very good at Where’s Waldo',
-];
-
-export default function Tagline() {
+export default function Tagline({ lines }) {
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -35,13 +26,21 @@ export default function Tagline() {
       <span key={i} className={`tagline-line tagline-c${i % 6}`} aria-hidden="true">
         {(() => {
           let n = 0;
+          const total = lines[i].replace(/ /g, '').length;
           return lines[i].split(' ').map((word, w) => (
             <span key={w}>
               {w > 0 && ' '}
               <span className="tagline-word">
-                {[...word].map((ch) => (
-                  <span key={n} className="tagline-char" style={{ animationDelay: `${n++ * 18}ms` }}>{ch}</span>
-                ))}
+                {[...word].map((ch) => {
+                  const pct = Math.round((n / Math.max(total - 1, 1)) * 100);
+                  return (
+                    <span
+                      key={n}
+                      className="tagline-char"
+                      style={{ animationDelay: `${n++ * 18}ms`, color: `color-mix(in oklab, var(--g2) ${pct}%, var(--g1))` }}
+                    >{ch}</span>
+                  );
+                })}
               </span>
             </span>
           ));

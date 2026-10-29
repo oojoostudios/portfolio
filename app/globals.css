@@ -172,12 +172,13 @@ figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
 .tagline { font-size: 16px; align-self: start; }
 @media (max-width: 760px) { .logo { width: 48px; height: 48px; } .brand { column-gap: 12px; } .brand-home span { font-size: 17px; } .tagline { font-size: 15px; } }
 @media (prefers-color-scheme: dark) { .logo { filter: invert(1); } }
-.tagline { all: unset; cursor: pointer; color: var(--muted); }
+.tagline { all: unset; cursor: pointer; font-size: 16px; line-height: 1.35; font-weight: 400; align-self: start; }
+@media (max-width: 760px) { .tagline { font-size: 15px; } }
 .tagline:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .tagline-line { display: inline; }
 /* Letter-by-letter reveal, after chriswelch.co: each character rises 6px out of a 4px blur. */
-.tagline-char { display: inline-block; opacity: 0; animation: tagline-char .45s cubic-bezier(.2,.7,.2,1) forwards; will-change: transform, opacity, filter; }
-@keyframes tagline-char { from { opacity: 0; transform: translateY(6px); filter: blur(4px); } to { opacity: 1; transform: none; filter: blur(0); } }
+.tagline-char { display: inline-block; opacity: 0; animation: tagline-char .45s cubic-bezier(.2,.7,.2,1) forwards; }
+@keyframes tagline-char { from { opacity: 0; transform: translateY(6px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
 @media (prefers-reduced-motion: reduce) { .tagline-char { animation: none; opacity: 1; } }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .figure-ph { padding: 24px; text-align: center; gap: 8px; align-content: center; }
@@ -202,10 +203,16 @@ figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
 .card-cta { font-size: 14px !important; color: var(--text); margin-top: 10px !important; }
 .card:hover .card-cta { color: var(--accent); }
 
-/* Each rotating line gets its own color; all pass 4.5:1 on both backgrounds. */
-.tagline-c0 { color: #2952cc; } .tagline-c1 { color: #c2412d; } .tagline-c2 { color: #2e7d4f; }
-.tagline-c3 { color: #7a3ec8; } .tagline-c4 { color: #a0620a; } .tagline-c5 { color: #0e7490; }
+/* Each rotating line blends between two colors, letter by letter (see Tagline.jsx).
+   Both ends pass 4.5:1 on their background. */
+.tagline-c0 { --g1: #3d3dff; --g2: #8a2be2; } .tagline-c1 { --g1: #d6006f; --g2: #d93d14; }
+.tagline-c2 { --g1: #00804f; --g2: #00788a; } .tagline-c3 { --g1: #6b2fff; --g2: #c0247a; }
+.tagline-c4 { --g1: #d93d14; --g2: #a35f00; } .tagline-c5 { --g1: #0068b8; --g2: #00804f; }
 @media (prefers-color-scheme: dark) {
-  .tagline-c0 { color: #8aa8ff; } .tagline-c1 { color: #ff8a73; } .tagline-c2 { color: #6fd39a; }
-  .tagline-c3 { color: #c4a1ff; } .tagline-c4 { color: #f0b45a; } .tagline-c5 { color: #5fd0ea; }
+  .tagline-c0 { --g1: #8aa8ff; --g2: #d59bff; } .tagline-c1 { --g1: #ff7fb0; --g2: #ff9a6b; }
+  .tagline-c2 { --g1: #4fd6a0; --g2: #5fd0ea; } .tagline-c3 { --g1: #b79cff; --g2: #ff7fb0; }
+  .tagline-c4 { --g1: #ff9a6b; --g2: #f5c04a; } .tagline-c5 { --g1: #5fd0ea; --g2: #4fd6a0; }
 }
+.brand--solo { grid-template-rows: auto; }
+.brand--solo .logo { grid-row: 1; }
+.brand--solo .brand-home span { align-self: center; }
