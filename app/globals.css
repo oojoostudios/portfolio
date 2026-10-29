@@ -1,14 +1,13 @@
 :root {
-  /* Celadon & ink. --accent is the text-safe celadon (5:1 on --bg);
-     --accent-line is the true celadon, for borders and marks only. */
-  --bg: #f7f5f0;
-  --surface: #efede7;
-  --text: #1b1d1f;
-  --muted: #63676a;
-  --line: #e0ddd5;
-  --accent: #3d7368;
-  --accent-line: #4e8a7e;
-  --accent-soft: #e2eeea;
+  /* White and black, no accent color. Gray carries hierarchy; the work carries color. */
+  --bg: #ffffff;
+  --surface: #f5f5f5;
+  --text: #111111;
+  --muted: #6b6b6b;
+  --line: #e6e6e6;
+  --accent: #111111;
+  --accent-line: #111111;
+  --accent-soft: #f0f0f0;
   --todo-bg: #fff4d6;
   --todo-text: #7a5300;
   --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
@@ -17,14 +16,14 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #121414;
-    --surface: #1b1e1e;
-    --text: #ecedea;
-    --muted: #8e9496;
-    --line: #2a2f2f;
-    --accent: #9ccabf;
-    --accent-line: #6fa89b;
-    --accent-soft: #1f2c29;
+    --bg: #0b0b0b;
+    --surface: #161616;
+    --text: #ededed;
+    --muted: #8a8a8a;
+    --line: #262626;
+    --accent: #ededed;
+    --accent-line: #ededed;
+    --accent-soft: #1c1c1c;
     --todo-bg: #3a2e10;
     --todo-text: #f3d48a;
     color-scheme: dark;

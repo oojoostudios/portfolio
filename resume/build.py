@@ -6,7 +6,7 @@ from docx.enum.text import WD_TAB_ALIGNMENT
 
 c = json.load(open('content.json'))
 e = html.escape
-INK, MUTED, ACCENT = '#1b1d1f', '#63676a', '#3d7368'
+INK, MUTED, ACCENT = '#111111', '#6b6b6b', '#111111'
 
 def entries_html(items, kind):
     out = []
