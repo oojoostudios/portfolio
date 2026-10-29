@@ -1,4 +1,5 @@
 import './globals.css';
+import { GeistSans } from 'geist/font/sans';
 import Header from '@/components/Header';
 
 export const metadata = {
@@ -8,7 +9,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={GeistSans.variable}>
       <body>
         <a href="#main" className="skip">Skip to content</a>
         <Header />

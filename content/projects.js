@@ -8,6 +8,7 @@
 export const projects = [
   {
     slug: 'fxpress',
+    color: '#3848a8',
     tags: ['Consumer fintech', 'AI'],
     year: '2025–26',
     proof: 'Live · 18 currency pairs · 5 of 5 completed the send flow',
@@ -186,6 +187,7 @@ export const projects = [
   },
   {
     slug: 'reconlayer',
+    color: '#2f7a54',
     tags: ['B2B fintech', 'AI'],
     year: '2026',
     proof: '5 operators tested · ease 4.75 / 5',
@@ -349,6 +351,7 @@ export const projects = [
   },
   {
     slug: 'hwang-yoo-yup',
+    color: '#6b2234',
     tags: ['Client work', 'Archive'],
     year: '2026',
     proof: 'Paid client · live archive',

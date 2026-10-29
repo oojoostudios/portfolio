@@ -4,7 +4,7 @@ import Figure from '@/components/Figure';
 
 function Card({ p, n }) {
   return (
-    <Link href={`/work/${p.slug}/`} className="card">
+    <Link href={`/work/${p.slug}/`} className="card" style={{ '--p': p.color }}>
       <Figure {...p.hero} caption={null} />
       <div className="card-body">
         <p className="card-kicker">

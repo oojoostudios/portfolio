@@ -114,7 +114,7 @@ export default async function CaseStudy({ params }) {
   const { tldr } = p;
 
   return (
-    <article className="cs">
+    <article className="cs" style={{ '--p': p.color }}>
       <header className="cs-head">
         <p className="cs-kicker">{p.tags ? p.tags.join(' · ') : p.status} · {p.year}</p>
         <h1>{p.title}</h1>

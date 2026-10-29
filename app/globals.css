@@ -271,3 +271,29 @@ figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
 .next { margin-top: 120px; }
 .next a { font-size: clamp(28px, 3.4vw, 40px); font-weight: 600; letter-spacing: -.025em; }
 .cs .decision > .figure, .cs .decision > .todo { grid-column: 1 / -1; }
+
+/* ---------- Typeface + per-project color ---------- */
+:root { --sans: var(--font-geist-sans), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
+h1, .hero h1 { font-family: var(--sans); font-weight: 600; letter-spacing: -.035em; }
+.hero h1 { font-size: clamp(40px, 6vw, 72px); line-height: 1.02; }
+body { font-feature-settings: 'ss01', 'cv11'; }
+
+/* --p is the project's color (from its own UI). --pt is a text-safe version; --ptint a soft wash. */
+.card, .cs { --pt: var(--p); --ptint: color-mix(in oklab, var(--p) 9%, var(--bg)); }
+@media (prefers-color-scheme: dark) {
+  .card, .cs { --pt: color-mix(in oklab, var(--p), white 50%); --ptint: color-mix(in oklab, var(--p) 22%, var(--bg)); }
+}
+.card .figure-ph, .card .figure img { background: var(--ptint); border: 0; }
+.card .figure img { padding: 0; }
+.card .card-num, .card .card-proof { color: var(--pt); }
+.card:hover { border-color: var(--p); }
+
+.cs .cs-kicker, .cs .cs-label, .cs .decision .num { color: var(--pt); }
+.cs .stats { border-top-color: var(--p); }
+.cs .stats dd { color: var(--pt); }
+.cs .btn { background: var(--p); color: #fff; }
+.cs .decision.hl > div { border-left-color: var(--p); }
+.cs .context { border-left-color: var(--p); }
+.cs-hero .figure img { background: var(--ptint); }
+.cs .figure-ph { background: var(--ptint); border-color: color-mix(in oklab, var(--p) 25%, var(--bg)); }
+.cs .iterations li:last-child { border-color: var(--p); }
