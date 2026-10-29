@@ -16,16 +16,26 @@ const timeline = [
 export default function About() {
   return (
     <article className="about">
-      <h1>About</h1>
-      <p className="lede">
-        I spent fifteen years in institutional finance: buy-side trading operations, risk, and supporting asset managers on
-        Bloomberg’s order management system. I saw where financial software worked well and where important processes
-        still ran on spreadsheets, email and manual checks.
-      </p>
-      <p>
-        Now I design and build products for that kind of work, including fintech and AI-assisted tools. I prototype in code
-        so I can test ideas with real data.
-      </p>
+      <div className="about-intro">
+        <div>
+          <h1>About</h1>
+          <p className="lede">
+            I spent fifteen years in institutional finance: buy-side trading operations, risk, and supporting asset managers on
+            Bloomberg’s order management system. I saw where financial software worked well and where important processes
+            still ran on spreadsheets, email and manual checks.
+          </p>
+          <p>
+            Now I design and build products for that kind of work, including fintech and AI-assisted tools. I prototype in code
+            so I can test ideas with real data.
+          </p>
+          <p className="about-links">
+            <a href="mailto:lorraine.kim@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/lorrkim" rel="noopener">LinkedIn</a>
+            <a href="/resume-lorraine-kim.pdf">Resume</a>
+          </p>
+        </div>
+        <img src="/images/headshot.jpg" alt="Lorraine Kim" className="headshot" width="344" height="360" />
+      </div>
 
       {timeline.map(([group, rows]) => (
         <section key={group}>

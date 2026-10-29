@@ -1,5 +1,5 @@
 import './globals.css';
-import Sidebar from '@/components/Sidebar';
+import Header from '@/components/Header';
 
 export const metadata = {
   title: 'Lorraine Kim — Product Designer',
@@ -11,10 +11,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <a href="#main" className="skip">Skip to content</a>
-        <div className="shell">
-          <Sidebar />
-          <main id="main">{children}</main>
-        </div>
+        <Header />
+        <main id="main">{children}</main>
       </body>
     </html>
   );

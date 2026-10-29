@@ -41,24 +41,16 @@ img { max-width: 100%; display: block; }
 .skip:focus { left: 16px; top: 16px; background: var(--text); color: var(--bg); padding: 8px 12px; z-index: 10; }
 
 /* Layout */
-.shell { display: grid; grid-template-columns: 240px minmax(0, 1fr); max-width: 1240px; margin: 0 auto; }
-main { padding: 64px 48px 120px; min-width: 0; }
-.sidebar { position: sticky; top: 0; height: 100vh; padding: 40px 24px 40px 32px; display: flex; flex-direction: column; gap: 32px; font-size: 15px; }
-.sidebar ul { list-style: none; margin: 0 0 20px; padding: 0; }
-.sidebar li a { display: block; padding: 3px 0; text-decoration: none; color: var(--muted); }
-.sidebar li a:hover { color: var(--text); }
-.nav-label { margin: 0 0 4px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); opacity: .75; }
-.availability { margin-top: auto; color: var(--muted); font-size: 13px; }
-.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-line); margin-right: 8px; }
+.site-header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 22px 32px; max-width: 1320px; margin: 0 auto; font-size: 15px; }
+.site-header nav { display: flex; gap: 22px; flex-shrink: 0; }
+.site-header nav a { text-decoration: none; color: var(--muted); }
+.site-header nav a:hover { color: var(--text); }
+main { padding: 56px 32px 120px; max-width: 1080px; margin: 0 auto; min-width: 0; }
 
-@media (max-width: 860px) {
-  .shell { grid-template-columns: 1fr; }
-  .sidebar { position: static; height: auto; padding: 24px 16px 0; gap: 16px; }
-  .sidebar nav { display: flex; flex-wrap: wrap; column-gap: 24px; }
-  .sidebar nav ul { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-bottom: 8px; }
-  .nav-label { display: none; }
-  .availability { margin: 0; }
-  main { padding: 40px 16px 96px; }
+@media (max-width: 760px) {
+  .site-header { flex-direction: column; align-items: flex-start; gap: 12px; padding: 18px 16px; }
+  .site-header nav { gap: 18px; }
+  main { padding: 32px 16px 96px; }
 }
 
 /* Type */
@@ -173,8 +165,10 @@ figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
 .iterations p { margin: 0; font-size: 15px; }
 
 /* Rotating tagline */
-.brand { display: block; font-weight: 400; line-height: 1.4; min-height: 4.2em; }
-.brand a { font-weight: 600; text-decoration: none; }
+.brand { display: flex; align-items: center; flex-wrap: wrap; column-gap: 8px; min-width: 0; line-height: 1.4; }
+.brand-home { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; text-decoration: none; }
+.logo { width: 32px; height: 32px; object-fit: contain; }
+@media (prefers-color-scheme: dark) { .logo { filter: invert(1); } }
 .tagline { all: unset; cursor: pointer; color: var(--muted); }
 .tagline:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .tagline-line { display: inline; }
@@ -183,10 +177,15 @@ figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
 @keyframes tagline-char { from { opacity: 0; transform: translateY(6px); filter: blur(4px); } to { opacity: 1; transform: none; filter: blur(0); } }
 @media (prefers-reduced-motion: reduce) { .tagline-char { animation: none; opacity: 1; } }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-@media (max-width: 860px) { .brand { min-height: 0; } }
 .figure-ph { padding: 24px; text-align: center; gap: 8px; align-content: center; }
 .figure-ph-label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--todo-text); }
 .figure-ph-brief { max-width: 34em; font-size: 14px; line-height: 1.5; color: var(--muted); }
 .link-note { font-size: 13px; color: var(--muted); margin-right: 16px; }
 .figure-ph-file { font-size: 12px; color: var(--muted); opacity: .8; }
 .tagline-word { display: inline-block; white-space: nowrap; }
+
+.about-intro { display: grid; grid-template-columns: minmax(0, 1fr) 200px; gap: 40px; align-items: start; }
+.headshot { width: 200px; height: auto; border-radius: 12px; margin-top: 8px; }
+.about-links { display: flex; gap: 20px; }
+.about-links a { color: var(--accent); }
+@media (max-width: 640px) { .about-intro { grid-template-columns: 1fr; } .headshot { width: 160px; order: -1; } }
