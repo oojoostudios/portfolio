@@ -297,3 +297,30 @@ body { font-feature-settings: 'ss01', 'cv11'; }
 .cs-hero .figure img { background: var(--ptint); }
 .cs .figure-ph { background: var(--ptint); border-color: color-mix(in oklab, var(--p) 25%, var(--bg)); }
 .cs .iterations li:last-child { border-color: var(--p); }
+
+/* ---------- Responsive pass: phones (≤480), tablets (≤1024) ---------- */
+/* Cards never wider than the screen, even at 320px. */
+.cards { grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+/* Larger tap target for the rotating line. */
+.tagline { padding: 4px 0; margin: -4px 0; }
+.figure-ph-label { font-size: 12px; }
+/* Case-study details: 4 across on desktop, 2×2 on tablet and phone. */
+.cs .meta { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 900px) {
+  /* Header stacks on tablets so the rotating line has room. */
+  .site-header { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .site-header nav { gap: 22px; }
+  .cs .meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cs .tldr { grid-template-columns: 1fr; gap: 20px; }
+}
+@media (max-width: 480px) {
+  .site-header nav a { padding: 6px 0; }
+  .cs-head h1 { font-size: 44px; }
+  .stats dd { font-size: 32px; }
+  .cs-section h2 { font-size: 26px; }
+  .cs .decision h3 { font-size: 19px; }
+  .cs .quote p { font-size: 21px; }
+  .next a { font-size: 26px; }
+}
+@media (max-width: 480px) { .hero h1 { font-size: 36px; } }
+@media (max-width: 400px) { .card-kicker { flex-wrap: wrap; white-space: normal; row-gap: 2px; } }
