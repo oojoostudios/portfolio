@@ -2,47 +2,59 @@ import Link from 'next/link';
 import { projects } from '@/content/projects';
 import Figure from '@/components/Figure';
 
-function Card({ p, n }) {
+// Full-screen project panels. On wide screens each panel is sticky, so the next
+// one slides up over it like a chapter; on phones they simply stack.
+function Panel({ p, n }) {
   return (
-    <Link href={`/work/${p.slug}/`} className="card" style={{ '--p': p.color }}>
-      <Figure {...p.hero} caption={null} />
-      <div className="card-body">
-        <p className="card-kicker">
-          <span className="card-num">{String(n).padStart(2, '0')}</span>
-          {p.tags.join(' · ')}
-          <span className="card-year">{p.year}</span>
-        </p>
-        <h3>{p.title}</h3>
-        <p>{p.cardSummary}</p>
-        <p className="card-proof">{p.proof}</p>
-        <p className="card-cta">Read case study →</p>
+    <section className="panel" style={{ '--p': p.color }} aria-labelledby={`panel-${p.slug}`}>
+      <div className="panel-inner">
+        <div className="panel-text">
+          <p className="panel-kicker" data-reveal>
+            <span>{String(n).padStart(2, '0')}</span>
+            {p.tags.join(' · ')} · {p.year}
+          </p>
+          <h2 id={`panel-${p.slug}`} className="panel-title" data-reveal data-delay="80">{p.title}</h2>
+          <p className="panel-summary" data-reveal data-delay="160">{p.cardSummary}</p>
+          <dl className="panel-stats" data-reveal data-delay="240">
+            {p.stats.slice(0, 2).map(([num, label]) => (
+              <div key={label}><dd data-count>{num}</dd><dt>{label}</dt></div>
+            ))}
+          </dl>
+          <Link href={`/work/${p.slug}/`} className="panel-cta" data-reveal data-delay="320">
+            Read the case study <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+        <Link href={`/work/${p.slug}/`} className="panel-media" tabIndex={-1} aria-hidden="true">
+          <Figure {...p.hero} caption={null} parallax="0.06" />
+        </Link>
       </div>
-    </Link>
+    </section>
   );
 }
 
 export default function Home() {
+  const words = 'Product designer for complex financial workflows.'.split(' ');
   return (
     <>
       <section className="hero">
-        <h1>Product designer for complex financial workflows.</h1>
-        <p className="lede">
+        <h1 aria-label="Product designer for complex financial workflows.">
+          {words.map((w, i) => (
+            <span key={i}>
+              <span className="hero-word" aria-hidden="true" style={{ animationDelay: `${120 + i * 70}ms` }}>{w}</span>{' '}
+            </span>
+          ))}
+        </h1>
+        <p className="lede" data-reveal data-delay="500">
           Fifteen years in institutional finance, now designing and building tools for that work. I prototype in code to test
           with real data.
         </p>
+        <a href="#work" className="hero-scroll" data-reveal data-delay="700">
+          Three projects <span aria-hidden="true">↓</span>
+        </a>
       </section>
-      <section aria-labelledby="work-h">
-        <h2 id="work-h" className="section-label">Selected work</h2>
-        <div className="cards">
-          {projects.filter((p) => p.group === 'work').map((p) => <Card key={p.slug} p={p} n={projects.indexOf(p) + 1} />)}
-        </div>
-      </section>
-      <section aria-labelledby="studio-h">
-        <h2 id="studio-h" className="section-label">Studio · client work</h2>
-        <div className="cards">
-          {projects.filter((p) => p.group === 'studio').map((p) => <Card key={p.slug} p={p} n={projects.indexOf(p) + 1} />)}
-        </div>
-      </section>
+      <div id="work" className="panels">
+        {projects.map((p, i) => <Panel key={p.slug} p={p} n={i + 1} />)}
+      </div>
     </>
   );
 }

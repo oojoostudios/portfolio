@@ -19,6 +19,10 @@ Each image spot has a fixed filename, shown in its placeholder. Save the file as
 `public/images/<project>/<name>.png` (or .jpg / .webp / .gif) and redeploy; the
 placeholder is replaced automatically. Aim for ~2400px wide, under 500 KB.
 
+Screen recordings work in any spot: save as `<name>.mp4` (or .webm) and it plays as a
+silent loop. Keep clips 5–15 seconds, 1600px wide, under 4 MB (H.264, no audio).
+A video wins over an image if both exist.
+
 | File | What goes there |
 |---|---|
 | fxpress/hero | Live widget screenshot in a phone frame |

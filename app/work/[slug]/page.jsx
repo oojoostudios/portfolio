@@ -3,6 +3,11 @@ import { notFound } from 'next/navigation';
 import { projects, getProject } from '@/content/projects';
 import Figure from '@/components/Figure';
 import Todo from '@/components/Todo';
+import FxRangeDemo from '@/components/demos/FxRangeDemo';
+import ReconDemo from '@/components/demos/ReconDemo';
+import ArchiveDemo from '@/components/demos/ArchiveDemo';
+
+const DEMOS = { fx: FxRangeDemo, recon: ReconDemo, archive: ArchiveDemo };
 
 export const dynamicParams = false;
 export const generateStaticParams = () => projects.map((p) => ({ slug: p.slug }));
@@ -21,12 +26,13 @@ const Quote = ({ q }) => (
 
 function Section({ s }) {
   return (
-    <section className="cs-section">
-      <p className="cs-label">{s.eyebrow}</p>
+    <section className={`cs-section cs-${s.kind}`}>
+      <p className="cs-label"><span>{s.eyebrow}</span></p>
       <div className="cs-body">
-      <h2>{s.heading}</h2>
+      <h2 data-reveal>{s.heading}</h2>
 
-      {s.kind === 'text' && s.body.map((b, i) => <p key={i}>{b}</p>)}
+      {s.kind === 'text' && s.body.map((b, i) => <p key={i} data-reveal data-delay={60 + i * 60}>{b}</p>)}
+      {s.kind === 'demo' && (() => { const D = DEMOS[s.demo]; return <><p data-reveal>{s.intro}</p><div data-reveal data-delay="100"><D /></div></>; })()}
       {s.quote && s.kind === 'text' && <Quote q={s.quote} />}
 
       {s.kind === 'principles' && (
@@ -66,7 +72,7 @@ function Section({ s }) {
       {s.kind === 'decisions' && (
         <ol className="decisions">
           {s.items.map((d, i) => (
-            <li key={d.title} className={d.highlight ? 'decision hl' : 'decision'}>
+            <li key={d.title} className={d.highlight ? 'decision hl' : 'decision'} data-reveal>
               <span className="num">{String(i + 1).padStart(2, '0')}</span>
               <div>
                 <h3>{d.title}</h3>
@@ -115,10 +121,11 @@ export default async function CaseStudy({ params }) {
 
   return (
     <article className="cs" style={{ '--p': p.color }}>
+      <div className="progress" aria-hidden="true"><span /></div>
       <header className="cs-head">
-        <p className="cs-kicker">{p.tags ? p.tags.join(' · ') : p.status} · {p.year}</p>
-        <h1>{p.title}</h1>
-        <p className="lede">{p.tagline}</p>
+        <p className="cs-kicker" data-reveal>{p.tags ? p.tags.join(' · ') : p.status} · {p.year}</p>
+        <h1 className="cs-title">{p.title}</h1>
+        <p className="lede" data-reveal data-delay="150">{p.tagline}</p>
         <dl className="meta">
           {p.meta.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
         </dl>
@@ -133,19 +140,19 @@ export default async function CaseStudy({ params }) {
         </div>
       </header>
 
-      <div className="cs-hero"><Figure {...p.hero} /></div>
+      <div className="cs-hero"><Figure {...p.hero} parallax="0.05" /></div>
 
       {p.stats && (
         <dl className="stats" aria-label="Results">
-          {p.stats.map(([n, label]) => <div key={label}><dt>{label}</dt><dd>{n}</dd></div>)}
+          {p.stats.map(([n, label], i) => <div key={label} data-reveal data-delay={i * 90}><dt>{label}</dt><dd data-count>{n}</dd></div>)}
         </dl>
       )}
 
       {tldr && (
       <section className="tldr" aria-label="Summary">
-        <div><h2>Problem</h2><p>{tldr.problem}</p></div>
-        <div><h2>Decision</h2><p>{tldr.decision}</p></div>
-        <div><h2>Rejected</h2><p>{tldr.rejected}</p></div>
+        <div data-reveal><h2>Problem</h2><p>{tldr.problem}</p></div>
+        <div data-reveal data-delay="90"><h2>Decision</h2><p>{tldr.decision}</p></div>
+        <div data-reveal data-delay="180"><h2>Rejected</h2><p>{tldr.rejected}</p></div>
       </section>
       )}
 

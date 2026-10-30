@@ -120,6 +120,13 @@ export const projects = [
         ],
       },
       {
+        kind: 'demo',
+        demo: 'fx',
+        eyebrow: 'Try it',
+        heading: 'Move today’s rate and watch where it lands',
+        intro: 'Drag the rate. The code places it in the 30-day range and writes the sentence; Fexi only rewords it. This is a simplified version of the live logic, using July 2026 USD/KRW.',
+      },
+      {
         kind: 'iterations',
         eyebrow: 'The AI layer',
         heading: 'How the assistant’s instructions changed',
@@ -275,6 +282,13 @@ export const projects = [
         ],
       },
       {
+        kind: 'demo',
+        demo: 'recon',
+        eyebrow: 'Try it',
+        heading: 'Reconcile the test data',
+        intro: 'These are the nine trades from the usability test. Press Reconcile to run ReconLayer’s rules.',
+      },
+      {
         kind: 'text',
         eyebrow: 'The flow',
         heading: 'From two files to a list of breaks',
@@ -422,6 +436,13 @@ export const projects = [
             figure: { file: 'hwang-yoo-yup/04-palette-type', caption: 'Palette and type', brief: 'Burgundy ground, off-white text and earth-tone swatches, with Korean and English type specimens at equal weight.' },
           },
         ],
+      },
+      {
+        kind: 'demo',
+        demo: 'archive',
+        eyebrow: 'Try it',
+        heading: 'Switch between the two paths',
+        intro: 'The same painting, framed for a newcomer and for a researcher.',
       },
       {
         kind: 'text',

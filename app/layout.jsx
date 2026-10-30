@@ -1,6 +1,7 @@
 import './globals.css';
 import { GeistSans } from 'geist/font/sans';
 import Header from '@/components/Header';
+import Motion from '@/components/Motion';
 
 export const metadata = {
   title: 'Lorraine Kim — Product Designer',
@@ -14,6 +15,7 @@ export default function RootLayout({ children }) {
         <a href="#main" className="skip">Skip to content</a>
         <Header />
         <main id="main">{children}</main>
+        <Motion />
       </body>
     </html>
   );
