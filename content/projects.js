@@ -120,11 +120,11 @@ export const projects = [
         ],
       },
       {
-        kind: 'demo',
-        demo: 'fx',
+        kind: 'embed',
         eyebrow: 'Try it',
-        heading: 'Move today’s rate and watch where it lands',
-        intro: 'Drag the rate. The code places it in the 30-day range and writes the sentence; Fexi only rewords it. This is a simplified version of the live logic, using July 2026 USD/KRW.',
+        heading: 'The live widget',
+        intro: 'This is FXpress as it runs today, with live reference rates. Pick a currency and see where today’s rate sits.',
+        embed: { src: 'https://fxpress.netlify.app/', title: 'FXpress live widget', kind: 'phone', href: 'https://fxpress.netlify.app/' },
       },
       {
         kind: 'iterations',
@@ -282,11 +282,11 @@ export const projects = [
         ],
       },
       {
-        kind: 'demo',
-        demo: 'recon',
-        eyebrow: 'Try it',
-        heading: 'Reconcile the test data',
-        intro: 'These are the nine trades from the usability test. Press Reconcile to run ReconLayer’s rules.',
+        kind: 'embed',
+        eyebrow: 'Watch it',
+        heading: 'ReconLayer running in Google Sheets',
+        intro: 'A walkthrough of the working add-on: reconcile, review the classified breaks, and draft the counterparty email.',
+        embed: { src: 'https://www.loom.com/embed/f51e32b7800442b48ddb008a916215c6', title: 'ReconLayer demo video', kind: 'video', ratio: '16 / 9', href: 'https://www.loom.com/share/f51e32b7800442b48ddb008a916215c6', hrefLabel: 'Open on Loom' },
       },
       {
         kind: 'text',
@@ -438,11 +438,11 @@ export const projects = [
         ],
       },
       {
-        kind: 'demo',
-        demo: 'archive',
+        kind: 'embed',
         eyebrow: 'Try it',
-        heading: 'Switch between the two paths',
-        intro: 'The same painting, framed for a newcomer and for a researcher.',
+        heading: 'The live archive',
+        intro: 'The archive as the estate’s visitors see it. Switch between Discovery and Archive Mode from any page.',
+        embed: { src: 'https://hwangyooyup.framer.website/', title: 'Hwang Yoo-Yup archive, live site', kind: 'site', ratio: '16 / 10', href: 'https://hwangyooyup.framer.website/' },
       },
       {
         kind: 'text',

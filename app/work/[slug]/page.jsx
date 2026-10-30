@@ -3,11 +3,7 @@ import { notFound } from 'next/navigation';
 import { projects, getProject } from '@/content/projects';
 import Figure from '@/components/Figure';
 import Todo from '@/components/Todo';
-import FxRangeDemo from '@/components/demos/FxRangeDemo';
-import ReconDemo from '@/components/demos/ReconDemo';
-import ArchiveDemo from '@/components/demos/ArchiveDemo';
-
-const DEMOS = { fx: FxRangeDemo, recon: ReconDemo, archive: ArchiveDemo };
+import LiveEmbed from '@/components/LiveEmbed';
 
 export const dynamicParams = false;
 export const generateStaticParams = () => projects.map((p) => ({ slug: p.slug }));
@@ -32,7 +28,7 @@ function Section({ s }) {
       <h2 data-reveal>{s.heading}</h2>
 
       {s.kind === 'text' && s.body.map((b, i) => <p key={i} data-reveal data-delay={60 + i * 60}>{b}</p>)}
-      {s.kind === 'demo' && (() => { const D = DEMOS[s.demo]; return <><p data-reveal>{s.intro}</p><div data-reveal data-delay="100"><D /></div></>; })()}
+      {s.kind === 'embed' && <p data-reveal>{s.intro}</p>}
       {s.quote && s.kind === 'text' && <Quote q={s.quote} />}
 
       {s.kind === 'principles' && (
@@ -108,6 +104,7 @@ function Section({ s }) {
       {s.todo && <Todo>{s.todo}</Todo>}
       </div>
       {s.figure && <div className="cs-wide"><Figure {...s.figure} /></div>}
+      {s.kind === 'embed' && <div className="cs-wide" data-reveal data-delay="100"><LiveEmbed {...s.embed} /></div>}
     </section>
   );
 }
