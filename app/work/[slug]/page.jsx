@@ -19,92 +19,6 @@ const Quote = ({ q }) => (
   </blockquote>
 );
 
-function Section({ s }) {
-  return (
-    <section className={`cs-section cs-${s.kind}`}>
-      <p className="cs-label"><span>{s.eyebrow}</span></p>
-      <div className="cs-body">
-      <h2 data-reveal>{s.heading}</h2>
-
-      {s.kind === 'text' && s.body.map((b, i) => <p key={i} data-reveal data-delay={60 + i * 60}>{b}</p>)}
-      {s.kind === 'embed' && <p data-reveal>{s.intro}</p>}
-      {s.quote && s.kind === 'text' && <Quote q={s.quote} />}
-
-      {s.kind === 'principles' && (
-        <ol className="principles">
-          {s.items.map(([t, d]) => <li key={t}><strong>{t}</strong><span>{d}</span></li>)}
-        </ol>
-      )}
-
-      {s.kind === 'options' && (
-        <table className="options">
-          <thead><tr><th scope="col">Option</th><th scope="col">Verdict</th><th scope="col">Why</th></tr></thead>
-          <tbody>
-            {s.items.map(([opt, verdict, why]) => (
-              <tr key={opt} className={verdict === 'Chosen' ? 'chosen' : undefined}>
-                <th scope="row">{opt}</th><td>{verdict}</td><td>{why}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-
-      {s.kind === 'iterations' && (
-        <>
-          <ol className="iterations">
-            {s.items.map((it) => (
-              <li key={it.label}>
-                <h3>{it.label}</h3>
-                <pre><code>{it.text}</code></pre>
-                <p>{it.outcome}</p>
-              </li>
-            ))}
-          </ol>
-          {s.after && <ul>{s.after.map((a) => <li key={a}>{a}</li>)}</ul>}
-        </>
-      )}
-
-      {s.kind === 'decisions' && (
-        <ol className="decisions">
-          {s.items.map((d, i) => (
-            <li key={d.title} className={d.highlight ? 'decision hl' : 'decision'} data-reveal>
-              <span className="num">{String(i + 1).padStart(2, '0')}</span>
-              <div>
-                <h3>{d.title}</h3>
-                {d.considered && <p className="instead"><span>Instead of</span> {d.considered}</p>}
-                <p className="chose">{d.chose}</p>
-                <p className="why">{d.why}</p>
-              </div>
-              {d.figure && <Figure {...d.figure} />}
-            </li>
-          ))}
-        </ol>
-      )}
-
-      {s.kind === 'testing' && (
-        <>
-          <p>{s.intro}</p>
-          <div className="testing">
-            {s.worked && (
-              <div><h3>What worked</h3><ul>{s.worked.map((w) => <li key={w}>{w}</li>)}</ul></div>
-            )}
-            <div><h3>What broke</h3><ul>{s.broke.map((w) => <li key={w}>{w}</li>)}</ul></div>
-          </div>
-          {s.quote && <Quote q={s.quote} />}
-          {s.changes && (
-            <><h3>What I changed before launch</h3><ul>{s.changes.map((c) => <li key={c}>{c}</li>)}</ul></>
-          )}
-          {typeof s.after === 'string' && <p>{s.after}</p>}
-        </>
-      )}
-      </div>
-      {s.figure && <div className="cs-wide"><Figure {...s.figure} /></div>}
-      {s.figure2 && <div className="cs-wide"><Figure {...s.figure2} /></div>}
-      {s.kind === 'embed' && <div className="cs-wide" data-reveal data-delay="100"><LiveEmbed {...s.embed} /></div>}
-    </section>
-  );
-}
-
 // Five-beat layout. Each beat is a label + heading + ordered blocks; one visual grammar throughout.
 function Beat({ beat, n }) {
   return (
@@ -168,7 +82,6 @@ export default async function CaseStudy({ params }) {
   if (!p) notFound();
   const idx = projects.indexOf(p);
   const next = projects[(idx + 1) % projects.length];
-  const { tldr } = p;
 
   return (
     <article className="cs" style={{ '--p': p.color }}>
@@ -201,28 +114,11 @@ export default async function CaseStudy({ params }) {
         </section>
       )}
 
-      {!p.beats && p.stats && (
-        <dl className="stats" aria-label="Key figures">
-          {p.stats.map(([n, label], i) => <div key={label} data-reveal data-delay={i * 90}><dt>{label}</dt><dd>{n}</dd></div>)}
-        </dl>
-      )}
 
-      {!p.beats && tldr && (
-      <section className="tldr" aria-label="Case study at a glance">
-        <div data-reveal><h2>Problem</h2><p>{tldr.problem}</p></div>
-        <div data-reveal data-delay="90"><h2>Decision</h2><p>{tldr.decision}</p></div>
-        <div data-reveal data-delay="180">
-          <h2>Evidence</h2>
-          <ul>{(tldr.result || []).slice(0, 2).map((r) => <li key={r}>{r}</li>)}</ul>
-        </div>
-      </section>
-      )}
 
       {p.context && <p className="context">{p.context}</p>}
 
-      {p.beats
-        ? p.beats.map((bt, i) => <Beat key={bt.label} beat={bt} n={i + 1} />)
-        : p.sections.map((s) => <Section key={s.heading} s={s} />)}
+      {p.beats.map((bt, i) => <Beat key={bt.label} beat={bt} n={i + 1} />)}
 
       <nav className="next" aria-label="Next case study">
         <Link href={`/work/${next.slug}/`}>Next: {next.title} →</Link>
