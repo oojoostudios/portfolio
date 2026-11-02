@@ -217,8 +217,9 @@ figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
 .cs h1, .cs h2, .next a { font-family: var(--sans); }
 .cs-kicker { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
 .cs-head h1 { font-size: clamp(44px, 7vw, 84px); font-weight: 600; letter-spacing: -.035em; line-height: 1; margin-bottom: 18px; }
-.cs-head .lede { font-size: clamp(20px, 2.2vw, 26px); color: var(--text); max-width: 28em; letter-spacing: -.01em; line-height: 1.35; }
-.cs-head .meta { border-top: 0; margin-top: 36px; }
+.cs-head .lede { font-size: clamp(20px, 2.2vw, 26px); color: var(--text); max-width: 28em; letter-spacing: -.01em; line-height: 1.35; margin-bottom: 0; }
+.cs-head .meta { border-top: 1px solid var(--line); border-bottom: 0; margin: 40px 0 0; padding: 22px 0 0; }
+.cs-head .links { margin-top: 32px; }
 .cs-hero .figure { margin: 40px 0 0; }
 .cs-hero .figure img { border-radius: 16px; }
 
@@ -434,7 +435,7 @@ main:has(.panels) .hero { max-width: 1080px; margin: 0 auto; padding-left: 32px;
   .panel-inner { padding: 48px 20px; }
 }
 .panel-proof { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.82); margin: 0 0 32px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.25); }
-.cs-stage { display: inline-block; margin: 14px 0 0; padding: 6px 12px; border-radius: 99px; font-size: 13px; color: var(--pt); background: color-mix(in oklab, var(--p) 9%, var(--bg)); }
+.cs-stage { display: inline-block; margin: 16px 0 0; padding: 6px 12px; border-radius: 99px; font-size: 13px; color: var(--pt); background: color-mix(in oklab, var(--p) 9%, var(--bg)); }
 .cs .tldr ul { padding-left: 18px; margin: 0; }
 .cs .tldr li { font-size: 16px; color: var(--muted); margin: 0 0 8px; }
 .embed-fallback { margin: 0; padding: 10px 16px; font-size: 13px !important; color: var(--muted); border-top: 1px solid var(--line); background: var(--bg); }
