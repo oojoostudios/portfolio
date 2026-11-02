@@ -45,7 +45,7 @@ export default function Motion() {
         if (el.hasAttribute('data-count')) countUp(el);
         io.unobserve(el);
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -4% 0px' });
 
     const els = document.querySelectorAll('[data-reveal], [data-count]');
     els.forEach((el) => io.observe(el));
@@ -65,6 +65,13 @@ export default function Motion() {
           const offset = Math.max(-30, Math.min(30, raw));
           el.style.transform = `translate3d(0, ${(-offset).toFixed(1)}px, 0) scale(1.06)`;
         });
+        // Anything still waiting when the page bottom is reached is revealed, so elements
+        // in the last few pixels of a page can never stay hidden.
+        if (window.scrollY + vh >= root.scrollHeight - 4) {
+          document.querySelectorAll('[data-reveal]:not(.is-in), [data-count]:not(.is-in)').forEach((el) => {
+            el.classList.add('is-in'); if (el.hasAttribute('data-count')) countUp(el); io.unobserve(el);
+          });
+        }
         const bar = document.querySelector('.progress span');
         if (bar) {
           const max = root.scrollHeight - vh;

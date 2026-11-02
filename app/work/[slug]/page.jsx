@@ -137,7 +137,7 @@ export default async function CaseStudy({ params }) {
         </div>
       </header>
 
-      <div className="cs-hero"><Figure {...p.hero} parallax="0.05" /></div>
+      <div className="cs-hero"><Figure {...p.hero} parallax="0.05" cover={p.title} /></div>
 
       {p.stats && (
         <dl className="stats" aria-label="Results">

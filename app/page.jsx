@@ -25,7 +25,7 @@ function Panel({ p, n }) {
           </Link>
         </div>
         <Link href={`/work/${p.slug}/`} className="panel-media" tabIndex={-1} aria-hidden="true">
-          <Figure {...p.hero} caption={null} parallax="0.06" />
+          <Figure {...p.hero} caption={null} parallax="0.06" cover={p.title} />
         </Link>
       </div>
     </section>

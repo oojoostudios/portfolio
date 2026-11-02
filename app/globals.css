@@ -419,3 +419,8 @@ main:has(.panels) .hero { max-width: 1080px; margin: 0 auto; padding-left: 32px;
   .panel-cta, .panel-media .figure-frame { transition: none; }
 }
 .panel-title { font-size: clamp(44px, 5.6vw, 88px); overflow-wrap: anywhere; }
+/* Public-site stand-in for a missing cover: the project name on its own color. */
+.figure-cover { aspect-ratio: 16 / 10; display: grid; place-items: center; padding: 32px; background: color-mix(in oklab, var(--p, #111) 14%, var(--bg)); }
+.figure-cover span { font-size: clamp(32px, 5vw, 64px); font-weight: 600; letter-spacing: -.04em; line-height: 1; text-align: center; color: color-mix(in oklab, var(--p, #111) 80%, black); }
+.panel .figure-cover { background: color-mix(in oklab, var(--p) 22%, white); }
+.panel-media, .panel-media:hover { text-decoration: none; }

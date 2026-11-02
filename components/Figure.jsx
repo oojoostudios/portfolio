@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { isPublic } from '@/lib/env';
 
 // Media lives at public/images/<file>.<ext>. A video (.mp4/.webm) plays as a silent loop;
 // an image shows as-is; if neither exists the frame shows the shot brief and filename.
@@ -14,9 +15,18 @@ function findMedia(file) {
   return null;
 }
 
-export default function Figure({ caption, src, alt, brief, file, parallax }) {
+export default function Figure({ caption, src, alt, brief, file, parallax, cover }) {
   const media = src ? { src, video: /\.(mp4|webm)$/.test(src) } : findMedia(file);
   const label = alt || caption || brief || '';
+  // On the public site a missing image is left out, or shown as a title card if it's a cover.
+  if (!media && isPublic) {
+    if (!cover) return null;
+    return (
+      <figure className="figure" data-reveal>
+        <div className="figure-frame"><div className="figure-cover"><span>{cover}</span></div></div>
+      </figure>
+    );
+  }
   return (
     <figure className="figure" data-reveal>
       <div className="figure-frame">
