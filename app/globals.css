@@ -443,3 +443,4 @@ main:has(.panels) .hero { max-width: 1080px; margin: 0 auto; padding-left: 32px;
   .hero-project-index a, .index-arrow, .cs .decision { transition: none; }
   .motion-on main, .motion-on .hero-word, .motion-on .cs-title { animation: none; opacity: 1; transform: none; filter: none; }
 }
+.figure img { width: 100%; height: auto; }
