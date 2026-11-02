@@ -105,6 +105,64 @@ function Section({ s }) {
   );
 }
 
+// Five-beat layout. Each beat is a label + heading + ordered blocks; one visual grammar throughout.
+function Beat({ beat, n }) {
+  return (
+    <section className="cs-section beat" id={`beat-${n}`}>
+      <p className="cs-label"><span>{beat.label}</span></p>
+      <div className="cs-body">
+        <h2 data-reveal>{beat.heading}</h2>
+        {beat.blocks.map((blk, i) => <Block key={i} blk={blk} index={beat.blocks.filter((x, j) => x.type === 'decision' && j <= i).length} />)}
+      </div>
+    </section>
+  );
+}
+
+function Block({ blk, index }) {
+  switch (blk.type) {
+    case 'p': return <p data-reveal>{blk.text}</p>;
+    case 'quote': return <Quote q={blk} />;
+    case 'figure': return <div className="beat-wide"><Figure {...blk} /></div>;
+    case 'embed': return <div className="beat-wide" data-reveal><LiveEmbed {...blk} /></div>;
+    case 'list': return (
+      <div data-reveal><h3 className="beat-h3">{blk.title}</h3><ul className="beat-list">{blk.items.map((t) => <li key={t}>{t}</li>)}</ul></div>
+    );
+    case 'cols': return (
+      <div className="testing" data-reveal>
+        <div><h3 className="beat-h3">What worked</h3><ul className="beat-list">{blk.worked.map((t) => <li key={t}>{t}</li>)}</ul></div>
+        <div><h3 className="beat-h3">What broke</h3><ul className="beat-list">{blk.broke.map((t) => <li key={t}>{t}</li>)}</ul></div>
+      </div>
+    );
+    case 'decision': return (
+      <div className={blk.highlight ? 'bd bd-hl' : 'bd'} data-reveal>
+        <span className="bd-num" aria-hidden="true">{String(index).padStart(2, '0')}</span>
+        <div className="bd-body">
+          <h3>{blk.title}</h3>
+          <p className="bd-chose">{blk.chose}</p>
+          {blk.instead && <p className="bd-instead"><span>Instead of</span> {blk.instead}</p>}
+          <p className="bd-why">{blk.why}</p>
+          {blk.compare && (
+            <div className="compare">
+              <h4>{blk.compare.heading}</h4>
+              <div className="compare-grid">
+                {blk.compare.items.map((c) => (
+                  <div key={c.label} className="compare-item">
+                    <span className="compare-label">{c.label}</span>
+                    <p className="compare-text">“{c.text}”</p>
+                    <p className="compare-note">{c.note}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {blk.figure && <Figure {...blk.figure} />}
+        </div>
+      </div>
+    );
+    default: return null;
+  }
+}
+
 export default async function CaseStudy({ params }) {
   const p = getProject((await params).slug);
   if (!p) notFound();
@@ -135,13 +193,21 @@ export default async function CaseStudy({ params }) {
 
       <div className="cs-hero"><Figure {...p.hero} parallax="0.05" cover={p.title} priority /></div>
 
-      {p.stats && (
+      {p.glance && (
+        <section className="tldr glance" aria-label="Case study at a glance">
+          <div data-reveal><h2>Problem</h2><p>{p.glance.problem}</p></div>
+          <div data-reveal data-delay="90"><h2>What I made</h2><p>{p.glance.made}</p></div>
+          <div data-reveal data-delay="180"><h2>What happened</h2><p>{p.glance.happened}</p></div>
+        </section>
+      )}
+
+      {!p.beats && p.stats && (
         <dl className="stats" aria-label="Key figures">
           {p.stats.map(([n, label], i) => <div key={label} data-reveal data-delay={i * 90}><dt>{label}</dt><dd>{n}</dd></div>)}
         </dl>
       )}
 
-      {tldr && (
+      {!p.beats && tldr && (
       <section className="tldr" aria-label="Case study at a glance">
         <div data-reveal><h2>Problem</h2><p>{tldr.problem}</p></div>
         <div data-reveal data-delay="90"><h2>Decision</h2><p>{tldr.decision}</p></div>
@@ -154,7 +220,9 @@ export default async function CaseStudy({ params }) {
 
       {p.context && <p className="context">{p.context}</p>}
 
-      {p.sections.map((s) => <Section key={s.heading} s={s} />)}
+      {p.beats
+        ? p.beats.map((bt, i) => <Beat key={bt.label} beat={bt} n={i + 1} />)
+        : p.sections.map((s) => <Section key={s.heading} s={s} />)}
 
       <nav className="next" aria-label="Next case study">
         <Link href={`/work/${next.slug}/`}>Next: {next.title} →</Link>

@@ -14,11 +14,10 @@ const present = [];
 
 for (const p of projects) {
   (exists(p.hero?.file) ? present : missingRequired).push(`${p.slug}: ${p.hero?.file} (cover)`);
-  for (const s of p.sections) {
-    for (const fig of [s.figure, s.figure2, ...(s.items || []).map((d) => d?.figure)]) {
-      if (fig?.file) (exists(fig.file) ? present : missingOptional).push(fig.file);
-    }
-  }
+  const figs = [];
+  for (const s of p.beats ? [] : p.sections || []) figs.push(s.figure, s.figure2, ...(s.items || []).map((d) => d?.figure));
+  for (const bt of p.beats || []) for (const blk of bt.blocks) figs.push(blk.type === 'figure' ? blk : null, blk.figure);
+  for (const fig of figs) if (fig?.file) (exists(fig.file) ? present : missingOptional).push(fig.file);
 }
 
 console.log(`Media check: ${present.length} present, ${missingOptional.length} optional missing, ${missingRequired.length} required missing.`);

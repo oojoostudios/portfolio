@@ -444,3 +444,39 @@ main:has(.panels) .hero { max-width: 1080px; margin: 0 auto; padding-left: 32px;
   .motion-on main, .motion-on .hero-word, .motion-on .cs-title { animation: none; opacity: 1; transform: none; filter: none; }
 }
 .figure img { width: 100%; height: auto; }
+
+/* ---------- Five-beat case-study layout ---------- */
+.glance { margin-top: 48px !important; }
+.beat .cs-body > p { max-width: 40em; }
+.beat-wide .figure { margin: 36px 0 40px; }
+.beat .cs-body > .beat-wide:first-of-type .figure { margin-top: 28px; }
+.beat-h3 { font-size: 17px; margin: 24px 0 8px; }
+.beat-list { padding-left: 20px; }
+.beat-list li { margin-bottom: 8px; }
+.beat .testing { margin-top: 8px; }
+.beat .quote { margin: 36px 0; }
+
+/* Decision rows: no cards, one hairline between rows, small tabular numeral in the margin. */
+.bd { display: grid; grid-template-columns: 48px minmax(0, 1fr); column-gap: 8px; padding: 32px 0; border-top: 1px solid var(--line); }
+.bd:first-of-type { border-top: 0; padding-top: 12px; }
+.bd-num { font-size: 13px; font-variant-numeric: tabular-nums; letter-spacing: .06em; color: var(--muted); padding-top: 6px; }
+.bd-body { min-width: 0; }
+.bd h3 { font-size: 22px; font-weight: 600; letter-spacing: -.015em; line-height: 1.2; margin: 0 0 12px; }
+.bd-chose { margin: 0 0 10px; }
+.bd-instead { font-size: 15px; color: var(--muted); margin: 0 0 10px; }
+.bd-instead span { font-weight: 600; color: var(--text); }
+.bd-why { margin: 0; color: var(--muted); }
+.bd-hl .bd-body { border-left: 3px solid var(--p); padding-left: 20px; margin-left: -23px; }
+.bd .figure { margin: 28px 0 0; }
+@media (max-width: 640px) { .bd { grid-template-columns: 1fr; row-gap: 6px; } .bd-hl .bd-body { margin-left: 0; } }
+
+/* Prompt comparison: paired quotes with a label, in the body typeface. */
+.compare { margin-top: 28px; }
+.compare h4 { font-size: 15px; margin: 0 0 12px; font-weight: 600; }
+.compare-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.compare-item { border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; background: var(--surface); }
+.compare-item:last-child { border-color: color-mix(in oklab, var(--p) 45%, var(--line)); }
+.compare-label { display: block; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--pt); margin-bottom: 8px; }
+.compare-text { margin: 0 0 10px; font-size: 16px; line-height: 1.45; }
+.compare-note { margin: 0; font-size: 14px; color: var(--muted); }
+@media (max-width: 760px) { .compare-grid { grid-template-columns: 1fr; } }
