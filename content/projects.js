@@ -47,9 +47,9 @@ export const projects = [
         heading: 'A rate on its own tells you nothing',
         blocks: [
           { type: 'p', text: 'My parents have sent money from the US to Korea for decades. Every app they use shows today’s rate, but none says how it compares with recent weeks.' },
-          { type: 'p', text: 'The day matters more than it seems. Over the past year, USD/KRW moved an average of 3.7% within each month on central-bank reference rates, about $74 on a $2,000 transfer. That illustrates how much the rate moves, not a saving a sender could lock in, and it excludes provider fees and markups.' },
+          { type: 'p', text: 'The day matters more than it seems. The 3.7% monthly swing above illustrates how much the rate moves, not a saving a sender could lock in, and it excludes provider fees and markups.' },
           { type: 'figure', file: 'fxpress/01-rate-range-chart', alt: 'Bar chart of monthly high and low USD/KRW reference rates from September 2025 to September 2026', caption: 'Monthly high-to-low USD/KRW reference-rate ranges, Sep 2025 to Sep 2026. Reference rates, not executable transfer quotes.', brief: 'Chart from actual date-stamped monthly highs and lows (Frankfurter data). 1600×900. See brief G1.' },
-          { type: 'p', text: 'In November 2025 I interviewed four people who send money abroad. Two things came up most: picking a day to send felt like guessing, and what they cared about was how much the recipient would get. Two of the four asked for a forecast, which I decided not to build.' },
+          { type: 'p', text: 'In November 2025 I interviewed four people who send money abroad. Picking a day to send felt like guessing, and what they cared about was how much the recipient would get. Two asked for a forecast, which I decided not to build.' },
           { type: 'quote', text: 'I usually end up Googling the exchange rate and trying to catch it on a ‘good day,’ which is kind of ridiculous. It feels like I’m managing trades for personal transfers.', who: 'Monthly international sender, research participant' },
         ],
       },
@@ -151,6 +151,7 @@ export const projects = [
     ],
     links: [
       { label: 'Watch it run', href: 'https://www.loom.com/share/f51e32b7800442b48ddb008a916215c6' },
+      { label: 'Run it yourself', href: 'https://docs.google.com/spreadsheets/d/1S768YMxsITSpNE1bfjtJZS712crl365dC9mf_BUhYKE/copy', note: 'Copies the sheet to your Google account; the add-on runs there.' },
     ],
     context:
       'I worked in buy-side trading operations for eleven years and did this kind of reconciliation myself.',
@@ -207,7 +208,8 @@ export const projects = [
         label: 'Proof',
         heading: 'From two files to a reviewable dispute draft',
         blocks: [
-          { type: 'p', text: 'ReconLayer compares the two files, sets aside valuation differences below a threshold, and sorts what’s left into value breaks and population breaks. On the synthetic test data the prototype applies a $50,000 threshold on the absolute valuation difference, a rule I set for the prototype (the sidebar labels it “MTA”). Result: 4 value breaks, 2 population breaks, and a net value dispute of $327,500 across the four value breaks; the two missing-record breaks have no difference to net.' },
+          { type: 'p', text: 'ReconLayer compares the two files, sets aside valuation differences below a threshold, and sorts what’s left into value breaks and population breaks. On the synthetic test data the prototype applies a $50,000 threshold on the absolute valuation difference, a rule I set for the prototype (the sidebar labels it “MTA”).' },
+          { type: 'p', text: 'Result: 4 value breaks, 2 population breaks, and a net value dispute of $327,500 across the four value breaks. The two missing-record breaks have no difference to net.' },
           { type: 'figure', file: 'reconlayer/04-sidebar-worklist', alt: 'Close-up of the ReconLayer sidebar: the net value dispute, four value-break rows, two population-break rows with the missing side stated, and the Draft dispute email button', caption: 'Reconciled synthetic trade records grouped for review. The net value discrepancy is shown separately from unmatched records.', brief: 'See brief G6.' },
           { type: 'embed', src: 'https://www.loom.com/embed/f51e32b7800442b48ddb008a916215c6', title: 'ReconLayer demo video', kind: 'video', ratio: '16 / 9', href: 'https://www.loom.com/share/f51e32b7800442b48ddb008a916215c6', hrefLabel: 'Open on Loom' },
           { type: 'figure', file: 'reconlayer/05-email-draft', alt: 'A generated dispute email from the final prompt: subject line, the break ID with internal and broker figures, and a request for confirmation, with annotations noting fixed data fields, no invented causes, and human sign-off outside the tool', caption: 'An AI-assisted dispute draft generated from classified synthetic breaks. The analyst remains responsible for verifying and sending it.', brief: 'See brief F4. Must be a real generated email from version 3.' },
