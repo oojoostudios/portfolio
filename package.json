@@ -3,9 +3,11 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
+    "prebuild": "node scripts/check-media.mjs",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "check-media": "node scripts/check-media.mjs"
   },
   "dependencies": {
     "geist": "^1.5.1",

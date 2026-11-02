@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { projects, getProject } from '@/content/projects';
 import Figure from '@/components/Figure';
-import Todo from '@/components/Todo';
 import LiveEmbed from '@/components/LiveEmbed';
 
 export const dynamicParams = false;
@@ -77,7 +76,6 @@ function Section({ s }) {
                 <p className="why">{d.why}</p>
               </div>
               {d.figure && <Figure {...d.figure} />}
-              {d.todo && <Todo>{d.todo}</Todo>}
             </li>
           ))}
         </ol>
@@ -86,7 +84,6 @@ function Section({ s }) {
       {s.kind === 'testing' && (
         <>
           <p>{s.intro}</p>
-          {s.introTodo && <Todo>{s.introTodo}</Todo>}
           <div className="testing">
             {s.worked && (
               <div><h3>What worked</h3><ul>{s.worked.map((w) => <li key={w}>{w}</li>)}</ul></div>
@@ -100,10 +97,9 @@ function Section({ s }) {
           {typeof s.after === 'string' && <p>{s.after}</p>}
         </>
       )}
-
-      {s.todo && <Todo>{s.todo}</Todo>}
       </div>
       {s.figure && <div className="cs-wide"><Figure {...s.figure} /></div>}
+      {s.figure2 && <div className="cs-wide"><Figure {...s.figure2} /></div>}
       {s.kind === 'embed' && <div className="cs-wide" data-reveal data-delay="100"><LiveEmbed {...s.embed} /></div>}
     </section>
   );
@@ -123,33 +119,36 @@ export default async function CaseStudy({ params }) {
         <p className="cs-kicker" data-reveal>{p.tags ? p.tags.join(' · ') : p.status} · {p.year}</p>
         <h1 className="cs-title">{p.title}</h1>
         <p className="lede" data-reveal data-delay="150">{p.tagline}</p>
+        {p.stage && <p className="cs-stage" data-reveal data-delay="200">{p.stage}</p>}
         <dl className="meta">
           {p.meta.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
         </dl>
         <div className="links">
           {p.links.map((l) => (
             <span key={l.label}>
-              <a className="btn" href={l.href}>{l.label} ↗</a>
+              <a className="btn" href={l.href} target="_blank" rel="noopener">{l.label} ↗</a>
               {l.note && <span className="link-note">{l.note}</span>}
-              {l.todo && <Todo inline>{l.todo}</Todo>}
             </span>
           ))}
         </div>
       </header>
 
-      <div className="cs-hero"><Figure {...p.hero} parallax="0.05" cover={p.title} /></div>
+      <div className="cs-hero"><Figure {...p.hero} parallax="0.05" cover={p.title} priority /></div>
 
       {p.stats && (
-        <dl className="stats" aria-label="Results">
-          {p.stats.map(([n, label], i) => <div key={label} data-reveal data-delay={i * 90}><dt>{label}</dt><dd data-count>{n}</dd></div>)}
+        <dl className="stats" aria-label="Key figures">
+          {p.stats.map(([n, label], i) => <div key={label} data-reveal data-delay={i * 90}><dt>{label}</dt><dd>{n}</dd></div>)}
         </dl>
       )}
 
       {tldr && (
-      <section className="tldr" aria-label="Summary">
+      <section className="tldr" aria-label="Case study at a glance">
         <div data-reveal><h2>Problem</h2><p>{tldr.problem}</p></div>
         <div data-reveal data-delay="90"><h2>Decision</h2><p>{tldr.decision}</p></div>
-        <div data-reveal data-delay="180"><h2>Rejected</h2><p>{tldr.rejected}</p></div>
+        <div data-reveal data-delay="180">
+          <h2>Evidence</h2>
+          <ul>{(tldr.result || []).slice(0, 2).map((r) => <li key={r}>{r}</li>)}</ul>
+        </div>
       </section>
       )}
 

@@ -26,7 +26,7 @@ export default function About() {
           </p>
           <p>
             Now I design and build products for that kind of work, including fintech and AI-assisted tools. I prototype in code
-            so I can test ideas with real data.
+            to test workflows with users and representative datasets.
           </p>
           <p className="about-links">
             <a href="mailto:lorraine.kim@gmail.com">Email</a>

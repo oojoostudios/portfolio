@@ -15,17 +15,14 @@ function Panel({ p, n }) {
           </p>
           <h2 id={`panel-${p.slug}`} className="panel-title" data-reveal data-delay="80">{p.title}</h2>
           <p className="panel-summary" data-reveal data-delay="160">{p.cardSummary}</p>
-          <dl className="panel-stats" data-reveal data-delay="240">
-            {p.stats.slice(0, 2).map(([num, label]) => (
-              <div key={label}><dd data-count>{num}</dd><dt>{label}</dt></div>
-            ))}
-          </dl>
+          <p className="panel-proof" data-reveal data-delay="240">{p.proof}</p>
           <Link href={`/work/${p.slug}/`} className="panel-cta" data-reveal data-delay="320">
             Read the case study <span aria-hidden="true">→</span>
           </Link>
         </div>
+        {/* Decorative duplicate of the text link; the image carries no unique information. */}
         <Link href={`/work/${p.slug}/`} className="panel-media" tabIndex={-1} aria-hidden="true">
-          <Figure {...p.hero} caption={null} parallax="0.06" cover={p.title} />
+          <Figure {...p.hero} caption={null} alt="" parallax="0.06" cover={p.title} />
         </Link>
       </div>
     </section>
@@ -45,12 +42,18 @@ export default function Home() {
           ))}
         </h1>
         <p className="lede" data-reveal data-delay="500">
-          Fifteen years in institutional finance, now designing and building tools for that work. I prototype in code to test
-          with real data.
+          After 15 years in institutional finance, I now design and build tools for complex workflows, from reconciliation
+          and FX decisions to AI-assisted operations. I test prototypes with users and representative datasets.
         </p>
-        <a href="#work" className="hero-scroll" data-reveal data-delay="700">
-          Three projects <span aria-hidden="true">↓</span>
-        </a>
+        <nav className="hero-project-index" aria-label="Projects" data-reveal data-delay="650">
+          {projects.map((p, i) => (
+            <Link key={p.slug} href={`/work/${p.slug}/`} style={{ '--p': p.color }}>
+              <span className="index-num">{String(i + 1).padStart(2, '0')}</span>
+              <span className="index-title">{p.title} <span className="index-arrow" aria-hidden="true">→</span></span>
+              <span className="index-desc">{p.indexDesc}</span>
+            </Link>
+          ))}
+        </nav>
       </section>
       <div id="work" className="panels">
         {projects.map((p, i) => <Panel key={p.slug} p={p} n={i + 1} />)}

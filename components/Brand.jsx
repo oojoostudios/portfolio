@@ -27,10 +27,11 @@ export default function Brand() {
   const lines = path === '/' ? HOME_LINES : path.startsWith('/about') ? ABOUT_LINES : null;
   return (
     <div className={lines ? 'brand' : 'brand brand--solo'}>
-      <Link href="/" className="brand-home" aria-label="Lorraine Kim, home">
+      {/* The logo repeats the name link, so it stays out of the tab order; the name is the home link. */}
+      <Link href="/" className="brand-logo" tabIndex={-1} aria-hidden="true">
         <img src="/images/logo.png" alt="" className="logo" width="60" height="60" />
-        <span>Lorraine Kim</span>
       </Link>
+      <Link href="/" className="brand-home">Lorraine Kim</Link>
       {lines && <Tagline key={path} lines={lines} />}
     </div>
   );

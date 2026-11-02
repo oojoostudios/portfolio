@@ -4,7 +4,6 @@ import { usePathname } from 'next/navigation';
 
 // One observer for the whole site. Server-rendered markup opts in with data attributes:
 //   data-reveal          fades and rises in when scrolled into view (data-delay="120" to stagger)
-//   data-count           counts the first number in its text up from zero
 //   data-parallax="0.08" drifts slightly against the scroll
 // Everything is skipped for visitors who prefer reduced motion.
 export default function Motion() {
@@ -18,36 +17,17 @@ export default function Motion() {
     }
     root.classList.add('motion-on');
 
-    const countUp = (el) => {
-      const text = el.dataset.final || el.textContent;
-      el.dataset.final = text;
-      const m = text.match(/\d+(\.\d+)?/);
-      if (!m) return;
-      const target = parseFloat(m[0]);
-      const decimals = m[1] ? m[1].length - 1 : 0;
-      const start = performance.now();
-      const dur = 1100;
-      const tick = (t) => {
-        const k = Math.min(1, (t - start) / dur);
-        const eased = 1 - Math.pow(1 - k, 3);
-        el.textContent = text.replace(m[0], (target * eased).toFixed(decimals));
-        if (k < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    };
-
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (!e.isIntersecting) return;
         const el = e.target;
         el.style.transitionDelay = `${el.dataset.delay || 0}ms`;
         el.classList.add('is-in');
-        if (el.hasAttribute('data-count')) countUp(el);
         io.unobserve(el);
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -4% 0px' });
 
-    const els = document.querySelectorAll('[data-reveal], [data-count]');
+    const els = document.querySelectorAll('[data-reveal]');
     els.forEach((el) => io.observe(el));
 
     const drifters = [...document.querySelectorAll('[data-parallax]')];
@@ -68,8 +48,8 @@ export default function Motion() {
         // Anything still waiting when the page bottom is reached is revealed, so elements
         // in the last few pixels of a page can never stay hidden.
         if (window.scrollY + vh >= root.scrollHeight - 4) {
-          document.querySelectorAll('[data-reveal]:not(.is-in), [data-count]:not(.is-in)').forEach((el) => {
-            el.classList.add('is-in'); if (el.hasAttribute('data-count')) countUp(el); io.unobserve(el);
+          document.querySelectorAll('[data-reveal]:not(.is-in)').forEach((el) => {
+            el.classList.add('is-in'); io.unobserve(el);
           });
         }
         const bar = document.querySelector('.progress span');
