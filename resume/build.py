@@ -18,33 +18,36 @@ def entries_html(items, kind):
             left = f"<strong>{e(it['org'])}</strong> <span class=muted>· {e(it['role'])}, {e(it['place'])}</span>"
             right = e(it['dates'])
         lis = ''.join(f'<li>{e(b)}</li>' for b in it['bullets'])
-        out.append(f'<div class=entry><div class=row><span>{left}</span><span class=muted>{right}</span></div><ul>{lis}</ul></div>')
+        out.append(f'<div class=entry><div class=row><span>{left}</span><span class=when>{right}</span></div><ul>{lis}</ul></div>')
     return ''.join(out)
 
 page = f"""<!doctype html><html><head><meta charset=utf-8><style>
 @page {{ size: Letter; margin: 0.42in 0.55in; }}
-body {{ font: 9.4pt/1.32 'Helvetica Neue', Helvetica, Arial, sans-serif; color: {INK}; margin: 0; }}
+body {{ font: 9.2pt/1.33 'Helvetica Neue', Helvetica, Arial, sans-serif; color: {INK}; margin: 0; }}
 h1 {{ font: 500 20pt/1.1 Georgia, 'Times New Roman', serif; margin: 0; }}
 .title {{ color: {ACCENT}; font-weight: 600; margin: 2px 0 4px; }}
 .contact {{ color: {MUTED}; font-size: 9pt; }}
-.summary {{ margin: 10px 0 0; }}
-h2 {{ font-size: 8pt; letter-spacing: .1em; text-transform: uppercase; color: {ACCENT}; margin: 11px 0 4px; padding-bottom: 3px; border-bottom: 0.75pt solid #d9dcd8; }}
-.entry {{ margin-bottom: 6px; }}
-.row {{ display: flex; justify-content: space-between; gap: 12px; }}
+.summary {{ margin: 10px 0 0; max-width: 46em; }}
+.sec {{ display: grid; grid-template-columns: 1.25in 1fr; column-gap: 18px; margin-top: 10px; padding-top: 6px; border-top: 0.75pt solid #d9dcd8; }}
+h2 {{ font-size: 7.6pt; letter-spacing: .1em; text-transform: uppercase; color: {ACCENT}; margin: 2px 0 0; font-weight: 600; line-height: 1.3; }}
+.entry {{ margin-bottom: 7px; }}
+.entry:last-child {{ margin-bottom: 0; }}
+.row {{ display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }}
+.row .when {{ color: {MUTED}; font-variant-numeric: tabular-nums; white-space: nowrap; }}
 .muted {{ color: {MUTED}; font-weight: 400; }}
-ul {{ margin: 2px 0 0; padding-left: 14px; }}
+ul {{ margin: 2px 0 0; padding-left: 12px; }}
 li {{ margin: 1px 0; }}
-.skills div {{ margin: 1px 0; }}
+.skills div {{ display: grid; grid-template-columns: 6.4em 1fr; column-gap: 8px; margin: 1px 0; }}
 </style></head><body>
 <h1>{e(c['name'])}</h1>
 <div class=title>{e(c['title'])}</div>
 <div class=contact>{' · '.join(map(e, c['contact']))}</div>
 <p class=summary>{e(c['summary'])}</p>
-<h2>Selected product work</h2>{entries_html(c['projects'], 'project')}
-<h2>Design experience</h2>{entries_html(c['experience'], 'job')}
-<h2>Institutional finance (non-design roles)</h2>{entries_html(c['finance'], 'job')}
-<h2>Skills</h2><div class=skills>{''.join(f'<div><strong>{e(k)}:</strong> {e(v)}</div>' for k, v in c['skills'])}</div>
-<h2>Education</h2>{''.join(f'<div class=row><span><strong>{e(a)}</strong> <span class=muted>· {e(b)}</span></span><span class=muted>{e(d)}</span></div>' for a, b, d in c['education'])}
+<section class=sec><h2>Selected product work</h2><div>{entries_html(c['projects'], 'project')}</div></section>
+<section class=sec><h2>Design experience</h2><div>{entries_html(c['experience'], 'job')}</div></section>
+<section class=sec><h2>Institutional finance<br>(non-design roles)</h2><div>{entries_html(c['finance'], 'job')}</div></section>
+<section class=sec><h2>Skills</h2><div class=skills>{''.join(f'<div><strong>{e(k)}</strong> {e(v)}</div>' for k, v in c['skills'])}</div></section>
+<section class=sec><h2>Education</h2><div>{''.join(f'<div class=row><span><strong>{e(a)}</strong> <span class=muted>· {e(b)}</span></span><span class=when>{e(d)}</span></div>' for a, b, d in c['education'])}</div></section>
 </body></html>"""
 open('resume.html', 'w').write(page)
 

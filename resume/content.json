@@ -2,7 +2,7 @@
   "name": "Lorraine Kim",
   "title": "Product Designer",
   "contact": [
-    "San Mateo, CA",
+    "San Francisco, CA",
     "lorraine.kim@gmail.com",
     "347-271-2651",
     "lorrainekim.com",
@@ -45,7 +45,7 @@
     {
       "org": "OOJOO Studios",
       "place": "San Francisco",
-      "role": "Product Designer (independent studio)",
+      "role": "Product Designer (Independent Studio)",
       "dates": "2024 – Present",
       "bullets": [
         "Research, design and build financial tools and client websites, prototyping in code with Claude Code and Cursor. Build Figma component libraries, variables and design tokens."
@@ -89,11 +89,11 @@
       "User research, usability testing, workflow mapping, information architecture, interaction design, prototyping"
     ],
     [
-      "UI & systems",
+      "UI & Systems",
       "Figma, components and variants, variables, design tokens, responsive design"
     ],
     [
-      "AI & build",
+      "AI & Build",
       "AI interaction patterns, prompt design, Claude API, Gemini API, Google Apps Script, Claude Code, Cursor, Vercel, Netlify"
     ]
   ],
