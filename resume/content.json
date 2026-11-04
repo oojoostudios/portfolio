@@ -13,7 +13,7 @@
     {
       "name": "FXpress",
       "desc": "Exchange-rate widget for people who send money abroad",
-      "meta": "Live · Nov 2025 – Oct 2026",
+      "meta": "Live · 2026",
       "bullets": [
         "Designed and built a widget that shows where today’s rate sits in its 30-day range across 18 currency pairs, then links to the sender’s own provider.",
         "Interviewed 4 senders and tested with 5. All 5 completed the send flow; I fixed the button hierarchy and the threshold field where testers got stuck.",
@@ -24,7 +24,7 @@
     {
       "name": "ReconLayer",
       "desc": "Reconciliation add-on for small middle-office teams",
-      "meta": "Working prototype · 12 weeks",
+      "meta": "Working prototype · 2026",
       "bullets": [
         "Designed and built a Google Sheets add-on that compares internal and broker files, classifies breaks with fixed rules, and drafts counterparty emails for the analyst to review.",
         "Interviewed 5 practitioners at 4 buy-side firms and tested with 5 operators: 4 finished, rating ease 4.75 of 5.",
@@ -35,7 +35,7 @@
     {
       "name": "Hwang Yoo-Yup Archive",
       "desc": "Website for a Korean modernist painter’s estate",
-      "meta": "Paid client · 9 weeks · Live",
+      "meta": "Live · Paid client · 2025",
       "bullets": [
         "Designed the information architecture, visual system and curatorial copy, and built the site in Framer: a thematic path for newcomers and an archive mode for researchers, in one site the estate can maintain."
       ]

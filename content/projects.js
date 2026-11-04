@@ -238,7 +238,7 @@ export const projects = [
     slug: 'hwang-yoo-yup',
     color: '#6b2234',
     tags: ['Client work', 'Archive'],
-    year: '2026',
+    year: '2025',
     proof: 'Live archive · two navigation modes',
     title: 'Hwang Yoo-Yup Archive',
     tagline: 'Two ways to discover and research an artist’s work',
