@@ -37,7 +37,7 @@ h2 {{ font-size: 7.6pt; letter-spacing: .1em; text-transform: uppercase; color: 
 .muted {{ color: {MUTED}; font-weight: 400; }}
 ul {{ margin: 2px 0 0; padding-left: 12px; }}
 li {{ margin: 1px 0; }}
-.skills div {{ display: grid; grid-template-columns: 6.4em 1fr; column-gap: 8px; margin: 1px 0; }}
+.skills div {{ display: grid; grid-template-columns: 7.4em 1fr; column-gap: 8px; margin: 1px 0; }}
 </style></head><body>
 <h1>{e(c['name'])}</h1>
 <div class=title>{e(c['title'])}</div>
