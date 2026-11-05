@@ -13,7 +13,7 @@
     {
       "name": "FXpress",
       "desc": "Exchange-rate widget for people who send money abroad",
-      "meta": "Live · 2026",
+      "meta": "0→1 · Live · 2026",
       "bullets": [
         "Designed and built a widget that shows where today’s rate sits in its 30-day range across 18 currency pairs, then links to the sender’s own provider.",
         "Interviewed 4 senders and tested with 5. All 5 completed the send flow; I fixed the button hierarchy and the threshold field where testers got stuck.",
@@ -24,7 +24,7 @@
     {
       "name": "ReconLayer",
       "desc": "Reconciliation add-on for small middle-office teams",
-      "meta": "Working prototype · 2026",
+      "meta": "0→1 · Working prototype · 2026",
       "bullets": [
         "Designed and built a Google Sheets add-on that compares internal and broker files, classifies breaks with fixed rules, and drafts counterparty emails for the analyst to review.",
         "Interviewed 5 practitioners at 4 buy-side firms and tested with 5 operators: 4 finished, rating ease 4.75 of 5.",
@@ -40,7 +40,7 @@
       "role": "Product Designer (Independent Studio)",
       "dates": "2024 – Present",
       "bullets": [
-        "Product design practice: financial workflow tools for expert users across trading operations, reconciliation and FX. Researched, designed and built in code, and tested with practitioners.",
+        "0→1 product design practice: financial workflow tools for expert users across trading operations, reconciliation and FX. Researched, designed and built in code, and tested with practitioners.",
         "Separately, digital catalogues, artist archives, exhibition experiences, art publications and artist advocacy for diaspora artists: Jamie Namie Kim, Paul Waters and Hwang Yoo-Yup."
       ]
     }
