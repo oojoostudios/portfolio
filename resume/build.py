@@ -22,13 +22,13 @@ def entries_html(items, kind):
     return ''.join(out)
 
 page = f"""<!doctype html><html><head><meta charset=utf-8><style>
-@page {{ size: Letter; margin: 0.42in 0.55in; }}
-body {{ font: 9.2pt/1.33 'Helvetica Neue', Helvetica, Arial, sans-serif; color: {INK}; margin: 0; }}
+@page {{ size: Letter; margin: 0.4in 0.5in; }}
+body {{ font: 9pt/1.3 'Helvetica Neue', Helvetica, Arial, sans-serif; color: {INK}; margin: 0; }}
 h1 {{ font: 500 20pt/1.1 Georgia, 'Times New Roman', serif; margin: 0; }}
 .title {{ color: {ACCENT}; font-weight: 600; margin: 2px 0 4px; }}
 .contact {{ color: {MUTED}; font-size: 9pt; }}
-.summary {{ margin: 10px 0 0; max-width: 46em; }}
-.sec {{ display: grid; grid-template-columns: 1.25in 1fr; column-gap: 18px; margin-top: 10px; padding-top: 6px; border-top: 0.75pt solid #d9dcd8; }}
+.summary {{ margin: 9px 0 0; max-width: 62em; }}
+.sec {{ display: grid; grid-template-columns: 1.25in 1fr; column-gap: 18px; margin-top: 9px; padding-top: 5px; border-top: 0.75pt solid #d9dcd8; }}
 h2 {{ font-size: 7.6pt; letter-spacing: .1em; text-transform: uppercase; color: {ACCENT}; margin: 2px 0 0; font-weight: 600; line-height: 1.3; }}
 .entry {{ margin-bottom: 7px; }}
 .entry:last-child {{ margin-bottom: 0; }}

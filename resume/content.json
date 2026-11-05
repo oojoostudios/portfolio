@@ -28,8 +28,7 @@
       "bullets": [
         "Designed and built a Google Sheets add-on that compares internal and broker files, classifies breaks with fixed rules, and drafts counterparty emails for the analyst to review.",
         "Interviewed 5 practitioners at 4 buy-side firms and tested with 5 operators: 4 finished, rating ease 4.75 of 5.",
-        "Showed missing trades separately from value differences so they don’t sink to the bottom of a ranked list.",
-        "Revised the email prompt three times to stop the model guessing at the cause of each break."
+        "Showed missing trades separately from value differences so they don’t sink to the bottom of a ranked list."
       ]
     }
   ],
