@@ -3,7 +3,7 @@ import { GeistSans } from 'geist/font/sans';
 import Header from '@/components/Header';
 import Motion from '@/components/Motion';
 
-const description = 'Product designer for complex financial workflows and AI-assisted tools, with fifteen years inside institutional finance.';
+const description = 'Product designer since 2024, after fifteen years in institutional finance. Tools for complex financial workflows, researched, built in code and tested with users.';
 
 export const metadata = {
   metadataBase: new URL(process.env.SITE_URL || 'https://portfolio-three-iota-33.vercel.app'),
