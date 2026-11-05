@@ -28,7 +28,8 @@
       "bullets": [
         "Designed and built a Google Sheets add-on that compares internal and broker files, classifies breaks with fixed rules, and drafts counterparty emails for the analyst to review.",
         "Interviewed 5 practitioners at 4 buy-side firms and tested with 5 operators: 4 finished, rating ease 4.75 of 5.",
-        "Showed missing trades separately from value differences so they don’t sink to the bottom of a ranked list."
+        "Showed missing trades separately from value differences so they don’t sink to the bottom of a ranked list.",
+        "Revised the email prompt three times to stop the model guessing at the cause of each break."
       ]
     }
   ],
@@ -51,8 +52,7 @@
       "role": "AIM Trading Portfolio and Ops Analytics",
       "dates": "2020 – 2022",
       "bullets": [
-        "Supported Tier 1 buy-side clients on Bloomberg AIM order management and post-trade operations, including the FI Trading and SEF Clearing team.",
-        "Worked with Product, Sales, Implementation and Engineering to resolve trade-related issues. Recognized as a top contributor in the AMER region for enhancements to terminal functionality that improved client workflows."
+        "Supported Tier 1 buy-side clients on Bloomberg AIM order management and post-trade operations; worked with Product and Engineering to resolve trade-workflow issues and turn recurring ones into terminal enhancements."
       ]
     },
     {
@@ -61,8 +61,7 @@
       "role": "Assistant Vice President",
       "dates": "2009 – 2020",
       "bullets": [
-        "Ran middle-office operations for 40+ accounts and $8B in assets across futures and swaps, reporting to the interim COO and DOO.",
-        "Oversaw daily trade and position reconciliations across multiple funds and resolved discrepancies with custodian banks, FCMs and fund administrators. Also month-end reconciliations and collateral management for credit products.",
+        "Ran middle-office operations for 40+ accounts and $8B in assets: daily trade and position reconciliations, resolving discrepancies with custodians, FCMs and fund administrators.",
         "Revamped workflows that cut cycle time by 25%, and took part in UAT for system enhancements."
       ]
     },
@@ -72,8 +71,7 @@
       "role": "Associate Portfolio Manager",
       "dates": "2007 – 2009",
       "bullets": [
-        "Co-managed oversight of 150+ institutional equity portfolios, monitoring position weights and risk analytics against benchmarks and executing orders within client guidelines.",
-        "Executed hedging with foreign-currency derivatives and rebalanced portfolios that drifted from target benchmarks."
+        "Co-managed oversight of 150+ institutional equity portfolios; executed FX-derivative hedging and rebalanced against benchmarks."
       ]
     }
   ],
