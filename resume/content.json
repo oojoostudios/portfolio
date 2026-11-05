@@ -49,21 +49,22 @@
     {
       "org": "Bloomberg",
       "place": "San Francisco",
-      "role": "AIM Trading Analyst",
+      "role": "AIM Trading Portfolio and Ops Analytics",
       "dates": "2020 – 2022",
       "bullets": [
-        "Supported buy-side clients on Bloomberg AIM, diagnosed trading-workflow issues, and tracked fixes with Product and Engineering in Jira.",
-        "Turned recurring client issues into product requests that were adopted into AIM."
+        "Supported Tier 1 buy-side clients on Bloomberg AIM order management and post-trade operations, including the FI Trading and SEF Clearing team.",
+        "Worked with Product, Sales, Implementation and Engineering to resolve trade-related issues. Recognized as a top contributor in the AMER region for enhancements to terminal functionality that improved client workflows."
       ]
     },
     {
       "org": "Mizuho Alternative Investments",
       "place": "New York",
-      "role": "AVP, Trading Operations",
+      "role": "Assistant Vice President",
       "dates": "2009 – 2020",
       "bullets": [
-        "Redesigned reconciliation workflows on a quantitative multi-strategy platform supporting $8B AUM, reducing operational cycle time by 25%; translated user requirements into system upgrades and UAT.",
-        "Managed post-trade settlement and cash forecasting across equities, fixed income, futures, FX and swaps."
+        "Ran middle-office operations for 40+ accounts and $8B in assets across futures and swaps, reporting to the interim COO and DOO.",
+        "Oversaw daily trade and position reconciliations across multiple funds and resolved discrepancies with custodian banks, FCMs and fund administrators. Also month-end reconciliations and collateral management for credit products.",
+        "Revamped workflows that cut cycle time by 25%, and took part in UAT for system enhancements."
       ]
     },
     {
@@ -72,7 +73,8 @@
       "role": "Associate Portfolio Manager",
       "dates": "2007 – 2009",
       "bullets": [
-        "Managed FX-derivative hedging and risk analytics for institutional equity portfolios."
+        "Co-managed oversight of 150+ institutional equity portfolios, monitoring position weights and risk analytics against benchmarks and executing orders within client guidelines.",
+        "Executed hedging with foreign-currency derivatives and rebalanced portfolios that drifted from target benchmarks."
       ]
     }
   ],
