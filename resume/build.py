@@ -22,7 +22,7 @@ def entries_html(items, kind):
     return ''.join(out)
 
 page = f"""<!doctype html><html><head><meta charset=utf-8><style>
-@page {{ size: Letter; margin: 0.4in 0.5in; }}
+@page {{ size: Letter; margin: 0.4in 0.5in 0.36in; }}
 body {{ font: 9pt/1.3 'Helvetica Neue', Helvetica, Arial, sans-serif; color: {INK}; margin: 0; }}
 h1 {{ font: 500 20pt/1.1 Georgia, 'Times New Roman', serif; margin: 0; }}
 .title {{ color: {ACCENT}; font-weight: 600; margin: 2px 0 4px; }}
