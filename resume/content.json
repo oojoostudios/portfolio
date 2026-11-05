@@ -31,14 +31,6 @@
         "Showed missing trades separately from value differences so they don’t sink to the bottom of a ranked list.",
         "Revised the email prompt three times to stop the model guessing at the cause of each break."
       ]
-    },
-    {
-      "name": "Hwang Yoo-Yup Archive",
-      "desc": "Website for a Korean modernist painter’s estate",
-      "meta": "Live · Paid client · 2025",
-      "bullets": [
-        "Designed the information architecture, visual system and curatorial copy, and built the site in Framer: a thematic path for newcomers and an archive mode for researchers, in one site the estate can maintain."
-      ]
     }
   ],
   "experience": [
@@ -48,7 +40,8 @@
       "role": "Product Designer (Independent Studio)",
       "dates": "2024 – Present",
       "bullets": [
-        "Research, design and build financial tools and client websites, prototyping in code with Claude Code and Cursor. Build Figma component libraries, variables and design tokens."
+        "Product design practice: financial workflow tools for expert users across trading operations, reconciliation and FX. Researched, designed and built in code, and tested with practitioners.",
+        "Separately, digital catalogues, artist archives, exhibition experiences and art publications for diaspora artists: Jamie Namie Kim, Paul Waters and Hwang Yoo-Yup."
       ]
     }
   ],
