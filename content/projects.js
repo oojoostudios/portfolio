@@ -98,6 +98,7 @@ export const projects = [
         heading: 'The live widget',
         blocks: [
           { type: 'p', text: 'FXpress as it runs today, with live reference rates for 18 currency pairs. Pick a currency and see where today’s rate sits. People can save a target rate, add a calendar reminder, and go to a provider such as Wise, Remitly, Xoom, Chase or their own bank. FXpress itself does not move money.' },
+          { type: 'figure', file: 'fxpress/02-live-widget', alt: 'Screen recording of the live FXpress widget: the amount changes, the currency switches and Fexi’s sentence updates', caption: 'The live widget. Change the amount or currency and the range label and Fexi’s sentence update.' },
           { type: 'embed', src: 'https://fxpress.netlify.app/', title: 'FXpress live widget', kind: 'phone', href: 'https://fxpress.netlify.app/' },
         ],
       },
@@ -110,7 +111,7 @@ export const projects = [
           { type: 'cols', worked: ['5 of 5 completed the send task.', 'All five looked at the recipient’s amount first.', '“I actually feel like I understand what this does before I’ve used it.” (cautious sender)'], broke: ['4 of 5 completed the target-rate task. One stopped at the threshold field because “1,380” had no currency, and another hesitated there.', 'One tapped Send Now by mistake. Both buttons had the same visual weight.'] },
           { type: 'quote', text: 'I don’t know what 1,380 means. Is that dollars, won, or shillings?', who: 'Sends money to Kenya, test participant #2' },
           { type: 'list', title: 'What I changed before launch', items: ['Made Send Now the filled primary button and the target-rate button an outline.', 'Added the currency to the threshold field, with a line of help text.', 'Renamed “Set Trigger for Best Rate” to “Save Target Rate,” since the product can’t promise the best rate.'] },
-          { type: 'figure', file: 'fxpress/04-buttons-before-after', alt: 'Before and after crops of the action area: equal-weight Send Now and trigger buttons with an unlabelled 1,380 threshold, then a filled primary button, outlined secondary button and a threshold labelled KRW per USD', caption: 'Testing exposed ambiguous button priority and a threshold with no currency. The revised hierarchy and labels addressed both; the revision has not been re-tested with users.', brief: 'See brief G3.' },
+          { type: 'figure', file: 'fxpress/04-buttons-before-after', alt: 'Two phone screens: the action area with Send Now and Save Target Rate at equal visual weight, then the shipped version with a filled primary button and an outlined secondary button', caption: 'Button hierarchy before and after. Testing exposed ambiguous priority between the two actions; the shipped version makes Send Now primary. Not re-tested with users.', brief: 'See brief G3.' },
           { type: 'p', text: 'These changes are in the live widget. I haven’t re-tested them with users.' },
         ],
       },
@@ -211,6 +212,7 @@ export const projects = [
           { type: 'p', text: 'ReconLayer compares the two files, sets aside valuation differences below a threshold, and sorts what’s left into value breaks and population breaks. On the synthetic test data the prototype applies a $50,000 threshold on the absolute valuation difference, a rule I set for the prototype (the sidebar labels it “MTA”).' },
           { type: 'p', text: 'Result: 4 value breaks, 2 population breaks, and a net value dispute of $327,500 across the four value breaks. The two missing-record breaks have no difference to net.' },
           { type: 'figure', file: 'reconlayer/04-sidebar-worklist', alt: 'Close-up of the ReconLayer sidebar: the net value dispute, four value-break rows, two population-break rows with the missing side stated, and the Draft dispute email button', caption: 'Reconciled synthetic trade records grouped for review. The net value discrepancy is shown separately from unmatched records.', brief: 'See brief G6.' },
+          { type: 'figure', file: 'reconlayer/03-run', alt: 'Screen recording of the add-on in Google Sheets: Reconcile is clicked, the sidebar fills with value breaks and population breaks, then Draft dispute email produces a draft', caption: 'The add-on on the synthetic workbook: Reconcile, the sidebar fills, then Draft dispute email. Trimmed and sped up.' },
           { type: 'embed', src: 'https://www.loom.com/embed/f51e32b7800442b48ddb008a916215c6', title: 'ReconLayer demo video', kind: 'video', ratio: '16 / 9', href: 'https://www.loom.com/share/f51e32b7800442b48ddb008a916215c6', hrefLabel: 'Open on Loom' },
           { type: 'figure', file: 'reconlayer/05-email-draft', alt: 'A generated dispute email from the final prompt: subject line, the break ID with internal and broker figures, and a request for confirmation, with annotations noting fixed data fields, no invented causes, and human sign-off outside the tool', caption: 'An AI-assisted dispute draft generated from classified synthetic breaks. The analyst remains responsible for verifying and sending it.', brief: 'See brief F4. Must be a real generated email from version 3.' },
         ],
@@ -295,7 +297,7 @@ export const projects = [
             type: 'decision', title: 'Everything about a work on one page',
             chose: 'The full-size image, curatorial text, themes, details and related works, with historical context in an expandable section.',
             why: 'Scholars can skip the context and newcomers can open it.',
-            figure: { file: 'hwang-yoo-yup/03-artwork-page', alt: 'A live artwork page from the archive with callouts pointing to the artwork image, the structured metadata block, and the expandable historical-context section', caption: 'Art-first presentation with structured metadata and optional historical context, preserving both research paths.', brief: 'See brief G9.' },
+            figure: { file: 'hwang-yoo-yup/03-artwork-page', alt: 'A live artwork page from the archive: the painting, its structured metadata block and the historical-context section', caption: 'Art-first presentation with structured metadata and optional historical context, preserving both research paths.', brief: 'See brief G9.' },
           },
           {
             type: 'decision', title: 'A quiet visual system',
@@ -310,6 +312,7 @@ export const projects = [
         heading: 'The live archive',
         blocks: [
           { type: 'p', text: 'The archive as its visitors see it. Switch between Discovery and Archive Mode from any page.' },
+          { type: 'figure', file: 'hwang-yoo-yup/02-archive-toggle', alt: 'Screen recording of the live archive’s Discovery homepage, scrolled from the hero to the footer', caption: 'The live site’s Discovery path, top to bottom.' },
           { type: 'embed', src: 'https://hwangyooyup.framer.website/', title: 'Hwang Yoo-Yup archive, live site', kind: 'site', ratio: '16 / 10', href: 'https://hwangyooyup.framer.website/' },
         ],
       },
