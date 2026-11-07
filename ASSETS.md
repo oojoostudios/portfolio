@@ -201,7 +201,7 @@ reconlayer/03-break-rows, hwang-yoo-yup/04-palette-type.
 | 6 | reconlayer/01-manual-workbook | placed, cropped to the grid |
 | 7 | reconlayer/04-sidebar-worklist | placed, split into two columns |
 | 8 | reconlayer/05-email-draft | placed at 2x, split into two columns |
-| 9 | hwang-yoo-yup/01-painting | placed; confirm credit line with the estate |
+| 9 | hwang-yoo-yup/01-painting | placed; credit line confirmed with the estate |
 | 10 | hwang-yoo-yup/02-navigation | placed |
 | 11 | hwang-yoo-yup/03-artwork-page | placed |
 | 12 | hwang-yoo-yup/04-exhibition-plan | placed, a frame from the first recording |

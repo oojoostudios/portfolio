@@ -17,7 +17,7 @@ export const projects = [
     slug: 'fxpress',
     color: '#3848a8',
     tags: ['Consumer fintech', 'AI'],
-    year: '2025–26',
+    year: '2026',
     proof: 'Live rate-context product · 18 currency pairs',
     title: 'FXpress',
     tagline: 'Transparent rate context for international transfers',
@@ -35,7 +35,7 @@ export const projects = [
       ['Role', 'Independent product designer · research, design, build, testing'],
       ['Scope', 'Research, product design, AI interaction, build, usability testing'],
       ['Domain', 'Consumer fintech'],
-      ['Timeline', 'Nov 2025 to Oct 2026 · live'],
+      ['Timeline', '2026 · live'],
     ],
     links: [{ label: 'Try it live', href: 'https://fxpress.netlify.app' }],
     glance: {
