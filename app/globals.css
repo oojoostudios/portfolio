@@ -604,3 +604,54 @@ main:has(.panels) .hero { max-width: 1080px; margin: 0 auto; padding-left: 32px;
 @media (max-width: 760px) {
   .flow-stage { grid-column: 1 !important; grid-row: auto !important; }
 }
+
+/* ---- Type pass: one weight system, less grey, labels with presence. ---- */
+:root { --muted: #585b60; }
+@media (prefers-color-scheme: dark) { :root { --muted: #9a9a9a; } }
+
+/* Headings a step lighter, body and secondary text a step darker, so the page reads as one voice. */
+.cs-head h1 { font-weight: 600; letter-spacing: -.03em; }
+.cs-section h2 { font-weight: 500; letter-spacing: -.02em; font-size: clamp(28px, 3.2vw, 38px); margin-bottom: 18px; }
+.cs-section p, .cs-section li { font-size: 17px; line-height: 1.6; color: var(--text); }
+.bd h3 { font-size: 20px; font-weight: 600; letter-spacing: -.012em; margin: 0 0 10px; }
+.bd-chose { font-weight: 500; }
+.bd-instead { font-size: 16px; color: var(--text); }
+.bd-instead span { font-weight: 600; color: var(--pt); }
+.bd-why { color: var(--text); font-size: 16.5px; }
+.bd-num { font-weight: 600; color: var(--pt); }
+.compare-text { font-size: 16px; font-weight: 500; color: var(--text); }
+.compare-note { font-size: 14.5px; color: var(--text); opacity: .82; }
+.beat-h3, .cs-section h3 { font-size: 17px; font-weight: 600; }
+.beat-list li, .testing li { color: var(--text); }
+.quote p { font-size: 22px; }
+.quote cite { font-size: 14px; }
+figcaption, .figure.chart figcaption { font-size: 14px; line-height: 1.5; color: var(--muted); }
+.chart-head p { font-size: 15px; color: var(--muted); }
+.chart-legend { font-size: 14px; color: var(--text); }
+
+/* Labels: small, semibold, tracked, in the project colour. Never light grey. */
+.cs-kicker, .cs-label, .compare-label, .standfirst strong, .flow-bracket, .flow-band {
+  font-size: 12.5px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--pt);
+}
+.cs-kicker { margin-bottom: 16px; }
+.compare-label { margin-bottom: 10px; }
+
+/* Opening metadata: body colour, with quiet separators. */
+.cs-metaline { font-size: 15px; color: var(--text); margin-top: 24px; }
+.cs-metaline > * + *::before { color: var(--line-strong, #b8b8b8); }
+.cs-metaline a { color: var(--pt); border-bottom-color: color-mix(in oklab, var(--pt) 50%, transparent); }
+.cs-stageline { font-size: 15px; color: var(--muted); margin-top: 6px; }
+.standfirst p { font-size: clamp(17px, 1.6vw, 19px); line-height: 1.55; }
+
+/* Flow diagram: filled stages, no hairlines, brackets with weight. */
+.flow { --gap: 24px; }
+.flow-stage { padding: 14px 14px; border: 0; background: var(--surface); min-height: 96px; }
+.flow-stage[data-band="rules"] { background: color-mix(in oklab, var(--p) 13%, var(--bg)); }
+.flow-stage[data-band="ai"] { background: var(--bg); border: 1.5px dashed var(--pt); }
+.flow-stage[data-band="outside"] { background: var(--surface); }
+.flow-label { font-size: 15px; font-weight: 600; letter-spacing: -.005em; hyphens: manual; }
+.flow-arrow { color: var(--text); }
+.flow-arrow::before { left: 4px; right: 8px; border-top-width: 1.5px; }
+.flow-arrow::after { right: 7px; width: 7px; height: 7px; border-width: 1.5px; }
+.flow-bracket { padding-top: 9px; border-top: 1.5px solid var(--text); color: var(--text); }
+.flow-bracket[data-band="rules"], .flow-bracket[data-band="ai"] { color: var(--pt); border-top-color: var(--pt); }

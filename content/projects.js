@@ -205,7 +205,7 @@ export const projects = [
               caption: 'The model proposes wording. It cannot change a classification or send a dispute.',
               stages: [
                 { label: 'Internal and broker files', band: 'input' },
-                { label: 'Reconciliation rules', band: 'rules' },
+                { label: 'Reconcil\u00ADiation rules', band: 'rules' },
                 { label: 'Reviewable exceptions', band: 'rules' },
                 { label: 'AI-drafted email', band: 'ai' },
                 { label: 'Analyst reviews and sends', band: 'outside' },
