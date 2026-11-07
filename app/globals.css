@@ -529,3 +529,6 @@ main:has(.panels) .hero { max-width: 1080px; margin: 0 auto; padding-left: 32px;
   .chart-val { font-size: 19px; }
   .chart-note, .chart-m-alt { display: none; }
 }
+
+.chart-read { stroke-width: 2; stroke: var(--muted); opacity: .5; }
+.chart-read-low { stroke: var(--p); opacity: .9; }

@@ -193,16 +193,18 @@ reconlayer/03-break-rows, hwang-yoo-yup/04-palette-type.
 
 | # | File | Status |
 |---|---|---|
-| 1 | fxpress/02-live-widget.mp4 | still to record |
+| 1 | fxpress/02-live-widget.mp4 | placed |
 | 2 | reconlayer/03-run.mp4 | placed |
-| 3 | hwang-yoo-yup/02-archive-toggle.mp4 | placed (no Archive Mode click in the recording) |
+| 3 | hwang-yoo-yup/02-archive-toggle.mp4 | placed, re-recorded with the Archive Mode click |
 | 4 | fxpress/02-advice-before-after | placed |
 | 5 | fxpress/03-fexi-states | placed, re-tiled 4×2 |
 | 6 | reconlayer/01-manual-workbook | placed, cropped to the grid |
 | 7 | reconlayer/04-sidebar-worklist | placed, split into two columns |
-| 8 | reconlayer/05-email-draft | needs a 2x retake (received 303×677) |
+| 8 | reconlayer/05-email-draft | placed at 2x, split into two columns |
 | 9 | hwang-yoo-yup/01-painting | placed; confirm credit line with the estate |
 | 10 | hwang-yoo-yup/02-navigation | placed |
 | 11 | hwang-yoo-yup/03-artwork-page | placed |
+| 12 | hwang-yoo-yup/04-exhibition-plan | placed, a frame from the first recording |
+| 13 | FXpress event log (CSV) | received; drives the readings strip under the rate chart |
 
 `npm run build` prints which of these are still missing.
