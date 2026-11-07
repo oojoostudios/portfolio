@@ -111,27 +111,20 @@ export default async function CaseStudy({ params }) {
         <p className="cs-kicker" data-reveal>{p.tags ? p.tags.join(' · ') : p.status} · {p.year}</p>
         <h1 className="cs-title">{p.title}</h1>
         <p className="lede" data-reveal data-delay="150">{p.tagline}</p>
-        {p.stage && <p className="cs-stage" data-reveal data-delay="200">{p.stage}</p>}
-        <dl className="meta">
-          {p.meta.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
-        </dl>
-        <div className="links">
-          {p.links.map((l) => (
-            <span key={l.label}>
-              <a className="btn" href={l.href} target="_blank" rel="noopener">{l.label} ↗</a>
-              {l.note && <span className="link-note">{l.note}</span>}
-            </span>
-          ))}
-        </div>
+        <p className="cs-metaline" data-reveal data-delay="200">
+          {p.meta.filter(([k]) => k !== 'Scope').map(([k, v]) => <span key={k}>{v.split(' · ')[0]}</span>)}
+          {p.links.map((l) => <a key={l.label} href={l.href} target="_blank" rel="noopener" title={l.note || undefined}>{l.label} ↗</a>)}
+        </p>
+        {p.stage && <p className="cs-stageline" data-reveal data-delay="240">{p.stage}</p>}
       </header>
 
       <div className="cs-hero"><Figure {...p.hero} parallax="0.05" cover={p.title} priority /></div>
 
       {p.glance && (
-        <section className="tldr glance" aria-label="Case study at a glance">
-          <div data-reveal><h2>Problem</h2><p>{p.glance.problem}</p></div>
-          <div data-reveal data-delay="90"><h2>What I made</h2><p>{p.glance.made}</p></div>
-          <div data-reveal data-delay="180"><h2>What happened</h2><p>{p.glance.happened}</p></div>
+        <section className="standfirst" aria-label="Case study at a glance">
+          <p data-reveal><strong>The problem</strong> {p.glance.problem}</p>
+          <p data-reveal data-delay="90"><strong>What I made</strong> {p.glance.made}</p>
+          <p data-reveal data-delay="180"><strong>What happened</strong> {p.glance.happened}</p>
         </section>
       )}
 

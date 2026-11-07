@@ -532,3 +532,39 @@ main:has(.panels) .hero { max-width: 1080px; margin: 0 auto; padding-left: 32px;
 
 .chart-read { stroke-width: 2; stroke: var(--muted); opacity: .5; }
 .chart-read-low { stroke: var(--p); opacity: .9; }
+
+/* Case-study opening: title, deck, one metadata line, a plain status line, then a prose standfirst. */
+.cs-metaline { display: flex; flex-wrap: wrap; gap: 6px 0; margin: 26px 0 0; font-size: 14px; color: var(--muted); }
+.cs-metaline > * { display: inline-flex; align-items: baseline; }
+.cs-metaline > * + *::before { content: '·'; margin: 0 10px; color: var(--line-strong, var(--muted)); }
+.cs-metaline a { color: var(--pt); text-decoration: none; border-bottom: 1px solid color-mix(in oklab, var(--pt) 40%, transparent); padding-bottom: 1px; }
+.cs-metaline a:hover { border-bottom-color: var(--pt); }
+.cs-stageline { margin: 8px 0 0; font-size: 14px; color: var(--muted); }
+.standfirst { margin: 44px 0 0; padding-top: 26px; border-top: 1px solid var(--line); max-width: 40em; }
+.standfirst p { font-size: clamp(17px, 1.6vw, 19px); line-height: 1.5; margin: 0 0 14px; color: var(--text); }
+.standfirst p:last-child { margin-bottom: 0; }
+.standfirst strong { font-weight: 600; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--pt); margin-right: 10px; white-space: nowrap; }
+
+/* Editorial charts: a rule, a headline, a sentence, the plot, a legend, a source. */
+.figure.chart { border-top: 2px solid var(--text); padding-top: 16px; margin: 40px 0 44px; }
+.figure.chart .chart-frame, .figure.chart .chart-svg { background: transparent; padding: 0; border-radius: 0; }
+.chart-head h3 { font-size: 19px; font-weight: 600; letter-spacing: -.01em; line-height: 1.25; margin: 0 0 6px; max-width: 32em; }
+.chart-head p { font-size: 14px; color: var(--muted); margin: 0 0 18px; max-width: 46em; line-height: 1.45; }
+.chart-svg { width: 100%; height: auto; display: block; font-family: inherit; overflow: visible; }
+.chart-grid { stroke: var(--line); stroke-width: 1; }
+.chart-tick { font-size: 12.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.chart-val { font-size: 12.5px; fill: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
+.chart-bar { fill: var(--p); opacity: .8; }
+.chart-line { fill: none; stroke: var(--p); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.chart-dot { fill: var(--p); }
+.chart-read { stroke-width: 2.5; stroke: color-mix(in oklab, var(--muted) 55%, transparent); }
+.chart-read-low { stroke: var(--p); }
+.chart-legend { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+.chart-legend i { display: inline-block; width: 3px; height: 14px; margin-right: 8px; vertical-align: -2px; background: color-mix(in oklab, var(--muted) 55%, transparent); }
+.chart-legend i.chart-read-low { background: var(--p); }
+.figure.chart figcaption { margin-top: 12px; }
+@media (max-width: 760px) {
+  .chart-tick, .chart-val { font-size: 20px; }
+  .chart-m-alt { display: none; }
+  .standfirst { margin-top: 32px; }
+}

@@ -49,7 +49,7 @@ export const projects = [
         heading: 'A rate on its own tells you nothing',
         blocks: [
           { type: 'p', text: 'My parents have sent money from the US to Korea for decades. Every app they use shows today’s rate. None says whether it is a good one.' },
-          { type: 'chart', kind: 'range', data: fxMonthly, caption: 'Monthly high-to-low range of the USD/KRW reference rate, Sep 2025 to Sep 2026. Reference rates, not transfer quotes; provider fees and markups come on top.' },
+          { type: 'chart', kind: 'range', data: fxMonthly, title: 'Within a single month, the rate moved 2% to 9%', subtitle: 'USD/KRW reference rate: each bar runs from the month’s low to its high, labelled with the range as a share of the low. Sep 2025 to Sep 2026.', caption: 'Source: Frankfurter, ECB reference rates. Reference rates, not transfer quotes; provider fees and markups come on top.' },
           { type: 'p', text: 'The swing is the size of the opportunity a sender feels they are missing, not a saving anyone can lock in. The gap between what the rate does and what a sender can know is the product.' },
           { type: 'p', text: 'Four senders, interviewed in November 2025, described the same thing: choosing a day felt like guessing, and the only number they cared about was what the recipient gets. Two asked for a forecast. The product does not make one.' },
           { type: 'quote', text: 'I usually end up Googling the exchange rate and trying to catch it on a ‘good day,’ which is kind of ridiculous. It feels like I’m managing trades for personal transfers.', who: 'Monthly international sender, research participant' },
@@ -121,7 +121,7 @@ export const projects = [
         heading: 'What the live data showed, and what comes next',
         blocks: [
           { type: 'p', text: 'The 30-day comparison works when the rate moves within a range and misleads when it trends. Through the summer of 2026 the won strengthened steadily, and between 31 July and 20 September, 68 of the widget’s 75 logged readings said “low.”' },
-          { type: 'chart', kind: 'line', data: fxDaily, readings: fxReadings, caption: 'USD/KRW reference rate, 1 July to 20 September 2026, with every logged widget reading marked beneath by date: 68 low, 5 mid, 2 high. A trend indicator has not shipped.' },
+          { type: 'chart', kind: 'line', data: fxDaily, readings: fxReadings, title: 'The rate fell for two months, and the widget kept saying “low”', subtitle: 'USD/KRW reference rate, 1 July to 20 September 2026. Beneath it, every widget reading in the log, placed by date and coloured by the label it gave.', caption: 'Sources: Frankfurter, ECB reference rates; FXpress event log, 75 readings across all currency pairs. A trend indicator has not shipped.' },
           { type: 'p', text: 'Next: show which way the rate has been moving as well as where it sits. The 33-call log window says nothing about whether each sentence was correct, and the offline fallback has no tracking.' },
         ],
       },
