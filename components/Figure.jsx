@@ -46,9 +46,12 @@ export function findMedia(file) {
   return null;
 }
 
-export default function Figure({ caption, alt, file, parallax, cover, priority = false, mount = false }) {
+// `size`: inline (body column, default), wide (across both columns), bleed (viewport width).
+// `crop`: an aspect ratio such as '2 / 1' that the frame enforces with object-fit: cover.
+export default function Figure({ caption, alt, file, parallax, cover, priority = false, mount = false, size = 'inline', crop }) {
   const media = findMedia(file);
-  const cls = mount ? 'figure mount' : 'figure';
+  const cls = ['figure', mount ? 'mount' : '', `size-${size}`, crop ? 'cropped' : ''].filter(Boolean).join(' ');
+  const frameStyle = crop ? { aspectRatio: crop } : undefined;
   if (!media) {
     if (!cover) return null;
     // A project with no cover yet gets a title card rather than an empty frame.
@@ -61,7 +64,7 @@ export default function Figure({ caption, alt, file, parallax, cover, priority =
   const description = alt || caption || '';
   return (
     <figure className={cls} data-reveal>
-      <div className="figure-frame">
+      <div className="figure-frame" style={frameStyle}>
         <div className="figure-drift" data-parallax={parallax || undefined}>
           {media.video ? (
             <video src={media.src} autoPlay muted loop playsInline preload="metadata" aria-label={description} />

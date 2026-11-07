@@ -41,7 +41,7 @@ export async function generateMetadata({ params }) {
 }
 
 const Quote = ({ q }) => (
-  <blockquote className="quote">
+  <blockquote className={q.size === 'display' ? 'quote quote-display' : 'quote'} data-reveal>
     <p>“{q.text}”</p>
     <cite>{q.who}</cite>
   </blockquote>
@@ -51,7 +51,7 @@ const Quote = ({ q }) => (
 function Beat({ beat, n }) {
   return (
     <section className="cs-section beat" id={`beat-${n}`}>
-      <p className="cs-label"><span>{beat.label}</span></p>
+      <p className="cs-label"><span className="cs-num" aria-hidden="true">{String(n).padStart(2, '0')}</span><span>{beat.label}</span></p>
       <div className="cs-body">
         <h2 data-reveal>{beat.heading}</h2>
         {beat.blocks.map((blk, i) => <Block key={i} blk={blk} index={beat.blocks.filter((x, j) => x.type === 'decision' && j <= i).length} />)}
@@ -64,7 +64,7 @@ function Block({ blk, index }) {
   switch (blk.type) {
     case 'p': return <p data-reveal>{blk.text}</p>;
     case 'quote': return <Quote q={blk} />;
-    case 'figure': return <div className="beat-wide"><Figure {...blk} /></div>;
+    case 'figure': return <div className={`beat-wide fig-${blk.size || 'inline'}`}><Figure {...blk} /></div>;
     case 'chart': return <div className="beat-wide"><Chart {...blk} /></div>;
     case 'embed': return <div className="beat-wide" data-reveal><LiveEmbed {...blk} /></div>;
     case 'list': return (
@@ -129,7 +129,7 @@ export default async function CaseStudy({ params }) {
         {p.stage && <p className="cs-stageline" data-reveal data-delay="240">{p.stage}</p>}
       </header>
 
-      <div className="cs-hero"><Figure {...p.hero} parallax="0.05" cover={p.title} priority /></div>
+      <div className={`cs-hero hero-${p.hero.size || 'wide'}`}><Figure {...p.hero} size={p.hero.size || 'wide'} parallax={p.hero.size === 'bleed' ? '0.06' : undefined} cover={p.title} priority /></div>
 
       {p.glance && (
         <section className="standfirst" aria-label="Case study at a glance">

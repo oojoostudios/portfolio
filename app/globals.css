@@ -661,3 +661,54 @@ figcaption, .figure.chart figcaption { font-size: 14px; line-height: 1.5; color:
 .cs-metaline a .ul { border-bottom: 1px solid color-mix(in oklab, var(--pt) 55%, transparent); padding-bottom: 1px; }
 .cs-metaline a:hover .ul { border-bottom-color: var(--pt); }
 .cs-metaline a .ext { font-size: .9em; margin-left: 1px; }
+
+/* ---- Editorial scale system ---- */
+/* Title at display size; deck a touch larger. */
+.cs-head h1 { font-size: clamp(52px, 9vw, 120px); letter-spacing: -.04em; line-height: .95; margin-bottom: 22px; }
+.cs-head .lede { font-size: clamp(21px, 2.4vw, 28px); max-width: 26em; }
+
+/* Chapter openers: number beside the label, bigger heading. */
+.cs-label { display: flex; gap: 10px; align-items: baseline; }
+.cs-num { font-variant-numeric: tabular-nums; opacity: .55; }
+.cs-section h2 { font-size: clamp(30px, 3.6vw, 44px); line-height: 1.05; margin-bottom: 22px; }
+
+/* Figure sizes. The body column is the right-hand grid column; wide figures reach back across the label column. */
+.cs-section { --label-col: 200px; --label-gap: 48px; }
+@media (min-width: 861px) {
+  .fig-wide, .quote-display { margin-left: calc(-1 * (var(--label-col) + var(--label-gap))); }
+}
+.fig-bleed, .hero-bleed { margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); width: 100vw; }
+.fig-bleed .figure-frame, .hero-bleed .figure-frame { border-radius: 0; }
+.figure.cropped .figure-frame { overflow: hidden; }
+.figure.cropped img, .figure.cropped video { width: 100%; height: 100%; object-fit: cover; }
+.figure.cropped .figure-drift { height: 100%; }
+.fig-bleed figcaption, .hero-bleed figcaption { max-width: 1016px; margin-left: auto; margin-right: auto; padding: 0 20px; }
+.fig-wide .figure { margin: 44px 0 48px; }
+
+/* The hero: un-boxed, full grid width, with the caption as a small line beneath. */
+.cs-hero { margin-top: 44px; }
+.cs-hero .figure { margin: 0; }
+.cs-hero .figure.mount .figure-frame { padding: 0; background: transparent; }
+.hero-bleed { margin-top: 48px; }
+.hero-bleed .figure-frame { aspect-ratio: 21 / 9; }
+@media (max-width: 760px) { .hero-bleed .figure-frame { aspect-ratio: 4 / 3; } }
+
+/* Display pull quote: the one line a reader should take away from the chapter. */
+.quote-display { border-left: 0; padding: 8px 0 8px; margin: 56px 0 56px; max-width: 24em; }
+.quote-display p { font-size: clamp(26px, 3.2vw, 40px); font-weight: 500; letter-spacing: -.02em; line-height: 1.2; margin: 0 0 14px; }
+.quote-display p::before { content: ''; display: block; width: 48px; height: 3px; background: var(--p); margin-bottom: 22px; }
+.quote-display cite { font-size: 14px; color: var(--muted); }
+@media (max-width: 860px) { .quote-display { margin: 40px 0; } }
+
+html { overflow-x: clip; }
+
+/* Display quote: measure set on the paragraph, and it breaks into the label column like a wide figure. */
+.quote-display { max-width: none; }
+.quote-display p { max-width: 19em; }
+@media (min-width: 861px) { .beat .quote-display { margin: 56px 0 56px calc(-1 * (var(--label-col) + var(--label-gap))); } }
+.cs-head .lede { max-width: 30em; }
+/* Phones: metadata stacks, no separators. */
+@media (max-width: 640px) {
+  .cs-metaline { flex-direction: column; gap: 4px; }
+  .cs-metaline > * + *::before { content: none; margin: 0; }
+}

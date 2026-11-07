@@ -23,7 +23,7 @@ export const projects = [
     tagline: 'Transparent rate context for international transfers',
     indexDesc: 'Transparent rate context for international transfers',
     hero: {
-      file: 'fxpress/hero',
+      file: 'fxpress/hero', size: 'wide', mount: true,
       alt: 'The live FXpress widget: a 500 USD to KRW conversion, the 30-day range, the recipient amount, Fexi’s one-sentence rate description, and Send Now and Save Target Rate buttons',
       caption: 'The live widget as it runs today: USD to KRW, the 30-day range, and Fexi’s descriptive sentence.',
     },
@@ -52,7 +52,7 @@ export const projects = [
           { type: 'chart', kind: 'range', data: fxMonthly, title: 'Within a single month, the rate moved 2% to 9%', subtitle: 'USD/KRW reference rate: each bar runs from the month’s low to its high, labelled with the range as a share of the low. Sep 2025 to Sep 2026.', caption: 'Source: Frankfurter, ECB reference rates. Reference rates, not transfer quotes; provider fees and markups come on top.' },
           { type: 'p', text: 'The swing is the size of the opportunity a sender feels they are missing, not a saving anyone can lock in. The gap between what the rate does and what a sender can know is the product.' },
           { type: 'p', text: 'Four senders, interviewed in November 2025, described the same thing: choosing a day felt like guessing, and the only number they cared about was what the recipient gets. Two asked for a forecast. The product does not make one.' },
-          { type: 'quote', text: 'I usually end up Googling the exchange rate and trying to catch it on a ‘good day,’ which is kind of ridiculous. It feels like I’m managing trades for personal transfers.', who: 'Monthly international sender, research participant' },
+          { type: 'quote', size: 'display', text: 'I usually end up Googling the exchange rate and trying to catch it on a ‘good day,’ which is kind of ridiculous. It feels like I’m managing trades for personal transfers.', who: 'Monthly international sender, research participant' },
         ],
       },
       {
@@ -91,7 +91,7 @@ export const projects = [
                 { label: 'Shipped version', text: 'You narrate. You never decide. … Never forecast … Never tell the user whether to send. … Never mention fees.', note: 'No calculating, forecasting or advising. The assessment happens in JavaScript before the model sees anything. Fexi’s thumbs-up pose went too; the gesture read as approval of the rate.' },
               ],
             },
-            figure: { file: 'fxpress/03-fexi-states', mount: true, alt: 'Seven Fexi assistant states shown as cards, each with the condition that triggers it and the sentence the assistant is allowed to say', caption: 'Fexi’s states and the sentence each is allowed to say. The assessment is computed in code; the assistant only phrases it.' },
+            figure: { file: 'fxpress/03-fexi-states', size: 'wide', mount: true, alt: 'Seven Fexi assistant states shown as cards, each with the condition that triggers it and the sentence the assistant is allowed to say', caption: 'Fexi’s states and the sentence each is allowed to say. The assessment is computed in code; the assistant only phrases it.' },
           },
         ],
       },
@@ -100,7 +100,7 @@ export const projects = [
         heading: 'The live widget',
         blocks: [
           { type: 'p', text: 'FXpress as it runs today, with live reference rates for 18 currency pairs. Pick a currency to see where today’s rate sits, save a target rate, add a calendar reminder, and go on to Wise, Remitly, Xoom, Chase or a bank. FXpress itself does not move money.' },
-          { type: 'figure', file: 'fxpress/02-live-widget', mount: true, alt: 'Screen recording of the live FXpress widget: the amount changes, the currency switches and Fexi’s sentence updates', caption: 'The live widget: a change of currency, Fexi’s sentence updating, then the hand-off to the sender’s own provider.' },
+          { type: 'figure', file: 'fxpress/02-live-widget', size: 'wide', mount: true, alt: 'Screen recording of the live FXpress widget: the amount changes, the currency switches and Fexi’s sentence updates', caption: 'The live widget: a change of currency, Fexi’s sentence updating, then the hand-off to the sender’s own provider.' },
           { type: 'embed', src: 'https://fxpress.netlify.app/', title: 'FXpress live widget', kind: 'phone', href: 'https://fxpress.netlify.app/' },
         ],
       },
@@ -109,7 +109,7 @@ export const projects = [
         heading: 'What five testers showed',
         blocks: [
           { type: 'p', text: 'Five people, seven tasks, unmoderated in Maze, on the earlier high-fidelity prototype: the version in which the product itself moved the money.' },
-          { type: 'figure', file: 'fxpress/00-earlier-prototype', mount: true, alt: 'Three phone screens from the earlier high-fidelity Figma prototype: the send screen, the currency picker, and a Set a Rate Trigger dialog', caption: 'The prototype that was tested. Send Now and Set Trigger for Best Rate carried equal weight, and the threshold field showed a bare number.' },
+          { type: 'figure', file: 'fxpress/00-earlier-prototype', size: 'wide', mount: true, alt: 'Three phone screens from the earlier high-fidelity Figma prototype: the send screen, the currency picker, and a Set a Rate Trigger dialog', caption: 'The prototype that was tested. Send Now and Set Trigger for Best Rate carried equal weight, and the threshold field showed a bare number.' },
           { type: 'cols', worked: ['5 of 5 completed the send task.', 'All five looked at the recipient’s amount first.', '“I actually feel like I understand what this does before I’ve used it.” (cautious sender)'], broke: ['4 of 5 completed the target-rate task. One stopped at the threshold field because “1,380” had no currency; another hesitated there.', 'One tapped Send Now by mistake. The two buttons looked the same.'] },
           { type: 'quote', text: 'I don’t know what 1,380 means. Is that dollars, won, or shillings?', who: 'Sends money to Kenya, test participant #2' },
           { type: 'list', title: 'Changed before launch', items: ['Send Now is the filled primary button; the target-rate button is an outline.', 'The threshold field shows its currency, with a line of help text.', '“Set Trigger for Best Rate” became “Save Target Rate.” The product can’t promise a best rate.'] },
@@ -137,7 +137,7 @@ export const projects = [
     tagline: 'Rule-based exception triage and AI-assisted dispute drafting',
     indexDesc: 'Rule-based exception triage and AI-assisted dispute drafting',
     hero: {
-      file: 'reconlayer/hero',
+      file: 'reconlayer/hero', size: 'wide', mount: true,
       alt: 'The ReconLayer sidebar open beside a Google Sheets reconciliation workbook, showing a net dispute of $327,500, four value breaks, two population breaks and a Draft dispute email button',
       caption: 'The working add-on inside Google Sheets, on synthetic trade data. Values shown are illustrative.',
     },
@@ -169,7 +169,7 @@ export const projects = [
         blocks: [
           { type: 'p', text: 'On a small operations desk, reconciliation starts with two files and a spreadsheet. The analyst compares the firm’s records with the broker’s, chases anything that doesn’t match, and resolves it before a settlement or margin cutoff. Then they write near-identical emails to each counterparty by hand.' },
           { type: 'p', text: 'A missed trade or a misclassified break can move a margin call or the NAV. Five people across four buy-side firms, a COO, an operations lead, two analysts and an operational due-diligence consultant, described the same morning.' },
-          { type: 'figure', file: 'reconlayer/01-manual-workbook', mount: true, alt: 'A reconciliation spreadsheet built from synthetic records, with lookup formulas, #N/A cells where a record is missing, and hand-typed DISPUTE flags', caption: 'A manual reconciliation sheet built from synthetic records: lookups, #N/A cells where a record is missing, and hand-typed dispute flags. Each is a place for an error.' },
+          { type: 'figure', file: 'reconlayer/01-manual-workbook', size: 'wide', mount: true, alt: 'A reconciliation spreadsheet built from synthetic records, with lookup formulas, #N/A cells where a record is missing, and hand-typed DISPUTE flags', caption: 'A manual reconciliation sheet built from synthetic records: lookups, #N/A cells where a record is missing, and hand-typed dispute flags. Each is a place for an error.' },
         ],
       },
       {
@@ -221,10 +221,10 @@ export const projects = [
         blocks: [
           { type: 'p', text: 'ReconLayer compares the two files, sets aside valuation differences below a threshold, and sorts the rest into value breaks and population breaks. On the synthetic data the threshold is $50,000 on the absolute valuation difference, a rule I set for the prototype; the sidebar labels it MTA.' },
           { type: 'p', text: 'Result: 4 value breaks, 2 population breaks, and a net value dispute of $327,500 across the four value breaks. The two missing-record breaks have nothing to net.' },
-          { type: 'figure', file: 'reconlayer/04-sidebar-worklist', mount: true, alt: 'The ReconLayer sidebar after a run, shown in two columns: the net value dispute, four value-break rows, two population-break rows with the missing side stated, and the Draft dispute email button', caption: 'The sidebar after a run: net dispute, value breaks, population breaks with the missing side stated, and the draft button.' },
-          { type: 'figure', file: 'reconlayer/03-run', mount: true, alt: 'Screen recording of the add-on in Google Sheets: Reconcile is clicked, the sidebar fills with value breaks and population breaks, then Draft dispute email produces a draft', caption: 'Reconcile, the sidebar fills, then Draft dispute email. Trimmed and sped up.' },
+          { type: 'figure', file: 'reconlayer/04-sidebar-worklist', size: 'wide', mount: true, alt: 'The ReconLayer sidebar after a run, shown in two columns: the net value dispute, four value-break rows, two population-break rows with the missing side stated, and the Draft dispute email button', caption: 'The sidebar after a run: net dispute, value breaks, population breaks with the missing side stated, and the draft button.' },
+          { type: 'figure', file: 'reconlayer/03-run', size: 'wide', mount: true, alt: 'Screen recording of the add-on in Google Sheets: Reconcile is clicked, the sidebar fills with value breaks and population breaks, then Draft dispute email produces a draft', caption: 'Reconcile, the sidebar fills, then Draft dispute email. Trimmed and sped up.' },
           { type: 'embed', src: 'https://www.loom.com/embed/f51e32b7800442b48ddb008a916215c6', title: 'ReconLayer demo video', kind: 'video', ratio: '16 / 9', href: 'https://www.loom.com/share/f51e32b7800442b48ddb008a916215c6', hrefLabel: 'Open on Loom' },
-          { type: 'figure', file: 'reconlayer/05-email-draft', mount: true, alt: 'A generated dispute email from the final prompt: subject line, the break IDs with internal and broker figures, and a request for confirmation', caption: 'A draft generated by the shipped prompt from the classified synthetic breaks, shown in two columns. The analyst verifies it and sends it outside the tool.' },
+          { type: 'figure', file: 'reconlayer/05-email-draft', size: 'wide', mount: true, alt: 'A generated dispute email from the final prompt: subject line, the break IDs with internal and broker figures, and a request for confirmation', caption: 'A draft generated by the shipped prompt from the classified synthetic breaks, shown in two columns. The analyst verifies it and sends it outside the tool.' },
         ],
       },
       {
@@ -233,7 +233,7 @@ export const projects = [
         blocks: [
           { type: 'p', text: 'Five buy-side analysts and operators ran the real add-on, unmoderated, on the same synthetic data. Four finished reconciling, drafting and the survey; one stopped after reconciling.' },
           { type: 'cols', worked: ['Ease of use 4.75 of 5 from the four who finished.', 'On the AI draft: two would send it as is, one would edit it first, one wouldn’t trust it.'], broke: ['One of four misread “value break” and “population break”; another was unsure. The labels need plain-language explanations.', 'All four named something they’d check before sending, including the two who’d send as is.', 'What would stop them on a real morning was false positives and missed breaks, not the AI.'] },
-          { type: 'quote', text: 'I’d at least still double-check the figures and breaks make sense.', who: 'Operations analyst, test participant' },
+          { type: 'quote', size: 'display', text: 'I’d at least still double-check the figures and breaks make sense.', who: 'Operations analyst, test participant' },
         ],
       },
       {
@@ -256,9 +256,9 @@ export const projects = [
     tagline: 'Two ways to discover and research an artist’s work',
     indexDesc: 'Two ways to discover and research an artist’s work',
     hero: {
-      file: 'hwang-yoo-yup/hero',
-      alt: 'The live archive homepage: a close-up of a Hwang Yoo-Yup oil painting with the title Painter of Earth in Korean and English, and a navigation bar with Overview, Journey, Motifs, Exhibition Plan and an Archive Mode toggle',
-      caption: 'Live archive homepage with Discovery navigation and the Archive Mode toggle.',
+      file: 'hwang-yoo-yup/01-painting', size: 'bleed', crop: '21 / 9',
+      alt: 'Detail of Hwang Yoo-Yup’s painting Home Return Way: figures on a road in earth tones and reds',
+      caption: 'Hwang Yoo-Yup · Home Return Way, 1979 · oil on canvas · private collection. Detail.',
     },
     group: 'studio',
     status: 'Live',
@@ -282,7 +282,7 @@ export const projects = [
         heading: 'Two audiences, one site',
         blocks: [
           { type: 'p', text: 'Without context, six decades of returning to the same subjects can look repetitive. Scholars and curators arrive with specific questions and need the record, not the story.' },
-          { type: 'figure', file: 'hwang-yoo-yup/01-painting', alt: 'Hwang Yoo-Yup’s painting Home Return Way (1979), an oil painting of figures on a road in earth tones', caption: 'Hwang Yoo-Yup · Home Return Way, 1979 · oil on canvas · private collection.', brief: 'Confirm title, year, medium and credit with the estate.' },
+          { type: 'figure', file: 'hwang-yoo-yup/hero', size: 'wide', mount: true, alt: 'The live archive homepage: a close-up of a Hwang Yoo-Yup oil painting with the title Painter of Earth in Korean and English, and a navigation bar with Overview, Journey, Motifs, Exhibition Plan and an Archive Mode toggle', caption: 'The live homepage. Discovery navigation across the top; Archive Mode one click to the right.' },
           { type: 'p', text: 'The structure came from the estate’s exhibition catalogues, academic texts and institutional records, from how other artist archives handle mixed audiences, and from four interviews: an art advisor, a gallery dealer, a museum director and a practicing artist. Two findings shaped it. Newcomers need context first, and that same context slows researchers down.' },
         ],
       },
@@ -295,7 +295,7 @@ export const projects = [
             chose: 'One site. Discovery (Overview, Journey, Motifs, Exhibition Plan) is the default, and Archive Mode (Biography, Works, Bibliography, Exhibitions, Timeline) is one toggle away on every page.',
             instead: 'Two sites: a public exhibition site and a scholarly archive.',
             why: 'Two sites would have been too much for the estate to maintain. With one, each audience starts where it makes sense and can switch at any point.',
-            figure: { file: 'hwang-yoo-yup/02-navigation', mount: true, alt: 'Two captures of the same archive page: Discovery navigation with Overview, Journey, Motifs and Exhibition Plan, and Archive Mode navigation with Biography, Works, Bibliography, Exhibitions and Timeline', caption: 'Archive Mode adds a second row of navigation under the Discovery nav. The toggle sits at the far right of every page.' },
+            figure: { file: 'hwang-yoo-yup/02-navigation', size: 'wide', mount: true, alt: 'Two captures of the same archive page: Discovery navigation with Overview, Journey, Motifs and Exhibition Plan, and Archive Mode navigation with Biography, Works, Bibliography, Exhibitions and Timeline', caption: 'Archive Mode adds a second row of navigation under the Discovery nav. The toggle sits at the far right of every page.' },
           },
           {
             type: 'decision', title: 'Themes first, dates in the archive',
@@ -307,7 +307,7 @@ export const projects = [
             type: 'decision', title: 'Everything about a work on one page',
             chose: 'The full-size image, curatorial text, themes, details and related works, with historical context in an expandable section.',
             why: 'Scholars skip the context. Newcomers open it.',
-            figure: { file: 'hwang-yoo-yup/03-artwork-page', mount: true, alt: 'A live artwork page from the archive: the painting, its structured metadata block and the historical-context section', caption: 'An artwork page: the painting first, the structured record beside it, the context below.' },
+            figure: { file: 'hwang-yoo-yup/03-artwork-page', size: 'wide', mount: true, alt: 'A live artwork page from the archive: the painting, its structured metadata block and the historical-context section', caption: 'An artwork page: the painting first, the structured record beside it, the context below.' },
           },
           {
             type: 'decision', title: 'A quiet visual system',
@@ -321,7 +321,7 @@ export const projects = [
         heading: 'The live archive',
         blocks: [
           { type: 'p', text: 'The archive as its visitors see it. Switch between Discovery and Archive Mode from any page.' },
-          { type: 'figure', file: 'hwang-yoo-yup/02-archive-toggle', mount: true, alt: 'Screen recording of the live archive: the Discovery homepage, the Archive Mode toggle, then the Biography and Exhibitions pages in Archive Mode', caption: 'Discovery, the Archive Mode toggle, then Biography and Exhibitions in Archive Mode.' },
+          { type: 'figure', file: 'hwang-yoo-yup/02-archive-toggle', size: 'wide', mount: true, alt: 'Screen recording of the live archive: the Discovery homepage, the Archive Mode toggle, then the Biography and Exhibitions pages in Archive Mode', caption: 'Discovery, the Archive Mode toggle, then Biography and Exhibitions in Archive Mode.' },
           { type: 'embed', src: 'https://hwangyooyup.framer.website/', title: 'Hwang Yoo-Yup archive, live site', kind: 'site', ratio: '16 / 10', href: 'https://hwangyooyup.framer.website/' },
         ],
       },
@@ -330,7 +330,7 @@ export const projects = [
         heading: 'Live, with the catalogue in progress',
         blocks: [
           { type: 'p', text: 'The catalogue of works is still being added. I also wrote an exhibition plan for a retrospective in four sections, Formation, Displacement, Labor & Land, and Ritual. It is a proposal; no date is set.' },
-          { type: 'figure', file: 'hwang-yoo-yup/04-exhibition-plan', mount: true, alt: 'The Exhibition Plan section of the live site: four zones, Formation, Displacement, Labor & Land and Ritual, each with a focus line', caption: 'The exhibition plan on the live site: four zones, each with its focus. A proposal; no date is set.' },
+          { type: 'figure', file: 'hwang-yoo-yup/04-exhibition-plan', size: 'wide', mount: true, alt: 'The Exhibition Plan section of the live site: four zones, Formation, Displacement, Labor & Land and Ritual, each with a focus line', caption: 'The exhibition plan on the live site: four zones, each with its focus. A proposal; no date is set.' },
           { type: 'p', text: 'The estate said the site stands as a testament to their father’s work and honors his legacy.' },
         ],
       },
