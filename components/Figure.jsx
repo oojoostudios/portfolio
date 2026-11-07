@@ -46,8 +46,9 @@ export function findMedia(file) {
   return null;
 }
 
-export default function Figure({ caption, alt, file, parallax, cover, priority = false }) {
+export default function Figure({ caption, alt, file, parallax, cover, priority = false, mount = false }) {
   const media = findMedia(file);
+  const cls = mount ? 'figure mount' : 'figure';
   if (!media) {
     if (!cover) return null;
     // A project with no cover yet gets a title card rather than an empty frame.
@@ -59,7 +60,7 @@ export default function Figure({ caption, alt, file, parallax, cover, priority =
   }
   const description = alt || caption || '';
   return (
-    <figure className="figure" data-reveal>
+    <figure className={cls} data-reveal>
       <div className="figure-frame">
         <div className="figure-drift" data-parallax={parallax || undefined}>
           {media.video ? (

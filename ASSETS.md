@@ -185,26 +185,24 @@ seconds, no audio. Start and end on a similar frame so the loop seam is soft.
 
 ---
 
-## Checklist
+## Checklist (updated 7 Nov)
 
-| # | File | Type | Priority |
-|---|---|---|---|
-| 1 | fxpress/02-live-widget.mp4 | clip | first |
-| 2 | reconlayer/03-run.mp4 | clip | first |
-| 3 | hwang-yoo-yup/02-archive-toggle.mp4 | clip | first |
-| 4 | fxpress/01-rate-range-chart | still | first |
-| 5 | reconlayer/02-ai-boundary-diagram | still | first |
-| 6 | reconlayer/04-sidebar-worklist | still | first |
-| 7 | hwang-yoo-yup/02-navigation | still | first |
-| 8 | fxpress/02-advice-before-after | still | later |
-| 9 | fxpress/03-fexi-states | still | later |
-| 10 | fxpress/04-buttons-before-after | still | later |
-| 11 | fxpress/05-range-reading-charts | still | later |
-| 12 | reconlayer/01-manual-workbook | still | later |
-| 13 | reconlayer/03-break-rows | still | later |
-| 14 | reconlayer/05-email-draft | still | later |
-| 15 | hwang-yoo-yup/01-painting | still | needs estate sign-off |
-| 16 | hwang-yoo-yup/03-artwork-page | still | later |
-| 17 | hwang-yoo-yup/04-palette-type | still | later |
+Built in the site itself, no asset needed any more: the rate-range chart, the Jul to Sep rate chart,
+the AI boundary diagram. Dropped as low-information: fxpress/04-buttons-before-after,
+reconlayer/03-break-rows, hwang-yoo-yup/04-palette-type.
+
+| # | File | Status |
+|---|---|---|
+| 1 | fxpress/02-live-widget.mp4 | still to record |
+| 2 | reconlayer/03-run.mp4 | placed |
+| 3 | hwang-yoo-yup/02-archive-toggle.mp4 | placed (no Archive Mode click in the recording) |
+| 4 | fxpress/02-advice-before-after | placed |
+| 5 | fxpress/03-fexi-states | placed, re-tiled 4×2 |
+| 6 | reconlayer/01-manual-workbook | placed, cropped to the grid |
+| 7 | reconlayer/04-sidebar-worklist | placed, split into two columns |
+| 8 | reconlayer/05-email-draft | needs a 2x retake (received 303×677) |
+| 9 | hwang-yoo-yup/01-painting | placed; confirm credit line with the estate |
+| 10 | hwang-yoo-yup/02-navigation | placed |
+| 11 | hwang-yoo-yup/03-artwork-page | placed |
 
 `npm run build` prints which of these are still missing.

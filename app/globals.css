@@ -492,3 +492,40 @@ main:has(.panels) .hero { max-width: 1080px; margin: 0 auto; padding-left: 32px;
   .bd { padding: 20px 0; }
   .cs .next { margin-top: 80px; }
 }
+
+/* Mounted UI captures: on the project tint, no hairline, softer radius. */
+.figure.mount .figure-frame { background: var(--ptint); padding: clamp(16px, 4vw, 40px); border-radius: 16px; }
+.figure.mount img, .figure.mount video { border: 0; border-radius: 8px; }
+
+/* Charts rendered from data, in the page's own type and colour. */
+.figure.chart .chart-frame { background: var(--ptint); border-radius: 16px; padding: clamp(12px, 3vw, 28px); }
+.chart-svg { width: 100%; height: auto; display: block; font-family: inherit; }
+.chart-grid { stroke: color-mix(in oklab, var(--p) 18%, transparent); stroke-width: 1; }
+.chart-tick { font-size: 12px; fill: var(--muted); }
+.chart-val { font-size: 12px; fill: var(--pt); font-weight: 600; font-variant-numeric: tabular-nums; }
+.chart-note { font-size: 11px; fill: var(--muted); }
+.chart-bar { fill: var(--p); opacity: .55; }
+.chart-line { fill: none; stroke: var(--p); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.chart-dot { fill: var(--p); }
+
+/* Process diagram. */
+.flow-stages { list-style: none; margin: 0; padding: clamp(14px, 3vw, 24px); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; background: var(--ptint); border-radius: 16px; }
+.flow-stage { position: relative; padding: 14px 14px 16px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; }
+.flow-stage[data-band="rules"] { border-color: color-mix(in oklab, var(--p) 45%, var(--line)); background: color-mix(in oklab, var(--p) 7%, var(--bg)); }
+.flow-stage[data-band="ai"] { border-style: dashed; border-color: var(--pt); }
+.flow-stage[data-band="outside"] { background: transparent; }
+.flow-band { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.flow-stage[data-band="rules"] .flow-band, .flow-stage[data-band="ai"] .flow-band { color: var(--pt); }
+.flow-label { font-size: 15px; font-weight: 600; line-height: 1.25; }
+.flow-arrow { position: absolute; right: -13px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 14px; line-height: 1; background: var(--ptint); padding: 2px 1px; }
+@media (max-width: 760px) {
+  .flow-stages { grid-template-columns: 1fr; }
+  .flow-arrow { right: auto; left: 18px; top: auto; bottom: -15px; transform: rotate(90deg); }
+}
+
+/* Charts on narrow screens: the SVG scales down, so its type scales up and alternate month labels hide. */
+@media (max-width: 760px) {
+  .chart-tick { font-size: 20px; }
+  .chart-val { font-size: 19px; }
+  .chart-note, .chart-m-alt { display: none; }
+}

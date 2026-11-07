@@ -2,12 +2,15 @@
 //
 // Figures: `file` is the path under public/images (no extension). The build's media
 // check (scripts/check-media.mjs) fails if a hero is missing and lists missing optional
-// figures. A missing optional figure is simply not rendered. `brief` is an internal
-// production note for the designer and is never shown on the page. `alt` describes the
-// image for screen readers; `caption` is the visible, evidence-based caption.
+// figures. A missing optional figure is simply not rendered. `mount: true` sets a UI
+// capture on the project tint with padding. `brief` is an internal production note and is
+// never shown. `alt` describes the image for screen readers; `caption` is the visible,
+// evidence-based caption.
 //
-// Voice: plain, first person, specific. Headings describe what happened.
+// Voice: plain, first person, specific. Findings before method. One limit per beat.
 // Never state a number, result or quote that can't be traced to project notes.
+
+import { fxMonthly, fxDaily } from './fxdata.js';
 
 export const projects = [
   {
@@ -23,7 +26,6 @@ export const projects = [
       file: 'fxpress/hero',
       alt: 'The live FXpress widget: a 500 USD to KRW conversion, the 30-day range, the recipient amount, Fexi’s one-sentence rate description, and Send Now and Save Target Rate buttons',
       caption: 'The live widget as it runs today: USD to KRW, the 30-day range, and Fexi’s descriptive sentence.',
-      brief: 'Replace with a Figma-framed capture of the live widget if preferred; the current file is a direct screenshot of fxpress.netlify.app.',
     },
     group: 'work',
     status: 'Live',
@@ -37,19 +39,19 @@ export const projects = [
     ],
     links: [{ label: 'Try it live', href: 'https://fxpress.netlify.app' }],
     glance: {
-      problem: 'Money transfer apps show today’s exchange rate but give no context for it. On central-bank reference rates, USD/KRW moved an average of 3.7% within each month over the past year, about $74 on a $2,000 transfer.',
-      made: 'A live widget that shows where today’s rate sits in its 30-day range, then hands off to the provider the sender already uses. The code does every calculation; the AI assistant only rewords a sentence the code has written.',
-      happened: 'Five of five testers completed the send task in the high-fidelity Figma prototype, and four of five completed the target-rate task. The widget is live across 18 currency pairs; in the first 30 days of logs, all 33 AI calls returned without error.',
+      problem: 'Money transfer apps show today’s exchange rate and nothing about it. On central-bank reference rates, USD/KRW moved about 3.8% within a typical month over the past year, roughly $76 on a $2,000 transfer.',
+      made: 'A live widget that places today’s rate in its 30-day range, then hands off to whichever provider the sender already uses. Every calculation is in code. The AI assistant rewords one sentence the code has already written.',
+      happened: 'All five testers completed the send task on the high-fidelity prototype; four of five completed the target-rate task. The widget is live across 18 currency pairs, and all 33 AI calls in the first 30 days of logs returned without error.',
     },
     beats: [
       {
         label: 'Context',
         heading: 'A rate on its own tells you nothing',
         blocks: [
-          { type: 'p', text: 'My parents have sent money from the US to Korea for decades. Every app they use shows today’s rate, but none says how it compares with recent weeks.' },
-          { type: 'p', text: 'The day matters more than it seems. The 3.7% monthly swing above illustrates how much the rate moves, not a saving a sender could lock in, and it excludes provider fees and markups.' },
-          { type: 'figure', file: 'fxpress/01-rate-range-chart', alt: 'Bar chart of monthly high and low USD/KRW reference rates from September 2025 to September 2026', caption: 'Monthly high-to-low USD/KRW reference-rate ranges, Sep 2025 to Sep 2026. Reference rates, not executable transfer quotes.', brief: 'Chart from actual date-stamped monthly highs and lows (Frankfurter data). 1600×900. See brief G1.' },
-          { type: 'p', text: 'In November 2025 I interviewed four people who send money abroad. Picking a day to send felt like guessing, and what they cared about was how much the recipient would get. Two asked for a forecast, which I decided not to build.' },
+          { type: 'p', text: 'My parents have sent money from the US to Korea for decades. Every app they use shows today’s rate. None says whether it is a good one.' },
+          { type: 'chart', kind: 'range', data: fxMonthly, caption: 'Monthly high-to-low range of the USD/KRW reference rate, Sep 2025 to Sep 2026. Reference rates, not transfer quotes; provider fees and markups come on top.' },
+          { type: 'p', text: 'The swing is the size of the opportunity a sender feels they are missing, not a saving anyone can lock in. The gap between what the rate does and what a sender can know is the product.' },
+          { type: 'p', text: 'Four senders, interviewed in November 2025, described the same thing: choosing a day felt like guessing, and the only number they cared about was what the recipient gets. Two asked for a forecast. The product does not make one.' },
           { type: 'quote', text: 'I usually end up Googling the exchange rate and trying to catch it on a ‘good day,’ which is kind of ridiculous. It feels like I’m managing trades for personal transfers.', who: 'Monthly international sender, research participant' },
         ],
       },
@@ -57,39 +59,39 @@ export const projects = [
         label: 'Decisions',
         heading: 'Four decisions about what the product is allowed to say',
         blocks: [
-          { type: 'p', text: 'Three rules framed every decision: no forecasting, no financial advice, and no invented pricing. The product describes; the sender decides.' },
+          { type: 'p', text: 'Three rules framed every decision: no forecasting, no financial advice, no invented pricing. The product describes; the sender decides.' },
           {
             type: 'decision', title: 'Describe the rate instead of advising',
-            chose: 'One sentence describing where today’s rate sits, then a link to the sender’s own provider.',
+            chose: 'One sentence on where today’s rate sits, then a link to the sender’s own provider.',
             instead: 'An assistant that recommended a provider and a time to send; an auto-router that moved the money; a chat assistant.',
-            why: 'A recommendation implies the product knows what the rate will do next, and it doesn’t. Moving money would mean licensing, custody and compliance obligations; a chat interface would slow down a 30-second task.',
-            figure: { file: 'fxpress/02-advice-before-after', alt: 'Two phone screens side by side: an earlier Figma concept where the assistant recommends when to send, and the live widget’s neutral rate description', caption: 'The assistant shifted from suggesting decisions to explaining recent exchange-rate context. Left: earlier high-fidelity concept. Right: live widget.', brief: 'See brief F5.' },
+            why: 'A recommendation implies the product knows what the rate will do next. It doesn’t. Moving money would mean licensing, custody and compliance; a chat interface would slow a 30-second task.',
+            figure: { file: 'fxpress/02-advice-before-after', mount: true, alt: 'Two phone screens side by side: an earlier concept where the assistant tells the sender to send today, and the shipped approach, a neutral description of where the rate sits', caption: 'Left: an earlier concept, where the assistant told the sender what to do. Right: the approach that shipped, a description of where the rate sits.' },
           },
           {
             type: 'decision', title: 'Compare against 30 days of history, not this session',
-            chose: 'A 30-day range from central-bank reference rates, split into low, mid and high. With fewer than 10 days of history, it makes no comparison at all.',
+            chose: 'A 30-day range from central-bank reference rates, split into low, mid and high. With fewer than 10 days of history, no comparison at all.',
             instead: 'Comparing today’s rate with rates seen during the visitor’s session.',
-            why: 'My first build called a rate “the best rate you’ve seen this session” on a first visit, when there was nothing to compare it to.',
+            why: 'My first build called a rate “the best you’ve seen this session” on a first visit, with nothing to compare it to.',
           },
           {
             type: 'decision', title: 'Remove the fee line',
             chose: 'Show the amount at today’s rate, with a note that the provider’s fee and markup aren’t included.',
             instead: 'Showing an estimated fee next to the recipient amount.',
-            why: 'FXpress can’t see what providers charge, and an estimate on a money screen would look like a real figure.',
+            why: 'FXpress can’t see what providers charge. An estimate on a money screen reads as a real figure.',
           },
           {
             type: 'decision', title: 'Keep the interpretation in code', highlight: true,
-            chose: 'The code works out where the rate sits and writes the sentence. Fexi, the assistant, rewords it, and a check rejects any reply that changes the meaning, adds a number, or reads as advice. With fewer than 10 days of history the server answers without calling the model at all.',
+            chose: 'The code works out where the rate sits and writes the sentence. Fexi, the assistant, rewords it. A check rejects any reply that changes the meaning, adds a number or reads as advice. With fewer than 10 days of history the server answers without calling the model.',
             instead: 'Letting the AI read the data and interpret it, guided by instructions.',
-            why: 'In October 2026 Fexi told a sender that a rate at the low end of the month meant they were getting the most won for their dollar. It meant the opposite. The sentence sounded fine, so a user wouldn’t have noticed.',
+            why: 'In October 2026 Fexi told a sender that a rate at the low end of the month meant more won for their dollar. It meant the opposite, and the sentence read fine.',
             compare: {
               heading: 'How the assistant’s instructions changed',
               items: [
-                { label: 'First version', text: '…Write ONE short, warm sentence telling them whether now is a good moment to send and why… Do NOT predict the future.', note: 'Asking it to say “whether now is a good moment to send” is asking for advice, even with the line about not predicting.' },
-                { label: 'Shipped version', text: 'You narrate. You never decide. … Never forecast … Never tell the user whether to send. … Never mention fees.', note: 'It rules out calculating, forecasting and advising. The assessment now happens in JavaScript before the model sees anything. I also removed a thumbs-up pose from Fexi’s avatar, because the gesture suggested approval of the rate.' },
+                { label: 'First version', text: '…Write ONE short, warm sentence telling them whether now is a good moment to send and why… Do NOT predict the future.', note: '“Whether now is a good moment to send” is a request for advice, whatever the line about not predicting says.' },
+                { label: 'Shipped version', text: 'You narrate. You never decide. … Never forecast … Never tell the user whether to send. … Never mention fees.', note: 'No calculating, forecasting or advising. The assessment happens in JavaScript before the model sees anything. Fexi’s thumbs-up pose went too; the gesture read as approval of the rate.' },
               ],
             },
-            figure: { file: 'fxpress/03-fexi-states', alt: 'Four Fexi assistant states shown as cards, each with the condition that triggers it and the sentence the assistant is allowed to say', caption: 'Fexi’s states and what each is allowed to say. The assessment is computed in code; the assistant only phrases it.', brief: 'From the Figma FexiCard component set (node 5628:12733). Confirm which states exist; see brief G2.' },
+            figure: { file: 'fxpress/03-fexi-states', mount: true, alt: 'Seven Fexi assistant states shown as cards, each with the condition that triggers it and the sentence the assistant is allowed to say', caption: 'Fexi’s states and the sentence each is allowed to say. The assessment is computed in code; the assistant only phrases it.' },
           },
         ],
       },
@@ -97,31 +99,30 @@ export const projects = [
         label: 'Proof',
         heading: 'The live widget',
         blocks: [
-          { type: 'p', text: 'FXpress as it runs today, with live reference rates for 18 currency pairs. Pick a currency and see where today’s rate sits. People can save a target rate, add a calendar reminder, and go to a provider such as Wise, Remitly, Xoom, Chase or their own bank. FXpress itself does not move money.' },
-          { type: 'figure', file: 'fxpress/02-live-widget', alt: 'Screen recording of the live FXpress widget: the amount changes, the currency switches and Fexi’s sentence updates', caption: 'The live widget. Change the amount or currency and the range label and Fexi’s sentence update.' },
+          { type: 'p', text: 'FXpress as it runs today, with live reference rates for 18 currency pairs. Pick a currency to see where today’s rate sits, save a target rate, add a calendar reminder, and go on to Wise, Remitly, Xoom, Chase or a bank. FXpress itself does not move money.' },
+          { type: 'figure', file: 'fxpress/02-live-widget', mount: true, alt: 'Screen recording of the live FXpress widget: the amount changes, the currency switches and Fexi’s sentence updates', caption: 'The live widget. Change the amount or currency and the range label and Fexi’s sentence update.' },
           { type: 'embed', src: 'https://fxpress.netlify.app/', title: 'FXpress live widget', kind: 'phone', href: 'https://fxpress.netlify.app/' },
         ],
       },
       {
         label: 'Testing',
-        heading: 'What testing the prototype showed',
+        heading: 'What five testers showed',
         blocks: [
-          { type: 'p', text: 'An unmoderated Maze test with five people and seven tasks, on the high-fidelity Figma prototype, an earlier version in which the product itself moved the money. Counts, not percentages.' },
-          { type: 'figure', file: 'fxpress/00-earlier-prototype', alt: 'Three phone screens from the earlier high-fidelity Figma prototype: the send screen, the currency picker, and a Set a Rate Trigger dialog', caption: 'The earlier high-fidelity prototype that was tested. Send Now and Set Trigger for Best Rate had equal visual weight, and the threshold field showed a bare number.' },
-          { type: 'cols', worked: ['5 of 5 completed the send task.', 'All five looked at the recipient’s amount first.', '“I actually feel like I understand what this does before I’ve used it.” (cautious sender)'], broke: ['4 of 5 completed the target-rate task. One stopped at the threshold field because “1,380” had no currency, and another hesitated there.', 'One tapped Send Now by mistake. Both buttons had the same visual weight.'] },
+          { type: 'p', text: 'Five people, seven tasks, unmoderated in Maze, on the earlier high-fidelity prototype: the version in which the product itself moved the money.' },
+          { type: 'figure', file: 'fxpress/00-earlier-prototype', mount: true, alt: 'Three phone screens from the earlier high-fidelity Figma prototype: the send screen, the currency picker, and a Set a Rate Trigger dialog', caption: 'The prototype that was tested. Send Now and Set Trigger for Best Rate carried equal weight, and the threshold field showed a bare number.' },
+          { type: 'cols', worked: ['5 of 5 completed the send task.', 'All five looked at the recipient’s amount first.', '“I actually feel like I understand what this does before I’ve used it.” (cautious sender)'], broke: ['4 of 5 completed the target-rate task. One stopped at the threshold field because “1,380” had no currency; another hesitated there.', 'One tapped Send Now by mistake. The two buttons looked the same.'] },
           { type: 'quote', text: 'I don’t know what 1,380 means. Is that dollars, won, or shillings?', who: 'Sends money to Kenya, test participant #2' },
-          { type: 'list', title: 'What I changed before launch', items: ['Made Send Now the filled primary button and the target-rate button an outline.', 'Added the currency to the threshold field, with a line of help text.', 'Renamed “Set Trigger for Best Rate” to “Save Target Rate,” since the product can’t promise the best rate.'] },
-          { type: 'figure', file: 'fxpress/04-buttons-before-after', alt: 'Two phone screens: the action area with Send Now and Save Target Rate at equal visual weight, then the shipped version with a filled primary button and an outlined secondary button', caption: 'Button hierarchy before and after. Testing exposed ambiguous priority between the two actions; the shipped version makes Send Now primary. Not re-tested with users.', brief: 'See brief G3.' },
-          { type: 'p', text: 'These changes are in the live widget. I haven’t re-tested them with users.' },
+          { type: 'list', title: 'Changed before launch', items: ['Send Now is the filled primary button; the target-rate button is an outline.', 'The threshold field shows its currency, with a line of help text.', '“Set Trigger for Best Rate” became “Save Target Rate.” The product can’t promise a best rate.'] },
+          { type: 'p', text: 'These changes are in the live widget and have not been re-tested.' },
         ],
       },
       {
         label: 'Limits',
-        heading: 'What the live data showed, and what’s next but not yet built',
+        heading: 'What the live data showed, and what comes next',
         blocks: [
-          { type: 'p', text: 'The 30-day comparison is useful when the rate moves up and down within a range, and less useful when it moves steadily in one direction. From July to September the won kept strengthening, and 68 of 75 readings said “low.”' },
-          { type: 'figure', file: 'fxpress/05-range-reading-charts', alt: 'Two aligned charts: the USD/KRW reference rate falling from July to September 2026, and the widget’s range label reading low for 68 of 75 readings over the same period', caption: 'Observed rate direction versus the widget’s rolling range labels, Jul to Sep 2026. This informed the next design hypothesis; a trend indicator has not shipped.', brief: 'See brief G4.' },
-          { type: 'p', text: 'Next I’d show which way the rate has been moving, as well as where it sits. The 33-call logging window above says nothing about whether every sentence was correct, and the offline fallback has no tracking, so I can’t say whether it has been used.' },
+          { type: 'p', text: 'The 30-day comparison works when the rate moves within a range and misleads when it trends. From July to September 2026 the won strengthened steadily, and 68 of 75 widget readings said “low.”' },
+          { type: 'chart', kind: 'line', data: fxDaily, caption: 'USD/KRW reference rate, 1 July to 1 September 2026. Over this window 68 of 75 widget readings labelled the rate low. A trend indicator has not shipped.' },
+          { type: 'p', text: 'Next: show which way the rate has been moving as well as where it sits. The 33-call log window says nothing about whether each sentence was correct, and the offline fallback has no tracking.' },
         ],
       },
     ],
@@ -157,18 +158,18 @@ export const projects = [
     context:
       'I worked in buy-side trading operations for eleven years and did this kind of reconciliation myself.',
     glance: {
-      problem: 'Small operations teams compare internal records against broker files under time pressure. A missing trade can be overlooked when the workflow emphasizes valuation differences.',
-      made: 'A spreadsheet-native prototype that classifies missing-record and value discrepancies with explicit rules. AI drafts dispute communications only after classification; the analyst reviews them and sends outside the tool.',
-      happened: 'Five buy-side operators tested the add-on on synthetic records; four completed the reconciliation-to-draft flow and rated ease of use 4.75 of 5 on average. All four named a check they would make before sending; two said they might send the draft as is.',
+      problem: 'Small operations teams reconcile internal records against broker files under a cutoff. A missing trade is easy to overlook when the workflow is built around valuation differences.',
+      made: 'A spreadsheet-native prototype that classifies missing-record and value discrepancies with explicit rules. The AI drafts the dispute email only after classification; the analyst reviews it and sends outside the tool.',
+      happened: 'Five buy-side operators tested it on synthetic records. Four completed the reconciliation-to-draft flow and rated ease of use 4.75 of 5. All four named a check they would make before sending; two would send the draft as is.',
     },
     beats: [
       {
         label: 'Context',
         heading: 'Two files, a cutoff, and exceptions that are easy to miss',
         blocks: [
-          { type: 'p', text: 'On a small finance operations desk, reconciliation often starts with two files and a spreadsheet. The analyst compares the firm’s records with the broker’s file, looks into anything that doesn’t match, and resolves it before a settlement or margin cutoff. Then they write similar emails to each counterparty by hand.' },
-          { type: 'p', text: 'Mistakes matter: a missed trade or misclassified break can affect a margin call or NAV. I interviewed five people across four buy-side firms, a COO, an operations team lead, two analysts and an external operational due-diligence consultant.' },
-          { type: 'figure', file: 'reconlayer/01-manual-workbook', alt: 'An illustrative reconciliation spreadsheet built from synthetic records, with VLOOKUP formulas, #N/A cells and hand-typed DISPUTE flags', caption: 'Illustrative manual reconciliation sheet, built from synthetic records, showing why lookups, unmatched records and hand-entered flags need repeated analyst checks.', brief: 'See brief G5. Label inside the asset: ILLUSTRATIVE WORKBOOK · SYNTHETIC DATA.' },
+          { type: 'p', text: 'On a small operations desk, reconciliation starts with two files and a spreadsheet. The analyst compares the firm’s records with the broker’s, chases anything that doesn’t match, and resolves it before a settlement or margin cutoff. Then they write near-identical emails to each counterparty by hand.' },
+          { type: 'p', text: 'A missed trade or a misclassified break can move a margin call or the NAV. Five people across four buy-side firms, a COO, an operations lead, two analysts and an operational due-diligence consultant, described the same morning.' },
+          { type: 'figure', file: 'reconlayer/01-manual-workbook', mount: true, alt: 'A reconciliation spreadsheet built from synthetic records, with lookup formulas, #N/A cells where a record is missing, and hand-typed DISPUTE flags', caption: 'A manual reconciliation sheet built from synthetic records: lookups, #N/A cells where a record is missing, and hand-typed dispute flags. Each is a place for an error.' },
         ],
       },
       {
@@ -179,20 +180,19 @@ export const projects = [
             type: 'decision', title: 'Work inside the spreadsheet, not alongside it',
             chose: 'An add-on that runs in the spreadsheet the analyst already uses.',
             instead: 'A standalone reconciliation product to sell.',
-            why: 'Research changed my plan: small desks often outsource this work, a free tool raises due-diligence questions, and larger vendors already cover the core features. A small team doesn’t want another system and login to maintain.',
+            why: 'Research changed the plan. Small desks often outsource this work, a free tool raises due-diligence questions, and the larger vendors already cover the core features. Nobody on a small team wants another system to log into.',
           },
           {
             type: 'decision', title: 'Make missing records visible before ranking differences',
             chose: 'Two groups: value breaks, where both sides have a figure that differs, and population breaks, where one side has no record at all.',
             instead: 'One list ranked by the size of the difference.',
-            why: 'A trade missing from one file has no difference to rank, so it would sink to the bottom of a ranked list. It is often the most important item on the desk.',
-            figure: { file: 'reconlayer/03-break-rows', alt: 'Two exception cards comparing a valuation mismatch, where both records exist but values differ, with a trade present in the broker file only', caption: 'A missing-record exception needs a different label and review path from a valuation difference. Example trade values are synthetic.', brief: 'See brief F2.' },
+            why: 'A missing trade has no difference to rank, so a ranked list buries it. It is often the most important item on the desk.',
           },
           {
             type: 'decision', title: 'Keep reconciliation rules separate from AI-generated writing', highlight: true,
-            chose: 'Fixed rules classify every break first. The AI drafts the counterparty email from the classified data, within fixed limits, and cannot change a classification. The draft is shown for review; ReconLayer has no Send button.',
+            chose: 'Fixed rules classify every break first. The AI drafts the counterparty email from the classified data, within fixed limits, and cannot change a classification. The draft is shown for review. There is no Send button.',
             instead: 'AI-based classification; AI handling the easy cases and flagging the hard ones; a library of email templates; sending automatically.',
-            why: 'Analysts have to be able to explain each decision. In my words from the project: “An analyst can defend a rule. They can’t defend a hunch.” Templates lost because the mix of breaks is different every morning, and the analyst is responsible for each dispute, so the analyst sends it.',
+            why: 'An analyst can defend a rule. They can’t defend a hunch. Templates lost because the mix of breaks differs every morning, and the analyst owns each dispute, so the analyst sends it.',
             compare: {
               heading: 'Three versions of the email prompt',
               items: [
@@ -201,7 +201,17 @@ export const projects = [
                 { label: '3 · Fixed format and limits (shipped)', text: 'Do NOT calculate, alter, or infer any figures … Fixed format: subject line, discrepancy, internal-vs-broker breakdown, call to action. Max 80 words.', note: 'Short, consistent, and limited to the data it’s given.' },
               ],
             },
-            figure: { file: 'reconlayer/02-ai-boundary-diagram', alt: 'Flow diagram in five stages: internal and broker files, reconciliation rules, reviewable exceptions, AI-generated draft, analyst review. The rules and exceptions sit in a deterministic band; only the draft sits in the AI band', caption: 'The model can propose wording but cannot change a reconciliation classification or send a dispute.', brief: 'See brief F3.' },
+            flow: {
+              caption: 'The model proposes wording. It cannot change a classification or send a dispute.',
+              stages: [
+                { label: 'Internal and broker files', band: 'input' },
+                { label: 'Reconciliation rules', band: 'rules' },
+                { label: 'Reviewable exceptions', band: 'rules' },
+                { label: 'AI-drafted email', band: 'ai' },
+                { label: 'Analyst reviews and sends', band: 'outside' },
+              ],
+              bands: { input: 'Input', rules: 'Deterministic', ai: 'AI', outside: 'Outside the tool' },
+            },
           },
         ],
       },
@@ -209,29 +219,29 @@ export const projects = [
         label: 'Proof',
         heading: 'From two files to a reviewable dispute draft',
         blocks: [
-          { type: 'p', text: 'ReconLayer compares the two files, sets aside valuation differences below a threshold, and sorts what’s left into value breaks and population breaks. On the synthetic test data the prototype applies a $50,000 threshold on the absolute valuation difference, a rule I set for the prototype (the sidebar labels it “MTA”).' },
-          { type: 'p', text: 'Result: 4 value breaks, 2 population breaks, and a net value dispute of $327,500 across the four value breaks. The two missing-record breaks have no difference to net.' },
-          { type: 'figure', file: 'reconlayer/04-sidebar-worklist', alt: 'Close-up of the ReconLayer sidebar: the net value dispute, four value-break rows, two population-break rows with the missing side stated, and the Draft dispute email button', caption: 'Reconciled synthetic trade records grouped for review. The net value discrepancy is shown separately from unmatched records.', brief: 'See brief G6.' },
-          { type: 'figure', file: 'reconlayer/03-run', alt: 'Screen recording of the add-on in Google Sheets: Reconcile is clicked, the sidebar fills with value breaks and population breaks, then Draft dispute email produces a draft', caption: 'The add-on on the synthetic workbook: Reconcile, the sidebar fills, then Draft dispute email. Trimmed and sped up.' },
+          { type: 'p', text: 'ReconLayer compares the two files, sets aside valuation differences below a threshold, and sorts the rest into value breaks and population breaks. On the synthetic data the threshold is $50,000 on the absolute valuation difference, a rule I set for the prototype; the sidebar labels it MTA.' },
+          { type: 'p', text: 'Result: 4 value breaks, 2 population breaks, and a net value dispute of $327,500 across the four value breaks. The two missing-record breaks have nothing to net.' },
+          { type: 'figure', file: 'reconlayer/04-sidebar-worklist', mount: true, alt: 'The ReconLayer sidebar after a run, shown in two columns: the net value dispute, four value-break rows, two population-break rows with the missing side stated, and the Draft dispute email button', caption: 'The sidebar after a run: net dispute, value breaks, population breaks with the missing side stated, and the draft button.' },
+          { type: 'figure', file: 'reconlayer/03-run', mount: true, alt: 'Screen recording of the add-on in Google Sheets: Reconcile is clicked, the sidebar fills with value breaks and population breaks, then Draft dispute email produces a draft', caption: 'Reconcile, the sidebar fills, then Draft dispute email. Trimmed and sped up.' },
           { type: 'embed', src: 'https://www.loom.com/embed/f51e32b7800442b48ddb008a916215c6', title: 'ReconLayer demo video', kind: 'video', ratio: '16 / 9', href: 'https://www.loom.com/share/f51e32b7800442b48ddb008a916215c6', hrefLabel: 'Open on Loom' },
-          { type: 'figure', file: 'reconlayer/05-email-draft', alt: 'A generated dispute email from the final prompt: subject line, the break ID with internal and broker figures, and a request for confirmation, with annotations noting fixed data fields, no invented causes, and human sign-off outside the tool', caption: 'An AI-assisted dispute draft generated from classified synthetic breaks. The analyst remains responsible for verifying and sending it.', brief: 'See brief F4. Must be a real generated email from version 3.' },
+          { type: 'figure', file: 'reconlayer/05-email-draft', mount: true, alt: 'A generated dispute email from the final prompt: subject line, the break IDs with internal and broker figures, and a request for confirmation', caption: 'A draft generated from the classified synthetic breaks. The analyst verifies it and sends it outside the tool.' },
         ],
       },
       {
         label: 'Testing',
-        heading: 'A usable workflow, but not yet a trusted system',
+        heading: 'A usable workflow, not yet a trusted system',
         blocks: [
-          { type: 'p', text: 'Five analysts and operators from the institutional buy-side ran the real add-on, unmoderated, on the same synthetic data. Four finished reconciling, drafting and the survey; one stopped after reconciling. With four responses the results are directional, not a benchmark.' },
-          { type: 'cols', worked: ['The four who finished rated ease of use 4.75 out of 5 on average.', 'On the AI draft: 2 would send it as is, 1 would edit it first, and 1 wouldn’t trust it.'], broke: ['One of four misread “value break” and “population break,” and another was unsure of them. The labels need short explanations.', 'All four named something they’d check before sending, including the two who’d send as is.', 'What would stop them using it on a real morning was false positives and missed breaks, rather than the AI.'] },
+          { type: 'p', text: 'Five buy-side analysts and operators ran the real add-on, unmoderated, on the same synthetic data. Four finished reconciling, drafting and the survey; one stopped after reconciling.' },
+          { type: 'cols', worked: ['Ease of use 4.75 of 5 from the four who finished.', 'On the AI draft: two would send it as is, one would edit it first, one wouldn’t trust it.'], broke: ['One of four misread “value break” and “population break”; another was unsure. The labels need plain-language explanations.', 'All four named something they’d check before sending, including the two who’d send as is.', 'What would stop them on a real morning was false positives and missed breaks, not the AI.'] },
           { type: 'quote', text: 'I’d at least still double-check the figures and breaks make sense.', who: 'Operations analyst, test participant' },
         ],
       },
       {
         label: 'Limits',
-        heading: 'What would need to change for production use',
+        heading: 'What production use would need',
         blocks: [
-          { type: 'list', title: 'What the prototype doesn’t do', items: ['Google Sheets, not Excel: most desks use Excel, but I didn’t have Excel to build or test in.', 'Two break types only; other causes are written up for later.', 'Not ready for real data: it runs on a personal Google account with the consumer Gemini API, on synthetic data. A production version would need to keep trade data inside the firm.', 'No audit trail yet: analysts and compliance teams would need to see what was flagged and why. An audit view is specified but not built.'] },
-          { type: 'list', title: 'What I’d change next', items: ['Plain-language break labels with short explanations.', 'The audit view.', 'Different broker file headers and email formats, in any workbook.'] },
+          { type: 'list', title: 'What the prototype doesn’t do', items: ['Google Sheets, not Excel, which most desks use. I didn’t have Excel to build or test in.', 'Two break types. Other causes are written up, not built.', 'Synthetic data on a personal Google account with the consumer Gemini API. Production would keep trade data inside the firm.', 'No audit trail. Analysts and compliance would need to see what was flagged and why; the audit view is specified, not built.'] },
+          { type: 'list', title: 'Next', items: ['Plain-language break labels with short explanations.', 'The audit view.', 'Arbitrary broker file headers and email formats, in any workbook.'] },
         ],
       },
     ],
@@ -262,18 +272,18 @@ export const projects = [
     ],
     links: [{ label: 'Visit the archive', href: 'https://hwangyooyup.framer.website' }],
     glance: {
-      problem: 'Hwang Yoo-Yup (1916–2010) painted the same subjects for six decades. First-time visitors need background before the work makes sense; scholars need dates, exhibition history and a searchable record, and long interpretive text gets in their way.',
+      problem: 'Hwang Yoo-Yup (1916–2010) painted the same subjects for six decades. First-time visitors need background before the work makes sense. Scholars need dates, exhibition history and a searchable record, and the background gets in their way.',
       made: 'One site with two paths. Discovery, organized by theme and motif, is the default; Archive Mode, organized as a structured record, is one toggle away on every page.',
-      happened: 'The site is live on Framer with both modes working, and the catalogue is being added. The estate told me the site honors their father’s work and legacy.',
+      happened: 'The site is live on Framer with both modes working and the catalogue being added. The estate said the site honors their father’s work and legacy.',
     },
     beats: [
       {
         label: 'Context',
-        heading: 'Two audiences with different needs',
+        heading: 'Two audiences, one site',
         blocks: [
-          { type: 'p', text: 'First-time visitors often know little about Korean history, and without background Hwang’s six decades of returning to the same subjects can look repetitive. Scholars and curators arrive with specific questions and need dates, exhibition history and a searchable record.' },
-          { type: 'figure', file: 'hwang-yoo-yup/01-painting', alt: 'Hwang Yoo-Yup’s painting Home Return Way (1979), an oil painting of figures on a road in earth tones', caption: 'Hwang Yoo-Yup · Home Return Way, 1979 · oil on canvas · private collection.', brief: 'See brief G7. Authorized reproduction only; confirm title, year, medium, dimensions and credit with the estate.' },
-          { type: 'p', text: 'I went through the estate’s exhibition catalogs, academic texts, institutional records and biographical documents, looked at how other artist archives handle mixed audiences, and interviewed four people in the art world: an art advisor, a gallery dealer, a museum director and a practicing artist. Two findings shaped the structure: newcomers need context first, and that same context slows researchers down.' },
+          { type: 'p', text: 'Without context, six decades of returning to the same subjects can look repetitive. Scholars and curators arrive with specific questions and need the record, not the story.' },
+          { type: 'figure', file: 'hwang-yoo-yup/01-painting', alt: 'Hwang Yoo-Yup’s painting Home Return Way (1979), an oil painting of figures on a road in earth tones', caption: 'Hwang Yoo-Yup · Home Return Way, 1979 · oil on canvas · private collection.', brief: 'Confirm title, year, medium and credit with the estate.' },
+          { type: 'p', text: 'The structure came from the estate’s exhibition catalogues, academic texts and institutional records, from how other artist archives handle mixed audiences, and from four interviews: an art advisor, a gallery dealer, a museum director and a practicing artist. Two findings shaped it. Newcomers need context first, and that same context slows researchers down.' },
         ],
       },
       {
@@ -284,8 +294,8 @@ export const projects = [
             type: 'decision', title: 'One site with two paths', highlight: true,
             chose: 'One site. Discovery (Overview, Journey, Motifs, Exhibition Plan) is the default, and Archive Mode (Biography, Works, Bibliography, Exhibitions, Timeline) is one toggle away on every page.',
             instead: 'Two sites: a public exhibition site and a scholarly archive.',
-            why: 'Two sites would have been too much for the estate to maintain. With one site, each audience starts where it makes sense for them and can switch at any point.',
-            figure: { file: 'hwang-yoo-yup/02-navigation', alt: 'Two captures of the same archive page: Discovery navigation with Overview, Journey, Motifs and Exhibition Plan, and Archive Mode navigation with Biography, Works, Bibliography, Exhibitions and Timeline', caption: 'The same site offers narrative discovery and structured archive navigation without duplicating content.', brief: 'See brief G8.' },
+            why: 'Two sites would have been too much for the estate to maintain. With one, each audience starts where it makes sense and can switch at any point.',
+            figure: { file: 'hwang-yoo-yup/02-navigation', mount: true, alt: 'Two captures of the same archive page: Discovery navigation with Overview, Journey, Motifs and Exhibition Plan, and Archive Mode navigation with Biography, Works, Bibliography, Exhibitions and Timeline', caption: 'Archive Mode adds a second row of navigation under the Discovery nav. The toggle sits at the far right of every page.' },
           },
           {
             type: 'decision', title: 'Themes first, dates in the archive',
@@ -296,14 +306,13 @@ export const projects = [
           {
             type: 'decision', title: 'Everything about a work on one page',
             chose: 'The full-size image, curatorial text, themes, details and related works, with historical context in an expandable section.',
-            why: 'Scholars can skip the context and newcomers can open it.',
-            figure: { file: 'hwang-yoo-yup/03-artwork-page', alt: 'A live artwork page from the archive: the painting, its structured metadata block and the historical-context section', caption: 'Art-first presentation with structured metadata and optional historical context, preserving both research paths.', brief: 'See brief G9.' },
+            why: 'Scholars skip the context. Newcomers open it.',
+            figure: { file: 'hwang-yoo-yup/03-artwork-page', mount: true, alt: 'A live artwork page from the archive: the painting, its structured metadata block and the historical-context section', caption: 'An artwork page: the painting first, the structured record beside it, the context below.' },
           },
           {
             type: 'decision', title: 'A quiet visual system',
             chose: 'A dark burgundy background, warm off-white text and earth tones taken from Hwang’s paintings, with Korean and English at equal size.',
-            why: 'I wanted the paintings to carry the color, and I checked each visual choice against whether it drew attention to them.',
-            figure: { file: 'hwang-yoo-yup/04-palette-type', alt: 'The archive’s palette of burgundy, off-white and earth tones with hex values, and Korean and English heading samples at equal size and weight', caption: 'A restrained visual language informed by the paintings, using bilingual type with equivalent hierarchy.', brief: 'See brief G10.' },
+            why: 'The paintings carry the color. Every other visual choice was checked against whether it drew attention to them.',
           },
         ],
       },
@@ -312,7 +321,7 @@ export const projects = [
         heading: 'The live archive',
         blocks: [
           { type: 'p', text: 'The archive as its visitors see it. Switch between Discovery and Archive Mode from any page.' },
-          { type: 'figure', file: 'hwang-yoo-yup/02-archive-toggle', alt: 'Screen recording of the live archive’s Discovery homepage, scrolled from the hero to the footer', caption: 'The live site’s Discovery path, top to bottom.' },
+          { type: 'figure', file: 'hwang-yoo-yup/02-archive-toggle', mount: true, alt: 'Screen recording of the live archive’s Discovery homepage, scrolled from the hero to the footer', caption: 'The live site’s Discovery path, top to bottom.' },
           { type: 'embed', src: 'https://hwangyooyup.framer.website/', title: 'Hwang Yoo-Yup archive, live site', kind: 'site', ratio: '16 / 10', href: 'https://hwangyooyup.framer.website/' },
         ],
       },
@@ -320,8 +329,8 @@ export const projects = [
         label: 'Next',
         heading: 'Live, with the catalogue in progress',
         blocks: [
-          { type: 'p', text: 'The full catalogue of works is still being added. I also wrote an exhibition plan for a retrospective in four sections, Formation, Displacement, Labor & Land, and Ritual; it is a proposal, and no exhibition date is set.' },
-          { type: 'p', text: 'The estate told me they appreciated the care that went into the site, and that it stands as a testament to their father’s work and honors his legacy.' },
+          { type: 'p', text: 'The catalogue of works is still being added. I also wrote an exhibition plan for a retrospective in four sections, Formation, Displacement, Labor & Land, and Ritual. It is a proposal; no date is set.' },
+          { type: 'p', text: 'The estate said the site stands as a testament to their father’s work and honors his legacy.' },
         ],
       },
     ],

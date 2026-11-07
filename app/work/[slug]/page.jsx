@@ -3,6 +3,25 @@ import { notFound } from 'next/navigation';
 import { projects, getProject } from '@/content/projects';
 import Figure from '@/components/Figure';
 import LiveEmbed from '@/components/LiveEmbed';
+import Chart from '@/components/Chart';
+
+// Process diagram: stages in a row, each tagged with the band it belongs to.
+function Flow({ flow }) {
+  return (
+    <figure className="figure flow" data-reveal>
+      <ol className="flow-stages" aria-label="Process stages">
+        {flow.stages.map((s, i) => (
+          <li key={s.label} className="flow-stage" data-band={s.band}>
+            <span className="flow-band">{flow.bands[s.band]}</span>
+            <span className="flow-label">{s.label}</span>
+            {i < flow.stages.length - 1 && <span className="flow-arrow" aria-hidden="true">→</span>}
+          </li>
+        ))}
+      </ol>
+      {flow.caption && <figcaption>{flow.caption}</figcaption>}
+    </figure>
+  );
+}
 
 export const dynamicParams = false;
 export const generateStaticParams = () => projects.map((p) => ({ slug: p.slug }));
@@ -37,6 +56,7 @@ function Block({ blk, index }) {
     case 'p': return <p data-reveal>{blk.text}</p>;
     case 'quote': return <Quote q={blk} />;
     case 'figure': return <div className="beat-wide"><Figure {...blk} /></div>;
+    case 'chart': return <div className="beat-wide"><Chart {...blk} /></div>;
     case 'embed': return <div className="beat-wide" data-reveal><LiveEmbed {...blk} /></div>;
     case 'list': return (
       <div data-reveal><h3 className="beat-h3">{blk.title}</h3><ul className="beat-list">{blk.items.map((t) => <li key={t}>{t}</li>)}</ul></div>
@@ -69,6 +89,7 @@ function Block({ blk, index }) {
               </div>
             </div>
           )}
+          {blk.flow && <Flow flow={blk.flow} />}
           {blk.figure && <Figure {...blk.figure} />}
         </div>
       </div>
