@@ -655,3 +655,9 @@ figcaption, .figure.chart figcaption { font-size: 14px; line-height: 1.5; color:
 .flow-arrow::after { right: 7px; width: 7px; height: 7px; border-width: 1.5px; }
 .flow-bracket { padding-top: 9px; border-top: 1.5px solid var(--text); color: var(--text); }
 .flow-bracket[data-band="rules"], .flow-bracket[data-band="ai"] { color: var(--pt); border-top-color: var(--pt); }
+
+/* Metadata links: underline the words only; the arrow and the separator stay bare. */
+.cs-metaline a { border-bottom: 0; padding-bottom: 0; text-decoration: none; color: var(--pt); }
+.cs-metaline a .ul { border-bottom: 1px solid color-mix(in oklab, var(--pt) 55%, transparent); padding-bottom: 1px; }
+.cs-metaline a:hover .ul { border-bottom-color: var(--pt); }
+.cs-metaline a .ext { font-size: .9em; margin-left: 1px; }

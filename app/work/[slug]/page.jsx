@@ -122,7 +122,9 @@ export default async function CaseStudy({ params }) {
         <p className="lede" data-reveal data-delay="150">{p.tagline}</p>
         <p className="cs-metaline" data-reveal data-delay="200">
           {p.meta.filter(([k]) => k !== 'Scope').map(([k, v]) => <span key={k}>{v.split(' · ')[0]}</span>)}
-          {p.links.map((l) => <a key={l.label} href={l.href} target="_blank" rel="noopener" title={l.note || undefined}>{l.label} ↗</a>)}
+          {p.links.map((l) => (
+            <span key={l.label}><a href={l.href} target="_blank" rel="noopener" title={l.note || undefined}><span className="ul">{l.label}</span> <span className="ext" aria-hidden="true">↗</span></a></span>
+          ))}
         </p>
         {p.stage && <p className="cs-stageline" data-reveal data-delay="240">{p.stage}</p>}
       </header>
