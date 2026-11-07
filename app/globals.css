@@ -568,3 +568,39 @@ main:has(.panels) .hero { max-width: 1080px; margin: 0 auto; padding-left: 32px;
   .chart-m-alt { display: none; }
   .standfirst { margin-top: 32px; }
 }
+
+/* Chart refinements. */
+.chart-read { stroke-width: 1.5; }
+.chart-legend { font-size: 13px; margin-top: 8px; }
+.chart-legend i { width: 2px; height: 12px; }
+
+/* Process diagram, v2: one row of equal stages, arrows centred in the gaps, band brackets beneath. */
+.flow { --gap: 28px; }
+.flow-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: var(--gap); row-gap: 14px; }
+.flow-stage { position: relative; min-height: 104px; display: flex; align-items: center; padding: 14px 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); }
+.flow-stage[data-band="rules"] { background: color-mix(in oklab, var(--p) 9%, var(--bg)); border-color: color-mix(in oklab, var(--p) 30%, var(--line)); }
+.flow-stage[data-band="ai"] { border: 1.5px dashed var(--pt); }
+.flow-stage[data-band="outside"] { background: transparent; border-style: solid; }
+.flow-label { font-size: 15px; font-weight: 600; line-height: 1.25; }
+.flow-band { display: none; }
+.flow-arrow { position: absolute; top: 50%; left: 100%; width: var(--gap); height: 12px; transform: translateY(-50%); color: var(--muted); }
+.flow-arrow::before { content: ''; position: absolute; left: 6px; right: 10px; top: 50%; border-top: 1px solid currentColor; }
+.flow-arrow::after { content: ''; position: absolute; right: 9px; top: 50%; width: 6px; height: 6px; border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: translateY(-50%) rotate(45deg); }
+.flow-bracket { grid-row: 2; padding-top: 8px; border-top: 1px solid var(--line-strong, var(--muted)); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-align: center; }
+.flow-bracket[data-band="rules"], .flow-bracket[data-band="ai"] { color: var(--pt); border-top-color: var(--pt); }
+.flow-bracket[data-band="ai"] { border-top-style: dashed; }
+@media (max-width: 760px) {
+  .flow-grid { grid-template-columns: 1fr; row-gap: 22px; }
+  .flow-stage { min-height: 0; flex-direction: column; align-items: flex-start; gap: 4px; }
+  .flow-band { display: block; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .flow-stage[data-band="rules"] .flow-band, .flow-stage[data-band="ai"] .flow-band { color: var(--pt); }
+  .flow-arrow { left: 50%; top: 100%; width: 12px; height: 22px; transform: translateX(-50%) rotate(90deg); transform-origin: center; }
+  .flow-bracket { display: none; }
+}
+
+/* Flow diagram fixes: arrows are lines, stages centre their text, phones stack. */
+.flow-arrow { background: transparent; padding: 0; }
+.flow-stage { display: grid; align-content: center; justify-items: start; gap: 4px; }
+@media (max-width: 760px) {
+  .flow-stage { grid-column: 1 !important; grid-row: auto !important; }
+}

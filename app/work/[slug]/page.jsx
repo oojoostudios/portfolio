@@ -7,17 +7,26 @@ import Chart from '@/components/Chart';
 
 // Process diagram: stages in a row, each tagged with the band it belongs to.
 function Flow({ flow }) {
+  // Consecutive stages in the same band share one bracket beneath the row.
+  const groups = [];
+  flow.stages.forEach((s, i) => {
+    const g = groups[groups.length - 1];
+    if (g && g.band === s.band) g.end = i + 1; else groups.push({ band: s.band, start: i + 1, end: i + 1 });
+  });
   return (
     <figure className="figure flow" data-reveal>
-      <ol className="flow-stages" aria-label="Process stages">
+      <div className="flow-grid" role="list" aria-label="Process stages">
         {flow.stages.map((s, i) => (
-          <li key={s.label} className="flow-stage" data-band={s.band}>
+          <div key={s.label} className="flow-stage" data-band={s.band} role="listitem" style={{ gridColumn: i + 1, gridRow: 1 }}>
             <span className="flow-band">{flow.bands[s.band]}</span>
             <span className="flow-label">{s.label}</span>
-            {i < flow.stages.length - 1 && <span className="flow-arrow" aria-hidden="true">→</span>}
-          </li>
+            {i < flow.stages.length - 1 && <span className="flow-arrow" aria-hidden="true" />}
+          </div>
         ))}
-      </ol>
+        {groups.map((g) => (
+          <div key={g.band} className="flow-bracket" data-band={g.band} aria-hidden="true" style={{ gridColumn: `${g.start} / ${g.end + 1}` }}>{flow.bands[g.band]}</div>
+        ))}
+      </div>
       {flow.caption && <figcaption>{flow.caption}</figcaption>}
     </figure>
   );

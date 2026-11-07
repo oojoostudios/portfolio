@@ -15,14 +15,14 @@ function ticksFor(min, max, n = 3) {
 }
 
 function RangeChart({ data }) {
-  const H = 300, padL = 4, padR = 4, padT = 30, padB = 28;
+  const H = 300, padL = 56, padR = 4, padT = 30, padB = 28;
   const { lo, hi, ticks } = ticksFor(Math.min(...data.map((d) => d.lo)), Math.max(...data.map((d) => d.hi)));
   const y = (v) => padT + (hi - v) / (hi - lo) * (H - padT - padB);
   const slot = (W - padL - padR) / data.length; const bw = Math.min(30, slot * 0.5);
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="chart-svg" role="img" aria-label="Monthly high-to-low range of the USD/KRW reference rate, one bar per month">
       {ticks.map((t) => (
-        <g key={t}><line x1={padL} x2={W - padR} y1={y(t)} y2={y(t)} className="chart-grid" /><text x={padL} y={y(t) - 5} className="chart-tick">{fmt(t)}</text></g>
+        <g key={t}><line x1={4} x2={W - padR} y1={y(t)} y2={y(t)} className="chart-grid" /><text x={4} y={y(t) - 5} className="chart-tick">{fmt(t)}</text></g>
       ))}
       {data.map((d, i) => {
         const x = padL + slot * i + (slot - bw) / 2;
@@ -30,7 +30,7 @@ function RangeChart({ data }) {
           <g key={d.m}>
             <rect x={x} y={y(d.hi)} width={bw} height={Math.max(2, y(d.lo) - y(d.hi))} className="chart-bar" />
             <text x={x + bw / 2} y={y(d.hi) - 7} textAnchor="middle" className="chart-val">{d.pct.toFixed(1)}%</text>
-            <text x={i === 0 ? padL : i === data.length - 1 ? W - padR : x + bw / 2} y={H - 8} textAnchor={i === 0 ? 'start' : i === data.length - 1 ? 'end' : 'middle'} className={i % 2 ? 'chart-tick chart-m-alt' : 'chart-tick'}>{d.m}</text>
+            <text x={i === data.length - 1 ? W - padR : x + bw / 2} y={H - 8} textAnchor={i === data.length - 1 ? 'end' : 'middle'} className={i % 2 ? 'chart-tick chart-m-alt' : 'chart-tick'}>{d.m}</text>
           </g>
         );
       })}
@@ -40,11 +40,11 @@ function RangeChart({ data }) {
 
 function LineChart({ data, readings = [] }) {
   const hasStrip = readings.length > 0;
-  const H = hasStrip ? 336 : 260, padL = 4, padR = 64, padT = 24, padB = hasStrip ? 102 : 30;
+  const H = hasStrip ? 352 : 260, padL = 56, padR = 64, padT = 24, padB = hasStrip ? 118 : 30;
   const vals = data.map((d) => d[1]);
   const { lo, hi, ticks } = ticksFor(Math.min(...vals), Math.max(...vals));
   const t = (iso) => Date.parse(iso.length === 10 ? iso + 'T12:00:00Z' : iso + ':00Z');
-  const t0 = t(data[0][0]), t1 = t(data[data.length - 1][0]);
+  const t0 = t(data[0][0]), t1 = Math.max(t(data[data.length - 1][0]), ...readings.map((r) => t(r[0])));
   const x = (iso) => padL + ((t(iso) - t0) / (t1 - t0)) * (W - padL - padR);
   const plotB = H - padB; const y = (v) => padT + (hi - v) / (hi - lo) * (plotB - padT);
   const path = data.map((d, i) => `${i ? 'L' : 'M'}${x(d[0]).toFixed(1)},${y(d[1]).toFixed(1)}`).join(' ');
@@ -52,13 +52,13 @@ function LineChart({ data, readings = [] }) {
   const seen = new Set();
   const monthStarts = data.filter(([d]) => { const m = d.slice(0, 7); if (seen.has(m)) return false; seen.add(m); return true; });
   const label = (iso) => new Date(iso.slice(0, 10) + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
-  const stripY = plotB + 56, stripH = 26;
+  const stripY = plotB + 76, stripH = 24;
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="chart-svg" role="img" aria-label={`USD/KRW reference rate from ${label(first[0])} to ${label(last[0])}${hasStrip ? `, with ${readings.length} widget readings marked by date beneath` : ''}`}>
       {ticks.map((tk) => (
-        <g key={tk}><line x1={padL} x2={W - padR} y1={y(tk)} y2={y(tk)} className="chart-grid" /><text x={padL} y={y(tk) - 5} className="chart-tick">{fmt(tk)}</text></g>
+        <g key={tk}><line x1={4} x2={W - padR} y1={y(tk)} y2={y(tk)} className="chart-grid" /><text x={4} y={y(tk) - 5} className="chart-tick">{fmt(tk)}</text></g>
       ))}
-      {monthStarts.map(([d]) => <text key={d} x={x(d)} y={plotB + 18} textAnchor={d === first[0] ? 'start' : 'middle'} className="chart-tick">{new Date(d + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' })}</text>)}
+      {monthStarts.map(([d]) => <text key={d} x={x(d)} y={plotB + 18} textAnchor="middle" className="chart-tick">{new Date(d + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' })}</text>)}
       <path d={path} className="chart-line" />
       <circle cx={x(first[0])} cy={y(first[1])} r="3.5" className="chart-dot" />
       <circle cx={x(last[0])} cy={y(last[1])} r="3.5" className="chart-dot" />
@@ -66,8 +66,8 @@ function LineChart({ data, readings = [] }) {
       <text x={x(last[0]) + 9} y={y(last[1]) + 4} className="chart-val">{fmt(last[1])}</text>
       {hasStrip && (
         <g>
-          <line x1={padL} x2={W - padR} y1={stripY - 14} y2={stripY - 14} className="chart-grid" />
-          <text x={padL} y={stripY - 6} className="chart-tick">Widget readings, by date</text>
+          <line x1={4} x2={W - padR} y1={stripY - 22} y2={stripY - 22} className="chart-grid" />
+          <text x={4} y={stripY - 27} className="chart-tick">Widget readings, by date</text>
           {readings.map((r, i) => <line key={i} x1={x(r[0])} x2={x(r[0])} y1={stripY} y2={stripY + stripH} className={`chart-read chart-read-${r[1]}`} />)}
         </g>
       )}

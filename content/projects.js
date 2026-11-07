@@ -210,7 +210,7 @@ export const projects = [
                 { label: 'AI-drafted email', band: 'ai' },
                 { label: 'Analyst reviews and sends', band: 'outside' },
               ],
-              bands: { input: 'Input', rules: 'Deterministic', ai: 'AI', outside: 'Outside the tool' },
+              bands: { input: 'Input', rules: 'Deterministic', ai: 'AI', outside: 'Analyst' },
             },
           },
         ],
