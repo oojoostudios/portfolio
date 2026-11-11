@@ -23,9 +23,9 @@ export const projects = [
     tagline: 'Transparent rate context for international transfers',
     indexDesc: 'Transparent rate context for international transfers',
     hero: {
-      file: 'fxpress/opener', size: 'bleed', crop: '21 / 9',
-      alt: 'A hand holding a phone with the live FXpress widget on screen: 500 USD to KRW, the rate at the bottom of its 30-day range, and Fexi’s sentence saying so',
-      caption: 'The live widget: 500 USD to KRW, at the bottom of its 30-day range.',
+      file: 'fxpress/hero', size: 'wide', mount: true,
+      alt: 'The live FXpress widget: a 500 USD to KRW conversion, the 30-day range, the recipient amount, Fexi’s one-sentence rate description, and Send Now and Save Target Rate buttons',
+      caption: 'The live widget as it runs today: USD to KRW, the 30-day range, and Fexi’s descriptive sentence.',
     },
     group: 'work',
     status: 'Live',
@@ -100,6 +100,7 @@ export const projects = [
         heading: 'The live widget',
         blocks: [
           { type: 'p', text: 'FXpress as it runs today, with live reference rates for 18 currency pairs. Pick a currency to see where today’s rate sits, save a target rate, add a calendar reminder, and go on to Wise, Remitly, Xoom, Chase or a bank. FXpress itself does not move money.' },
+          { type: 'figure', file: 'fxpress/opener', crop: '3 / 2', alt: 'A hand holding a phone with the live FXpress widget on screen: 500 USD to KRW, the rate at the bottom of its 30-day range', caption: 'The live widget on a phone: 500 USD to KRW, at the bottom of its 30-day range.' },
           { type: 'figure', file: 'fxpress/02-live-widget', size: 'wide', mount: true, alt: 'Screen recording of the live FXpress widget: the amount changes, the currency switches and Fexi’s sentence updates', caption: 'The live widget: a change of currency, Fexi’s sentence updating, then the hand-off to the sender’s own provider.' },
           { type: 'embed', src: 'https://fxpress.netlify.app/', title: 'FXpress live widget', kind: 'phone', href: 'https://fxpress.netlify.app/' },
         ],
