@@ -712,3 +712,6 @@ html { overflow-x: clip; }
   .cs-metaline { flex-direction: column; gap: 4px; }
   .cs-metaline > * + *::before { content: none; margin: 0; }
 }
+
+.figure.cropped img, .figure.size-bleed img { border: 0; border-radius: 0; }
+.panel-media .figure.cropped .figure-frame { border-radius: 20px; }

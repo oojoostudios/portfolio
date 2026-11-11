@@ -23,9 +23,9 @@ export const projects = [
     tagline: 'Transparent rate context for international transfers',
     indexDesc: 'Transparent rate context for international transfers',
     hero: {
-      file: 'fxpress/hero', size: 'wide', mount: true,
-      alt: 'The live FXpress widget: a 500 USD to KRW conversion, the 30-day range, the recipient amount, Fexi’s one-sentence rate description, and Send Now and Save Target Rate buttons',
-      caption: 'The live widget as it runs today: USD to KRW, the 30-day range, and Fexi’s descriptive sentence.',
+      file: 'fxpress/opener', size: 'bleed', crop: '21 / 9',
+      alt: 'A hand holding a phone with the live FXpress widget on screen: 500 USD to KRW, the rate at the bottom of its 30-day range, and Fexi’s sentence saying so',
+      caption: 'The live widget: 500 USD to KRW, at the bottom of its 30-day range.',
     },
     group: 'work',
     status: 'Live',
