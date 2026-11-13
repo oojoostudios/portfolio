@@ -769,3 +769,6 @@ html { overflow-x: clip; }
   .bd-hl { padding-left: 16px; }
   .bd-hl::before { left: 0; }
 }
+
+/* Ledes read in text colour everywhere, as on the case-study pages. */
+.lede { color: var(--text); }
