@@ -458,28 +458,9 @@ main:has(.panels) .hero { max-width: 1080px; margin: 0 auto; padding-left: 32px;
 .beat .quote { margin: 36px 0; }
 
 /* Decision rows: no cards, one hairline between rows, small tabular numeral in the margin. */
-.bd { display: grid; grid-template-columns: 48px minmax(0, 1fr); column-gap: 8px; padding: 32px 0; border-top: 1px solid var(--line); }
-.bd:first-of-type { border-top: 0; padding-top: 12px; }
-.bd-num { font-size: 13px; font-variant-numeric: tabular-nums; letter-spacing: .06em; color: var(--muted); padding-top: 6px; }
-.bd-body { min-width: 0; }
-.bd h3 { font-size: 22px; font-weight: 600; letter-spacing: -.015em; line-height: 1.2; margin: 0 0 12px; }
-.bd-chose { margin: 0 0 10px; }
-.bd-instead { font-size: 15px; color: var(--muted); margin: 0 0 10px; }
-.bd-instead span { font-weight: 600; color: var(--text); }
-.bd-why { margin: 0; color: var(--muted); }
-.bd-hl .bd-body { border-left: 3px solid var(--p); padding-left: 20px; margin-left: -23px; }
-.bd .figure { margin: 28px 0 0; }
 @media (max-width: 640px) { .bd { grid-template-columns: 1fr; row-gap: 6px; } .bd-hl .bd-body { margin-left: 0; } }
 
 /* Prompt comparison: paired quotes with a label, in the body typeface. */
-.compare { margin-top: 28px; }
-.compare h4 { font-size: 15px; margin: 0 0 12px; font-weight: 600; }
-.compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
-.compare-item { border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; background: var(--surface); }
-.compare-item:last-child { border-color: color-mix(in oklab, var(--p) 45%, var(--line)); }
-.compare-label { display: block; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--pt); margin-bottom: 8px; }
-.compare-text { margin: 0 0 10px; font-size: 16px; line-height: 1.45; }
-.compare-note { margin: 0; font-size: 14px; color: var(--muted); }
 @media (max-width: 760px) { .compare-grid { grid-template-columns: 1fr; } }
 
 /* Phone: shorter pauses between beats and decisions; desktop unchanged. */
@@ -613,14 +594,6 @@ main:has(.panels) .hero { max-width: 1080px; margin: 0 auto; padding-left: 32px;
 .cs-head h1 { font-weight: 600; letter-spacing: -.03em; }
 .cs-section h2 { font-weight: 500; letter-spacing: -.02em; font-size: clamp(28px, 3.2vw, 38px); margin-bottom: 18px; }
 .cs-section p, .cs-section li { font-size: 17px; line-height: 1.6; color: var(--text); }
-.bd h3 { font-size: 20px; font-weight: 600; letter-spacing: -.012em; margin: 0 0 10px; }
-.bd-chose { font-weight: 500; }
-.bd-instead { font-size: 16px; color: var(--text); }
-.bd-instead span { font-weight: 600; color: var(--pt); }
-.bd-why { color: var(--text); font-size: 16.5px; }
-.bd-num { font-weight: 600; color: var(--pt); }
-.compare-text { font-size: 16px; font-weight: 500; color: var(--text); }
-.compare-note { font-size: 14.5px; color: var(--text); opacity: .82; }
 .beat-h3, .cs-section h3 { font-size: 17px; font-weight: 600; }
 .beat-list li, .testing li { color: var(--text); }
 .quote p { font-size: 22px; }
@@ -634,7 +607,6 @@ figcaption, .figure.chart figcaption { font-size: 14px; line-height: 1.5; color:
   font-size: 12.5px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--pt);
 }
 .cs-kicker { margin-bottom: 16px; }
-.compare-label { margin-bottom: 10px; }
 
 /* Opening metadata: body colour, with quiet separators. */
 .cs-metaline { font-size: 15px; color: var(--text); margin-top: 24px; }
@@ -725,11 +697,6 @@ html { overflow-x: clip; }
 .cs-section.standfirst .cs-body p { max-width: 40em; }
 
 /* Decision numbers hang in the gutter; decision text starts on the reading edge. */
-.bd { grid-template-columns: minmax(0, 1fr); column-gap: 0; position: relative; padding: 28px 0; }
-.bd-num { position: absolute; left: -56px; top: 34px; width: 40px; text-align: right; padding: 0; }
-.bd-hl .bd-body { border-left: 0; padding-left: 0; margin-left: 0; }
-.bd-hl { box-shadow: inset 3px 0 0 var(--p); padding-left: 20px; }
-.bd-hl .bd-num { left: -76px; }
 @media (max-width: 860px) { .bd-num { position: static; width: auto; text-align: left; display: block; margin-bottom: 6px; } .bd-hl { padding-left: 16px; } }
 
 /* Wide objects match the hero exactly: full grid width from the left edge. */
@@ -742,8 +709,6 @@ html { overflow-x: clip; }
 .embed { border: 0; border-radius: 16px; background: var(--ptint); margin-top: 0; }
 .embed-bar { background: transparent; border-bottom: 1px solid color-mix(in oklab, var(--p) 14%, transparent); }
 .embed-fallback { border-top: 1px solid color-mix(in oklab, var(--p) 14%, transparent); background: transparent; }
-.compare-item { border: 0; border-radius: 12px; background: var(--ptint); }
-.compare-item:last-child { box-shadow: inset 0 0 0 1.5px var(--p); }
 .figure .figure-frame { border-radius: 16px; }
 .figure img { border: 0; }
 
@@ -756,7 +721,6 @@ html { overflow-x: clip; }
 .beat .cs-body > .bd + .bd { margin-top: 0; }
 .beat .cs-body > .bd + :not(.bd) { margin-top: 40px; }
 .beat-wide .figure, .fig-wide .figure, .figure.chart, .beat .quote, .quote-display, .bd .figure { margin: 0; }
-.bd .figure, .bd .compare, .bd .flow { margin-top: 24px; }
 .beat .quote-display { padding: 0; }
 .cs-section.standfirst .cs-body > * + * { margin-top: 16px; }
 
@@ -770,9 +734,6 @@ html { overflow-x: clip; }
 .motion-on .cs [data-reveal]:not(.figure):not(.beat-wide):not(.quote) { opacity: 1; transform: none; transition: none; }
 .motion-on .cs .figure[data-reveal], .motion-on .cs .beat-wide[data-reveal], .motion-on .cs .quote[data-reveal] { transform: translateY(12px); transition-duration: .5s; }
 .motion-on .cs [data-reveal].is-in { transform: none; }
-.bd-hl { box-shadow: none; padding-left: 0; }
-.bd-hl::before { content: ''; position: absolute; left: -20px; top: 28px; bottom: 28px; width: 3px; background: var(--p); }
-.bd-hl .bd-num { left: -56px; }
 .beat .cs-body > .bd:last-child { padding-bottom: 0; }
 @media (max-width: 860px) { .bd-hl::before { left: -12px; } }
 /* The body column spans its grid cell; text and inline objects cap at 720, wide objects span the whole grid. */
@@ -780,4 +741,31 @@ html { overflow-x: clip; }
 .cs-body > *:not(.fig-wide) { max-width: 720px; }
 @media (min-width: 861px) { .fig-wide { width: calc(100% + var(--label-col) + var(--label-gap)); max-width: none; } }
 
-.bd h3 { font-size: 20px; font-weight: 600; letter-spacing: -.012em; margin: 0 0 10px; }
+
+/* ---- Decision block, consolidated (replaces every earlier .bd / .compare rule) ----
+   Number hangs in the gutter on the title's baseline. Title 20/600. Three lines of 17/400,
+   the middle one opening with a small-caps label. Objects inside sit 24 below. */
+.bd { position: relative; display: block; padding: 28px 0 28px; border-top: 1px solid var(--line); }
+.beat .cs-body > .bd:first-of-type { border-top: 0; padding-top: 0; }
+.bd-body { min-width: 0; }
+.bd-num { position: absolute; left: -68px; top: 28px; width: 40px; text-align: right; font-size: 12.5px; line-height: 25px; font-weight: 600; letter-spacing: .09em; color: var(--pt); font-variant-numeric: tabular-nums; }
+.beat .cs-body > .bd:first-of-type .bd-num { top: 0; }
+.bd h3 { font-size: 20px; line-height: 25px; font-weight: 600; letter-spacing: -.012em; margin: 0 0 10px; }
+.bd-chose, .bd-instead, .bd-why { font-size: 17px; line-height: 1.6; font-weight: 400; color: var(--text); margin: 0; }
+.bd-chose + .bd-instead, .bd-instead + .bd-why, .bd-chose + .bd-why { margin-top: 10px; }
+.bd-instead span { font-size: 12.5px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--pt); margin-right: 8px; }
+.bd-hl::before { content: ''; position: absolute; left: -20px; top: 28px; bottom: 28px; width: 3px; background: var(--p); }
+.beat .cs-body > .bd.bd-hl:first-of-type::before { top: 0; }
+.bd .figure, .bd .compare, .bd .flow { margin: 24px 0 0; }
+.compare h4 { font-size: 17px; font-weight: 600; line-height: 1.3; margin: 0 0 12px; }
+.compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.compare-item { border: 0; border-radius: 12px; padding: 18px 20px; background: var(--ptint); }
+.compare-item:last-child { box-shadow: inset 0 0 0 1.5px var(--p); }
+.compare-label { display: block; margin-bottom: 10px; }
+.compare-text { margin: 0 0 10px; font-size: 16px; line-height: 1.45; font-weight: 500; color: var(--text); }
+.compare-note { margin: 0; font-size: 15px; line-height: 1.5; color: var(--text); opacity: .82; }
+@media (max-width: 860px) {
+  .bd-num { position: static; display: block; width: auto; text-align: left; line-height: 1; margin-bottom: 8px; }
+  .bd-hl { padding-left: 16px; }
+  .bd-hl::before { left: 0; }
+}
