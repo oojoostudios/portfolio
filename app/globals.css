@@ -715,3 +715,69 @@ html { overflow-x: clip; }
 
 .figure.cropped img, .figure.size-bleed img { border: 0; border-radius: 0; }
 .panel-media .figure.cropped .figure-frame { border-radius: 20px; }
+
+/* ---- Scroll rhythm ----
+   Two edges only: the reading column, and the full grid for the hero and wide objects.
+   One container style for every framed object. One spacing scale. Text does not animate. */
+
+/* Standfirst joins the grid under its own label; sits closer to the hero than a chapter would. */
+.cs-section.standfirst { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); max-width: none; }
+.cs-section.standfirst .cs-body p { max-width: 40em; }
+
+/* Decision numbers hang in the gutter; decision text starts on the reading edge. */
+.bd { grid-template-columns: minmax(0, 1fr); column-gap: 0; position: relative; padding: 28px 0; }
+.bd-num { position: absolute; left: -56px; top: 34px; width: 40px; text-align: right; padding: 0; }
+.bd-hl .bd-body { border-left: 0; padding-left: 0; margin-left: 0; }
+.bd-hl { box-shadow: inset 3px 0 0 var(--p); padding-left: 20px; }
+.bd-hl .bd-num { left: -76px; }
+@media (max-width: 860px) { .bd-num { position: static; width: auto; text-align: left; display: block; margin-bottom: 6px; } .bd-hl { padding-left: 16px; } }
+
+/* Wide objects match the hero exactly: full grid width from the left edge. */
+@media (min-width: 861px) {
+  .fig-wide { margin-left: calc(-1 * (var(--label-col) + var(--label-gap))); width: calc(100% + var(--label-col) + var(--label-gap) + 48px); }
+  .beat .quote-display { margin-left: 0; }
+}
+
+/* One frame: the project tint, radius 16, no hairline. */
+.embed { border: 0; border-radius: 16px; background: var(--ptint); margin-top: 0; }
+.embed-bar { background: transparent; border-bottom: 1px solid color-mix(in oklab, var(--p) 14%, transparent); }
+.embed-fallback { border-top: 1px solid color-mix(in oklab, var(--p) 14%, transparent); background: transparent; }
+.compare-item { border: 0; border-radius: 12px; background: var(--ptint); }
+.compare-item:last-child { box-shadow: inset 0 0 0 1.5px var(--p); }
+.figure .figure-frame { border-radius: 16px; }
+.figure img { border: 0; }
+
+/* Spacing scale inside a chapter: 20 between text, 40 around objects, 0 trailing. */
+.beat .cs-body > *, .cs-section.standfirst .cs-body > * { margin-top: 0; margin-bottom: 0; }
+.beat .cs-body > * + * { margin-top: 20px; }
+.beat .cs-body > h2 + * { margin-top: 20px; }
+.beat .cs-body > .beat-wide, .beat .cs-body > .quote, .beat .cs-body > .testing, .beat .cs-body > .bd:first-of-type,
+.beat .cs-body > * + .beat-wide, .beat .cs-body > .beat-wide + *, .beat .cs-body > * + .quote, .beat .cs-body > .quote + *, .beat .cs-body > * + .testing, .beat .cs-body > .testing + * { margin-top: 40px; }
+.beat .cs-body > .bd + .bd { margin-top: 0; }
+.beat .cs-body > .bd + :not(.bd) { margin-top: 40px; }
+.beat-wide .figure, .fig-wide .figure, .figure.chart, .beat .quote, .quote-display, .bd .figure { margin: 0; }
+.bd .figure, .bd .compare, .bd .flow { margin-top: 24px; }
+.beat .quote-display { padding: 0; }
+.cs-section.standfirst .cs-body > * + * { margin-top: 16px; }
+
+/* Chapters: a constant pause. */
+.cs .cs-section { margin-top: 128px; padding-top: 24px; }
+.cs .cs-section.standfirst { margin-top: 56px; }
+.cs .next { margin-top: 128px; }
+@media (max-width: 640px) { .cs .cs-section { margin-top: 72px; padding-top: 16px; } .cs .cs-section.standfirst { margin-top: 40px; } .cs .next { margin-top: 80px; } }
+
+/* Motion: only objects reveal, and gently. Text is simply there. */
+.motion-on .cs [data-reveal]:not(.figure):not(.beat-wide):not(.quote) { opacity: 1; transform: none; transition: none; }
+.motion-on .cs .figure[data-reveal], .motion-on .cs .beat-wide[data-reveal], .motion-on .cs .quote[data-reveal] { transform: translateY(12px); transition-duration: .5s; }
+.motion-on .cs [data-reveal].is-in { transform: none; }
+.bd-hl { box-shadow: none; padding-left: 0; }
+.bd-hl::before { content: ''; position: absolute; left: -20px; top: 28px; bottom: 28px; width: 3px; background: var(--p); }
+.bd-hl .bd-num { left: -56px; }
+.beat .cs-body > .bd:last-child { padding-bottom: 0; }
+@media (max-width: 860px) { .bd-hl::before { left: -12px; } }
+/* The body column spans its grid cell; text and inline objects cap at 720, wide objects span the whole grid. */
+.cs-body { max-width: none; }
+.cs-body > *:not(.fig-wide) { max-width: 720px; }
+@media (min-width: 861px) { .fig-wide { width: calc(100% + var(--label-col) + var(--label-gap)); max-width: none; } }
+
+.bd h3 { font-size: 20px; font-weight: 600; letter-spacing: -.012em; margin: 0 0 10px; }

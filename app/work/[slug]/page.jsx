@@ -132,10 +132,13 @@ export default async function CaseStudy({ params }) {
       <div className={`cs-hero hero-${p.hero.size || 'wide'}`}><Figure {...p.hero} size={p.hero.size || 'wide'} parallax={p.hero.size === 'bleed' ? '0.06' : undefined} cover={p.title} priority /></div>
 
       {p.glance && (
-        <section className="standfirst" aria-label="Case study at a glance">
-          <p data-reveal><strong>The problem</strong> {p.glance.problem}</p>
-          <p data-reveal data-delay="90"><strong>What I made</strong> {p.glance.made}</p>
-          <p data-reveal data-delay="180"><strong>What happened</strong> {p.glance.happened}</p>
+        <section className="cs-section standfirst" aria-label="Case study at a glance">
+          <p className="cs-label"><span>In brief</span></p>
+          <div className="cs-body">
+            <p><strong>The problem</strong> {p.glance.problem}</p>
+            <p><strong>What I made</strong> {p.glance.made}</p>
+            <p><strong>What happened</strong> {p.glance.happened}</p>
+          </div>
         </section>
       )}
 
