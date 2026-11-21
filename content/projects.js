@@ -30,7 +30,7 @@ export const projects = [
     group: 'work',
     status: 'Live',
     stage: 'A live product on central-bank reference rates. It hands off to the sender’s own provider and never moves money.',
-    cardSummary: 'Helping international senders interpret today’s exchange rate without predicting when to transfer.',
+    cardSummary: 'FXpress helps people who send money abroad read today’s exchange rate without pretending to predict it.',
     meta: [
       ['Role', 'Independent Product Designer · research, design, build, testing'],
       ['Scope', 'Research, product design, AI interaction, build, usability testing'],
@@ -40,7 +40,7 @@ export const projects = [
     links: [{ label: 'Try It Live', href: 'https://fxpress.netlify.app' }],
     glance: {
       problem: 'Money transfer apps show today’s exchange rate but give no sense of whether it is a good one. On central-bank reference rates, USD/KRW moved about 3.8% within a typical month over the past year, roughly $76 on a $2,000 transfer.',
-      made: 'A live widget that shows where today’s rate sits in its 30-day range, then hands off to whichever provider the sender already uses. Every calculation happens in code, and the AI assistant only rewords a sentence the code has already written.',
+      made: 'FXpress is a live widget that shows where today’s rate sits in its 30-day range, then hands off to whichever provider the sender already uses. Every calculation happens in code, and the AI assistant only rewords a sentence the code has already written.',
       happened: 'All five testers completed the send task on the high-fidelity prototype, and four of the five completed the target-rate task. The widget is live across 18 currency pairs. In the first 30 days of logs, all 33 calls to the AI assistant returned without error.',
     },
     beats: [
@@ -146,7 +146,7 @@ export const projects = [
     group: 'work',
     status: 'Working prototype',
     stage: 'A working proof of concept in Google Sheets, on synthetic trade data. It is not connected to any production system.',
-    cardSummary: 'Making missing trades and valuation differences visible inside a spreadsheet-native reconciliation workflow.',
+    cardSummary: 'ReconLayer makes missing trades and valuation differences visible inside the spreadsheet an analyst already uses.',
     meta: [
       ['Role', 'Independent Product Designer · research, workflow design, implementation, usability testing'],
       ['Scope', 'Strategy, research, product design, build, testing'],
@@ -161,7 +161,7 @@ export const projects = [
       'I worked in buy-side trading operations for eleven years and did this kind of reconciliation myself.',
     glance: {
       problem: 'Small operations teams reconcile their internal records against broker files under a daily cutoff. A missing trade is easy to overlook when the whole workflow is built around valuation differences.',
-      made: 'A prototype that runs inside the spreadsheet and classifies missing-record and value discrepancies with explicit rules. The AI drafts the dispute email only after the rules have done their work, and the analyst reviews it and sends it outside the tool.',
+      made: 'ReconLayer is a prototype that runs inside the spreadsheet and classifies missing-record and value discrepancies with explicit rules. The AI drafts the dispute email only after the rules have done their work, and the analyst reviews it and sends it outside the tool.',
       happened: 'Five buy-side operators tested it on synthetic records. Four completed the flow from reconciliation to draft and rated ease of use 4.75 out of 5. All four named a check they would make before sending, and two said they would send the draft as it was.',
     },
     beats: [
@@ -267,7 +267,7 @@ export const projects = [
     group: 'studio',
     status: 'Live',
     stage: 'Live on Framer. The catalogue of works is still being added.',
-    cardSummary: 'Giving first-time visitors and scholars distinct ways to navigate an artist’s work.',
+    cardSummary: 'The archive gives first-time visitors and scholars their own ways into an artist’s work.',
     meta: [
       ['Role', 'Solo Product Designer, Paid Commission from the Artist’s Estate'],
       ['Scope', 'Strategy, research, IA, visual design, curatorial writing, Framer build'],
@@ -277,7 +277,7 @@ export const projects = [
     links: [{ label: 'Visit the Archive', href: 'https://hwangyooyup.framer.website' }],
     glance: {
       problem: 'Hwang Yoo-Yup (1916–2010) painted the same subjects for six decades. First-time visitors need some background before the work makes sense, while scholars need dates, exhibition history and a searchable record, and the background gets in their way.',
-      made: 'One site with two paths. Discovery, organized by theme and motif, is the default; Archive Mode, organized as a structured record, is one toggle away on every page.',
+      made: 'I built one site with two paths. Discovery, organized by theme and motif, is the default, and Archive Mode, organized as a structured record, is one toggle away on every page.',
       happened: 'The site is live on Framer with both modes working, and the catalogue is being added. The estate told me the site honors their father’s work and legacy.',
     },
     beats: [
