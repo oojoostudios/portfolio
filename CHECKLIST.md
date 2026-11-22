@@ -76,10 +76,13 @@ FXpress; if you want it done this week, lead with Hwang.
 
 ---
 
-## 5. lorrainekim.com to Vercel
+## 5. lorrainekim.com to Vercel · done
 
-**Why it matters.** The resume and every link on the site point at lorrainekim.com, which still
-lands on the Framer password page. Anyone who follows the resume link today hits a wall.
+Moved on 22 November 2026. The domain is registered and managed at Cloudflare. www is the primary
+and the bare domain redirects to it. Still to do: disconnect the domain in Framer.
+
+**Why it mattered.** The resume and every link on the site point at lorrainekim.com, which used to
+land on the Framer password page.
 
 | Tier | What | Notes |
 |---|---|---|
